@@ -3,19 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101132D72437A40300D15779 /* ProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132D62437A40300D15779 /* ProxyManager.swift */; };
+		101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132DA2437D47C00D15779 /* SDLAppConstants.swift */; };
 		10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C21E243780C70010D9F6 /* AppDelegate.swift */; };
 		10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C220243780C70010D9F6 /* SceneDelegate.swift */; };
 		10A0C223243780C70010D9F6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C222243780C70010D9F6 /* MapViewController.swift */; };
 		10A0C226243780C70010D9F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C224243780C70010D9F6 /* Main.storyboard */; };
 		10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C227243780C80010D9F6 /* Assets.xcassets */; };
 		10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C229243780C80010D9F6 /* LaunchScreen.storyboard */; };
+		DF52484B0BFFA9B38D01FD66 /* Pods_MobileNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735759190470A036D9B4493A /* Pods_MobileNav.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101132D62437A40300D15779 /* ProxyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyManager.swift; sourceTree = "<group>"; };
+		101132DA2437D47C00D15779 /* SDLAppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLAppConstants.swift; sourceTree = "<group>"; };
 		10A0C21B243780C70010D9F6 /* MobileNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0C21E243780C70010D9F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10A0C220243780C70010D9F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		10A0C227243780C80010D9F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10A0C22A243780C80010D9F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10A0C22C243780C80010D9F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.release.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.release.xcconfig"; sourceTree = "<group>"; };
+		735759190470A036D9B4493A /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5B3861B60DEB606EB7B5E3D /* Pods-MobileNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.debug.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF52484B0BFFA9B38D01FD66 /* Pods_MobileNav.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		053BE1BD6AFB3D6A10F3D7F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B5B3861B60DEB606EB7B5E3D /* Pods-MobileNav.debug.xcconfig */,
+				5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		101132D52437991500D15779 /* SDL */ = {
+			isa = PBXGroup;
+			children = (
+				101132D62437A40300D15779 /* ProxyManager.swift */,
+				101132DA2437D47C00D15779 /* SDLAppConstants.swift */,
+			);
+			path = SDL;
+			sourceTree = "<group>";
+		};
 		10A0C212243780C70010D9F6 = {
 			isa = PBXGroup;
 			children = (
 				10A0C21D243780C70010D9F6 /* MobileNav */,
 				10A0C21C243780C70010D9F6 /* Products */,
+				053BE1BD6AFB3D6A10F3D7F2 /* Pods */,
+				ED0354DD10141251D757372C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +85,7 @@
 		10A0C21D243780C70010D9F6 /* MobileNav */ = {
 			isa = PBXGroup;
 			children = (
+				101132D52437991500D15779 /* SDL */,
 				10A0C21E243780C70010D9F6 /* AppDelegate.swift */,
 				10A0C220243780C70010D9F6 /* SceneDelegate.swift */,
 				10A0C222243780C70010D9F6 /* MapViewController.swift */,
@@ -67,6 +97,14 @@
 			path = MobileNav;
 			sourceTree = "<group>";
 		};
+		ED0354DD10141251D757372C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				735759190470A036D9B4493A /* Pods_MobileNav.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10A0C22F243780C80010D9F6 /* Build configuration list for PBXNativeTarget "MobileNav" */;
 			buildPhases = (
+				85E197028706E6114BE97FF0 /* [CP] Check Pods Manifest.lock */,
 				10A0C217243780C70010D9F6 /* Sources */,
 				10A0C218243780C70010D9F6 /* Frameworks */,
 				10A0C219243780C70010D9F6 /* Resources */,
+				BEA0491B34B392FF56F666BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,6 +173,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		85E197028706E6114BE97FF0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MobileNav-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEA0491B34B392FF56F666BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MobileNav/Pods-MobileNav-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MobileNav/Pods-MobileNav-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MobileNav/Pods-MobileNav-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		10A0C217243780C70010D9F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,6 +222,8 @@
 			files = (
 				10A0C223243780C70010D9F6 /* MapViewController.swift in Sources */,
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
+				101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */,
+				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
 				10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +366,7 @@
 		};
 		10A0C230243780C80010D9F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5B3861B60DEB606EB7B5E3D /* Pods-MobileNav.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +385,7 @@
 		};
 		10A0C231243780C80010D9F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
