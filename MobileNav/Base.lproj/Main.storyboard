@@ -7,30 +7,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="MobileNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ygv-8D-Mg4">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhZ-KD-D6q">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </mapView>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ygv-8D-Mg4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Yaq-Om-3Ec"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ygv-8D-Mg4" secondAttribute="trailing" id="hFt-Lp-Pez"/>
-                            <constraint firstItem="ygv-8D-Mg4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k8f-m2-Jr5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ygv-8D-Mg4" secondAttribute="bottom" id="xBP-oX-shf"/>
+                            <constraint firstItem="dhZ-KD-D6q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Mi-zf-Pvh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dhZ-KD-D6q" secondAttribute="trailing" id="6yq-Md-avT"/>
+                            <constraint firstItem="dhZ-KD-D6q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DP7-jT-VBv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dhZ-KD-D6q" secondAttribute="bottom" id="vDF-5e-rCh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="mapView" destination="ygv-8D-Mg4" id="DIV-yb-WXD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
