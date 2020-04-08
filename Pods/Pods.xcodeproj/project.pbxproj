@@ -16,6 +16,7 @@
 				2ACC5AB568865CE57B479E1126489039 /* PBXTargetDependency */,
 			);
 			name = "Mapbox-iOS-SDK";
+			productName = "Mapbox-iOS-SDK";
 		};
 /* End PBXAggregateTarget section */
 
@@ -1244,7 +1245,7 @@
 		00AC6D7E69E6F6B20EE99364C239EBBF /* Pods-MobileNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MobileNav.debug.xcconfig"; sourceTree = "<group>"; };
 		00AEF3376337B2C52246E640121862F5 /* SDLFuelCutoffStatus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLFuelCutoffStatus.m; path = SmartDeviceLink/SDLFuelCutoffStatus.m; sourceTree = "<group>"; };
 		00D77B0B2B7F6616F583EBF1FDCB82F6 /* SDLKeyboardEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLKeyboardEvent.h; path = SmartDeviceLink/SDLKeyboardEvent.h; sourceTree = "<group>"; };
-		012CE07CE00E36054DA038C75909F04A /* SmartDeviceLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SmartDeviceLink.framework; path = SmartDeviceLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		012CE07CE00E36054DA038C75909F04A /* SmartDeviceLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmartDeviceLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01462FA172B027E369A018E184F76DC8 /* SDLMenuConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLMenuConfiguration.m; path = SmartDeviceLink/SDLMenuConfiguration.m; sourceTree = "<group>"; };
 		01B6ECE7663818AD1C69DC12D00F17C8 /* SDLDriverDistractionState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLDriverDistractionState.m; path = SmartDeviceLink/SDLDriverDistractionState.m; sourceTree = "<group>"; };
 		01DDBD74C40C546CDFBCE9B965ADFB0F /* SDLInteractionMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLInteractionMode.m; path = SmartDeviceLink/SDLInteractionMode.m; sourceTree = "<group>"; };
@@ -1283,7 +1284,7 @@
 		0804B578D79B76A4CCFFFF3CFE33B7E1 /* SDLRPCResponseNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLRPCResponseNotification.h; path = SmartDeviceLink/SDLRPCResponseNotification.h; sourceTree = "<group>"; };
 		090DA00A82990ACA62016C0EBF10373F /* SDLCancelInteractionResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLCancelInteractionResponse.m; path = SmartDeviceLink/SDLCancelInteractionResponse.m; sourceTree = "<group>"; };
 		09693EDEF043B8AF5E531ABA8949F254 /* SDLLogManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLLogManager.h; path = SmartDeviceLink/SDLLogManager.h; sourceTree = "<group>"; };
-		097AC5F73448D70E0D456241F892F6A5 /* bson_util.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bson_util.c; path = src/bson_util.c; sourceTree = "<group>"; };
+		097AC5F73448D70E0D456241F892F6A5 /* bson_util.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bson_util.c; path = src/bson_util.c; sourceTree = "<group>"; };
 		09D9257A445C300F67D05D35B7A757FC /* SDLTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLTextField.m; path = SmartDeviceLink/SDLTextField.m; sourceTree = "<group>"; };
 		0A4E9436271E3D7F255B54FC2D7C490D /* SDLOnHashChange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLOnHashChange.m; path = SmartDeviceLink/SDLOnHashChange.m; sourceTree = "<group>"; };
 		0A4F6AA2C9A3C43C6ED3265D0E3C66E8 /* SDLHMILevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLHMILevel.h; path = SmartDeviceLink/SDLHMILevel.h; sourceTree = "<group>"; };
@@ -1798,12 +1799,12 @@
 		7A95F41E47206F00D82EBE79B24957E2 /* SDLResetGlobalPropertiesResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLResetGlobalPropertiesResponse.m; path = SmartDeviceLink/SDLResetGlobalPropertiesResponse.m; sourceTree = "<group>"; };
 		7AAADFA4A9D68795A12D34D8E459A7F7 /* SDLSubscribeWayPoints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLSubscribeWayPoints.h; path = SmartDeviceLink/SDLSubscribeWayPoints.h; sourceTree = "<group>"; };
 		7AFD159BCD724A246697C677C54F0630 /* EAAccessoryManager+SDLProtocols.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EAAccessoryManager+SDLProtocols.m"; path = "SmartDeviceLink/EAAccessoryManager+SDLProtocols.m"; sourceTree = "<group>"; };
-		7B1F6B431A4C7D300274DCDBE2BC7043 /* BiSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BiSON.framework; path = BiSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B1F6B431A4C7D300274DCDBE2BC7043 /* BiSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BiSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B51DB12944847060FA4B5790E7C8EF1 /* SDLImageResolution.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLImageResolution.h; path = SmartDeviceLink/SDLImageResolution.h; sourceTree = "<group>"; };
 		7B5CE0C6DB3FED8B14AB1CBD0B41ADCC /* SDLRPCMessageType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLRPCMessageType.h; path = SmartDeviceLink/SDLRPCMessageType.h; sourceTree = "<group>"; };
 		7BF6DE0A4D08B1861585C390AC16DCF2 /* SDLChangeRegistrationResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLChangeRegistrationResponse.h; path = SmartDeviceLink/SDLChangeRegistrationResponse.h; sourceTree = "<group>"; };
 		7C170769F6BEB375CE23CA5B4A8AF652 /* SDLFocusableItemLocatorType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLFocusableItemLocatorType.h; path = SmartDeviceLink/SDLFocusableItemLocatorType.h; sourceTree = "<group>"; };
-		7CDFA2DAE745FD57264494A16D3C14B6 /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MapboxMobileEvents.framework; path = MapboxMobileEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CDFA2DAE745FD57264494A16D3C14B6 /* MapboxMobileEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MapboxMobileEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE718B3D263A7D11FA12F6D94E529B4 /* SDLDeleteFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLDeleteFile.h; path = SmartDeviceLink/SDLDeleteFile.h; sourceTree = "<group>"; };
 		7D3E73F784E04B3B8A48AAA831DD4A2C /* SDLCheckChoiceVROptionalOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLCheckChoiceVROptionalOperation.m; path = SmartDeviceLink/SDLCheckChoiceVROptionalOperation.m; sourceTree = "<group>"; };
 		7D58BA04C58DCF476D27EFD302E0285C /* SDLButtonPressMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLButtonPressMode.m; path = SmartDeviceLink/SDLButtonPressMode.m; sourceTree = "<group>"; };
@@ -1912,7 +1913,7 @@
 		94313CF739F621D5AD0B0996F3687CB7 /* SDLSpeechCapabilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLSpeechCapabilities.h; path = SmartDeviceLink/SDLSpeechCapabilities.h; sourceTree = "<group>"; };
 		94B0DD6638BE55307CE9286DD139C6A4 /* SDLSetGlobalPropertiesResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLSetGlobalPropertiesResponse.m; path = SmartDeviceLink/SDLSetGlobalPropertiesResponse.m; sourceTree = "<group>"; };
 		953D612759C89CF69B469416B42A1EFC /* SDLLogFileModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLLogFileModule.h; path = SmartDeviceLink/SDLLogFileModule.h; sourceTree = "<group>"; };
-		953FCD51DD772CCEDFC418434EFFD873 /* logger.html */ = {isa = PBXFileReference; includeInIndex = 1; name = logger.html; path = MapboxMobileEvents/Resources/logger.html; sourceTree = "<group>"; };
+		953FCD51DD772CCEDFC418434EFFD873 /* logger.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = logger.html; path = MapboxMobileEvents/Resources/logger.html; sourceTree = "<group>"; };
 		9572CD0B8EE7B4858A932D40DE3F33F7 /* SDLEnum.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLEnum.m; path = SmartDeviceLink/SDLEnum.m; sourceTree = "<group>"; };
 		958C950B3F24FDDEF285F05DD6DADD2A /* SDLFunctionID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLFunctionID.h; path = SmartDeviceLink/SDLFunctionID.h; sourceTree = "<group>"; };
 		95B5B7A644AD7442EFCA86542BE44760 /* SDLSetDisplayLayoutResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLSetDisplayLayoutResponse.m; path = SmartDeviceLink/SDLSetDisplayLayoutResponse.m; sourceTree = "<group>"; };
@@ -1955,7 +1956,7 @@
 		9D39219FCABED1DFACFB9EC99AA4024B /* SDLLightName.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLLightName.h; path = SmartDeviceLink/SDLLightName.h; sourceTree = "<group>"; };
 		9D72F54C90D1EF5B506D657C781C9206 /* SDLDiagnosticMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLDiagnosticMessage.m; path = SmartDeviceLink/SDLDiagnosticMessage.m; sourceTree = "<group>"; };
 		9D9359FE5BDCDB17F7149B0A924D824F /* SDLProtocolMessageDisassembler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLProtocolMessageDisassembler.h; path = SmartDeviceLink/SDLProtocolMessageDisassembler.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DA9A1159699C27DD86B06967CEB1CF6 /* SDLSystemCapabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLSystemCapabilityManager.h; path = SmartDeviceLink/SDLSystemCapabilityManager.h; sourceTree = "<group>"; };
 		9DABCA5534BE5EB813D93EB4B0F0F6D4 /* SDLShowResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLShowResponse.h; path = SmartDeviceLink/SDLShowResponse.h; sourceTree = "<group>"; };
 		9DB2C192D1D05E7E33BF4D5A6FD59F4C /* SDLDeleteCommandResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLDeleteCommandResponse.h; path = SmartDeviceLink/SDLDeleteCommandResponse.h; sourceTree = "<group>"; };
@@ -2050,7 +2051,7 @@
 		B1A93FFB478F12FFDC0285D43E701800 /* SDLCancelInteraction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLCancelInteraction.h; path = SmartDeviceLink/SDLCancelInteraction.h; sourceTree = "<group>"; };
 		B1CA5EC12B528F511C6FA42B43A29275 /* MMEMetricsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMEMetricsManager.h; path = MapboxMobileEvents/MMEMetricsManager.h; sourceTree = "<group>"; };
 		B1D70D32361B2D8538AF87882F316219 /* SDLSoftButtonReplaceOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLSoftButtonReplaceOperation.h; path = SmartDeviceLink/SDLSoftButtonReplaceOperation.h; sourceTree = "<group>"; };
-		B2361FDE42A57FD8B4F873070F5568C5 /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MobileNav.framework; path = "Pods-MobileNav.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2361FDE42A57FD8B4F873070F5568C5 /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23D6F550D1AD9F2F92DC4C343F85951 /* SDLDisplayCapabilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLDisplayCapabilities.m; path = SmartDeviceLink/SDLDisplayCapabilities.m; sourceTree = "<group>"; };
 		B25100FDCAAA60A5271EE59D22DE4E32 /* SDLOnLanguageChange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLOnLanguageChange.m; path = SmartDeviceLink/SDLOnLanguageChange.m; sourceTree = "<group>"; };
 		B26C54C4ACB47DC51FC1DACC5BDE9A58 /* SDLSeatLocationCapability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLSeatLocationCapability.m; path = SmartDeviceLink/SDLSeatLocationCapability.m; sourceTree = "<group>"; };
@@ -2123,7 +2124,7 @@
 		C13E1B1A243CA8192C93BE20CF187A49 /* SDLControlFramePayloadRegisterSecondaryTransportNak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLControlFramePayloadRegisterSecondaryTransportNak.h; path = SmartDeviceLink/SDLControlFramePayloadRegisterSecondaryTransportNak.h; sourceTree = "<group>"; };
 		C145581BF6AEDCC56549C8F60FC7751C /* SDLBeltStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLBeltStatus.h; path = SmartDeviceLink/SDLBeltStatus.h; sourceTree = "<group>"; };
 		C15068B08001DDF605C30636F3AB44A2 /* SDLSubscribeButtonResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLSubscribeButtonResponse.h; path = SmartDeviceLink/SDLSubscribeButtonResponse.h; sourceTree = "<group>"; };
-		C197364227C0998A9025317EAD699894 /* SmartDeviceLink.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SmartDeviceLink.bundle; path = "SmartDeviceLink-SmartDeviceLink.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C197364227C0998A9025317EAD699894 /* SmartDeviceLink.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartDeviceLink.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1BD37927AC72BAE4AD469B9FA744A79 /* SDLTPMS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLTPMS.h; path = SmartDeviceLink/SDLTPMS.h; sourceTree = "<group>"; };
 		C2094F8EA5F8CD781E4EAD54900262ED /* SDLRequestType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLRequestType.h; path = SmartDeviceLink/SDLRequestType.h; sourceTree = "<group>"; };
 		C228875288E7F7F789C90CA209B06EF7 /* SDLDiagnosticMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLDiagnosticMessage.h; path = SmartDeviceLink/SDLDiagnosticMessage.h; sourceTree = "<group>"; };
@@ -2238,7 +2239,7 @@
 		DA57BE5ED02DBDB20BBC87CE683B42A9 /* SDLMediaServiceManifest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLMediaServiceManifest.m; path = SmartDeviceLink/SDLMediaServiceManifest.m; sourceTree = "<group>"; };
 		DA632A678916BFD02594595CCCAC23FF /* MapboxMobileEvents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MapboxMobileEvents.debug.xcconfig; sourceTree = "<group>"; };
 		DA7615818178EF6483B4B8C7593036C5 /* SDLImageFieldName.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLImageFieldName.h; path = SmartDeviceLink/SDLImageFieldName.h; sourceTree = "<group>"; };
-		DA76586364A06F6C833C206834D3EFFF /* bson_array.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bson_array.c; path = src/bson_array.c; sourceTree = "<group>"; };
+		DA76586364A06F6C833C206834D3EFFF /* bson_array.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bson_array.c; path = src/bson_array.c; sourceTree = "<group>"; };
 		DAB2A29981B130566B9B97267E6423BB /* SDLSetAppIcon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLSetAppIcon.m; path = SmartDeviceLink/SDLSetAppIcon.m; sourceTree = "<group>"; };
 		DAB710D03A0DED6D014E547DDCF0DDBB /* SDLLanguage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLLanguage.h; path = SmartDeviceLink/SDLLanguage.h; sourceTree = "<group>"; };
 		DAE7A2E220A06942E8835A6E5A99AC8F /* MapboxMobileEvents.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MapboxMobileEvents.modulemap; sourceTree = "<group>"; };
@@ -2262,7 +2263,7 @@
 		DF6C828A310639ECDC997C9A0CFE28CA /* SDLUpdateTurnListResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLUpdateTurnListResponse.h; path = SmartDeviceLink/SDLUpdateTurnListResponse.h; sourceTree = "<group>"; };
 		DF87936E50A61E57D7C2D5DE126518B6 /* SDLImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLImage.m; path = SmartDeviceLink/SDLImage.m; sourceTree = "<group>"; };
 		DF8D2F6E208167872AE19B70DC9DD18F /* SDLCarWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLCarWindow.m; path = SmartDeviceLink/SDLCarWindow.m; sourceTree = "<group>"; };
-		DFA02FF0A0BFB7BABAA87C3DB5072F61 /* emhashmap.c */ = {isa = PBXFileReference; includeInIndex = 1; name = emhashmap.c; path = src/emhashmap/emhashmap.c; sourceTree = "<group>"; };
+		DFA02FF0A0BFB7BABAA87C3DB5072F61 /* emhashmap.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = emhashmap.c; path = src/emhashmap/emhashmap.c; sourceTree = "<group>"; };
 		DFAF0BFEBD65CA4841464D5216A04BA6 /* SDLWeatherServiceManifest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLWeatherServiceManifest.m; path = SmartDeviceLink/SDLWeatherServiceManifest.m; sourceTree = "<group>"; };
 		DFFBDAC5F8B37DD324E26547829AC9BF /* SDLLogConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLLogConfiguration.m; path = SmartDeviceLink/SDLLogConfiguration.m; sourceTree = "<group>"; };
 		E031A4F5CEF0287462ADC9E75CAABB60 /* SDLVideoStreamingState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLVideoStreamingState.m; path = SmartDeviceLink/SDLVideoStreamingState.m; sourceTree = "<group>"; };
@@ -2385,7 +2386,7 @@
 		FB841581EF7311FDF7807BC6592BAC08 /* SDLReadDID.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLReadDID.m; path = SmartDeviceLink/SDLReadDID.m; sourceTree = "<group>"; };
 		FB855788C9A14459A2247A94ADA40E22 /* SDLGetInteriorVehicleDataResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLGetInteriorVehicleDataResponse.m; path = SmartDeviceLink/SDLGetInteriorVehicleDataResponse.m; sourceTree = "<group>"; };
 		FB8E9FD2AA6D3B4D3B14A00C7EA5FCFE /* SDLSubscribeButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLSubscribeButton.h; path = SmartDeviceLink/SDLSubscribeButton.h; sourceTree = "<group>"; };
-		FBBD46EA0E4236D33641DC07CE166003 /* bson_object.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bson_object.c; path = src/bson_object.c; sourceTree = "<group>"; };
+		FBBD46EA0E4236D33641DC07CE166003 /* bson_object.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bson_object.c; path = src/bson_object.c; sourceTree = "<group>"; };
 		FC0C79038C505D6ACD3925EED99866C4 /* SDLWindowCapability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLWindowCapability.m; path = SmartDeviceLink/SDLWindowCapability.m; sourceTree = "<group>"; };
 		FC2BE98213EF63D1752B57A9F442335C /* SDLPinchGesture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLPinchGesture.h; path = SmartDeviceLink/SDLPinchGesture.h; sourceTree = "<group>"; };
 		FC4931DE0519FC6AFB66F05F91FE91E9 /* SDLNavigationCapability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDLNavigationCapability.m; path = SmartDeviceLink/SDLNavigationCapability.m; sourceTree = "<group>"; };
@@ -3630,7 +3631,6 @@
 				EA8B1D8BEE3EFBC7932280F518DA9111 /* Resources */,
 				7C9F29FDB58B60C46883239A8CC9D071 /* Support Files */,
 			);
-			name = MapboxMobileEvents;
 			path = MapboxMobileEvents;
 			sourceTree = "<group>";
 		};
@@ -3650,7 +3650,6 @@
 				031D509B7ABF01650973667198219B58 /* Support Files */,
 				1AC0D2E171C32818729424C654B70CA6 /* Swift */,
 			);
-			name = SmartDeviceLink;
 			path = SmartDeviceLink;
 			sourceTree = "<group>";
 		};
@@ -3672,7 +3671,6 @@
 				A7157566EFA285CCC63F417DB2EFE48A /* Frameworks */,
 				307630E7A7E1F1EF0AFCB5CE5B934AA8 /* Support Files */,
 			);
-			name = "Mapbox-iOS-SDK";
 			path = "Mapbox-iOS-SDK";
 			sourceTree = "<group>";
 		};
@@ -3732,7 +3730,6 @@
 				F4C367AB275CA339DE5305FD9BE0685E /* emhashmap.h */,
 				13059A9EA0839792D52A703158211EC0 /* Support Files */,
 			);
-			name = BiSON;
 			path = BiSON;
 			sourceTree = "<group>";
 		};
@@ -4505,6 +4502,11 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
+				fr,
+				ja,
+				"zh-Hans",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 6573FD99053676724C4EA0A177387A86 /* Products */;
