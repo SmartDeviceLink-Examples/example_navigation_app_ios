@@ -21,9 +21,7 @@ class MapViewController: SDLCarWindowViewController {
             longitude: -76.157227)
         mapView.centerToLocation(location)
     }
-
 }
-
 
 private extension MKMapView {
   func centerToLocation(

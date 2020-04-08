@@ -6,7 +6,6 @@ target 'MobileNav' do
   use_frameworks!
 
   # Pods for MobileNav
-
     pod 'SmartDeviceLink/Swift', '~> 6.5'
-
+    pod 'Mapbox-iOS-SDK', '~> 5.7'
 end

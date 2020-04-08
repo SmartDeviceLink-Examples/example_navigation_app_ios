@@ -65,8 +65,7 @@ class ProxyManager: NSObject {
     }
 
     class func streamingMediaConfiguration() -> SDLStreamingMediaConfiguration {
-
-        let mapViewController = UIStoryboard(name: "SDLMapKitMap", bundle: nil).instantiateInitialViewController() as? MapViewController
+        let mapViewController = UIStoryboard(name: "SDLMapBoxMap", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
         let streamingMediaConfig = SDLStreamingMediaConfiguration .autostreamingInsecureConfiguration(withInitialViewController: mapViewController!)
         streamingMediaConfig.carWindowRenderingType = .viewAfterScreenUpdates
 
