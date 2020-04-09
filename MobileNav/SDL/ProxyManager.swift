@@ -9,15 +9,27 @@
 import UIKit
 import SmartDeviceLink
 
+protocol ProxyManagerDelegate: class {
+    var proxyState: ProxyState { get }
+    func didChangeProxyState(_ newState: ProxyState)
+}
+
 enum ConnectionType {
     case tcp
     case iap
+}
+
+enum ProxyState {
+    case stopped
+    case searching
+    case connected
 }
 
 class ProxyManager: NSObject {
 
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
+    weak var delegate: ProxyManagerDelegate?
 
     private override init() {
         super.init()
@@ -25,37 +37,51 @@ class ProxyManager: NSObject {
     }
 
     func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
-        sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP() : ProxyManager.connectTCP(), delegate:self)
-
+        delegate?.didChangeProxyState(.searching)
+        if sdlManager == nil {
+            sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP(streamSettings: streamSettings) : ProxyManager.connectTCP(streamSettings: streamSettings), delegate:self)
+        }
         sdlManager.start { (success, error) in
             if success {
-                // app has succussfully connected
+                self.delegate?.didChangeProxyState(.connected)
             } else {
                 print("SDL Connection Error: \(error!)")
             }
         }
     }
 
-    class func connectIAP() -> SDLConfiguration {
+    func stopConnection() {
+        DispatchQueue.main.async { [weak self] in
+            self?.sdlManager.stop()
+        }
+
+        delegate?.didChangeProxyState(.stopped)
+    }
+
+    class func connectIAP(streamSettings:StreamSettings) -> SDLConfiguration {
         let lifecycleConfiguration = SDLLifecycleConfiguration(appName: SDLAppConstants.appName, fullAppId: SDLAppConstants.appId)
-        return setupConfiguration(with: lifecycleConfiguration)
+        return setupConfiguration(with: lifecycleConfiguration, streamSettings: streamSettings)
     }
 
-    class func connectTCP() -> SDLConfiguration {
+    class func connectTCP(streamSettings:StreamSettings) -> SDLConfiguration {
         let lifecycleConfiguration = SDLLifecycleConfiguration(appName: SDLAppConstants.appName, fullAppId: SDLAppConstants.appId, ipAddress: SDLAppConstants.ipAddress, port: SDLAppConstants.port)
-        return setupConfiguration(with: lifecycleConfiguration)
+        return setupConfiguration(with: lifecycleConfiguration, streamSettings: streamSettings)
     }
 
-    class func setupConfiguration(with lifecycleConfiguration: SDLLifecycleConfiguration) -> SDLConfiguration {
+    class func setupConfiguration(with lifecycleConfiguration: SDLLifecycleConfiguration, streamSettings:StreamSettings) -> SDLConfiguration {
         if let appLogo = UIImage(named: "icon") {
             let appIcon = SDLArtwork(image: appLogo, name: "icon", persistent: true, as: .PNG)
             lifecycleConfiguration.appIcon = appIcon
         }
+        
         lifecycleConfiguration.appType = .navigation
-        let lockscreenConfig = SDLLockScreenConfiguration.enabled()
-        lockscreenConfig.displayMode = .always
+        var lockscreenConfig = SDLLockScreenConfiguration.disabled()
+        if !streamSettings.isOffScreen {
+            lockscreenConfig = SDLLockScreenConfiguration.enabled()
+            lockscreenConfig.displayMode = .always
+        }
 
-        return SDLConfiguration(lifecycle: lifecycleConfiguration, lockScreen: .enabled(), logging: ProxyManager.logConfiguration(), streamingMedia:ProxyManager.streamingMediaConfiguration(), fileManager: .default(), encryption: nil)
+        return SDLConfiguration(lifecycle: lifecycleConfiguration, lockScreen: lockscreenConfig, logging: ProxyManager.logConfiguration(), streamingMedia:ProxyManager.streamingMediaConfiguration(streamSettings: streamSettings), fileManager: .default(), encryption: nil)
     }
 
     class func logConfiguration() -> SDLLogConfiguration {
@@ -64,10 +90,9 @@ class ProxyManager: NSObject {
         return logConfig
     }
 
-    class func streamingMediaConfiguration() -> SDLStreamingMediaConfiguration {
-        let mapViewController = UIStoryboard(name: "SDLMapBoxMap", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
-        let streamingMediaConfig = SDLStreamingMediaConfiguration .autostreamingInsecureConfiguration(withInitialViewController: mapViewController!)
-        streamingMediaConfig.carWindowRenderingType = .viewAfterScreenUpdates
+    class func streamingMediaConfiguration(streamSettings: StreamSettings) -> SDLStreamingMediaConfiguration {
+        let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: streamSettings.viewControllerToStream)
+        streamingMediaConfig.carWindowRenderingType = streamSettings.carWindowRenderType
 
         return streamingMediaConfig
     }
@@ -117,7 +142,9 @@ private extension ProxyManager {
 
 extension ProxyManager: SDLManagerDelegate {
     func managerDidDisconnect() {
-
+        if delegate?.proxyState != .some(.stopped) {
+            delegate?.didChangeProxyState(.searching)
+        }
     }
 
     func hmiLevel(_ oldLevel: SDLHMILevel, didChangeToLevel newLevel: SDLHMILevel) {

@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol OptionSelectedDelegate: class {
+protocol SettingOptionsViewControllerDelegate: class {
     func optionSelected(option: Int)
 }
 
 class SettingOptionsViewController: UIViewController {
     @IBOutlet weak var optionsTableView: UITableView!
-    weak var delegate: OptionSelectedDelegate?
+    weak var delegate: SettingOptionsViewControllerDelegate?
     var options = [String]()
 
     override func viewDidLoad() {

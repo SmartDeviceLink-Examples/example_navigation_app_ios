@@ -51,10 +51,12 @@ class StreamSettings: NSObject {
 
     let carWindowRenderType: SDLCarWindowRenderingType
     let isOffScreen: Bool
+    let viewControllerToStream: UIViewController
 
-    init(renderType: SDLCarWindowRenderingType, isOffScreen: Bool) {
+    init(renderType: SDLCarWindowRenderingType, isOffScreen: Bool, viewControllerToStream:UIViewController) {
         self.carWindowRenderType = renderType
         self.isOffScreen = isOffScreen
+        self.viewControllerToStream = viewControllerToStream
         super.init()
     }
 }
