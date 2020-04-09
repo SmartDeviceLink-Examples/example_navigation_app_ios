@@ -9,13 +9,52 @@
 import Foundation
 import SmartDeviceLink
 
-enum RenderType: String, CaseIterable {
-    case layer = "Layer"
-    case viewAfterScreenUpdates = "View After Screen Updates"
-    case viewBeforeScreenUpdates = "View Before Screen Updates"
+enum SettingsSection: Int, CaseIterable, CustomStringConvertible {
+    case render
+    case stream
+
+    var description: String {
+        switch self {
+        case .render: return "Render Type"
+        case .stream: return "Stream Type"
+        }
+    }
 }
 
-enum StreamType: String, CaseIterable {
-    case onScreen = "On Screen"
-    case offScreen = "Off Screen"
+enum RenderType: Int, CaseIterable, CustomStringConvertible {
+    case layer
+    case viewAfterScreenUpdates
+    case viewBeforeScreenUpdates
+
+    var description: String {
+        switch self {
+        case .layer: return "Layer"
+        case .viewAfterScreenUpdates: return "View After Screen Updates"
+        case .viewBeforeScreenUpdates: return "View Before Screen Updates"
+        }
+    }
+}
+
+enum StreamType: Int, CaseIterable, CustomStringConvertible {
+    case onScreen
+    case offScreen
+
+    var description: String {
+        switch self {
+        case .onScreen: return "On Screen"
+        case .offScreen: return "Off Screen"
+        }
+    }
+}
+
+class StreamSettings: NSObject {
+
+    let carWindowRenderType: SDLCarWindowRenderingType
+    let isOffScreen: Bool
+
+    init(renderType: SDLCarWindowRenderingType, isOffScreen: Bool) {
+        self.carWindowRenderType = renderType
+        self.isOffScreen = isOffScreen
+        super.init()
+    }
 }

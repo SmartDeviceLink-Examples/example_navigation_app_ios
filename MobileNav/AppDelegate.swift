@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        ProxyManager.sharedManager.connect(with: ConnectionType.iap)
-
         if let url = Bundle.main.url(forResource: "keys", withExtension: "plist") {
             do {
               let data = try Data(contentsOf:url)

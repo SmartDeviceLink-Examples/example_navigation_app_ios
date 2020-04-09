@@ -24,7 +24,7 @@ class ProxyManager: NSObject {
         registerForNotifications()
     }
 
-    func connect(with connectionType: ConnectionType) {
+    func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
         sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP() : ProxyManager.connectTCP(), delegate:self)
 
         sdlManager.start { (success, error) in
