@@ -12,6 +12,9 @@
 		100CC818243D0CCB003C9EDE /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 100CC816243D0CA8003C9EDE /* keys.plist */; };
 		101132D72437A40300D15779 /* ProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132D62437A40300D15779 /* ProxyManager.swift */; };
 		101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132DA2437D47C00D15779 /* SDLAppConstants.swift */; };
+		107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */; };
+		107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571C2446466A000BA7C6 /* SDLMenuButton.swift */; };
+		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
 		108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108BCB95243E400C00F67A97 /* StreamSettings.swift */; };
 		10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C21E243780C70010D9F6 /* AppDelegate.swift */; };
 		10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C220243780C70010D9F6 /* SceneDelegate.swift */; };
@@ -31,6 +34,9 @@
 		100CC816243D0CA8003C9EDE /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		101132D62437A40300D15779 /* ProxyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyManager.swift; sourceTree = "<group>"; };
 		101132DA2437D47C00D15779 /* SDLAppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLAppConstants.swift; sourceTree = "<group>"; };
+		107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
+		107A571C2446466A000BA7C6 /* SDLMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuButton.swift; sourceTree = "<group>"; };
+		107A571E2446508B000BA7C6 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		108BCB95243E400C00F67A97 /* StreamSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSettings.swift; sourceTree = "<group>"; };
 		10A0C21B243780C70010D9F6 /* MobileNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0C21E243780C70010D9F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,11 +78,57 @@
 		101132D52437991500D15779 /* SDL */ = {
 			isa = PBXGroup;
 			children = (
-				10F20F22243BC0DC005C2E8A /* Map */,
 				101132D62437A40300D15779 /* ProxyManager.swift */,
 				101132DA2437D47C00D15779 /* SDLAppConstants.swift */,
+				10F20F22243BC0DC005C2E8A /* Map */,
 			);
 			path = SDL;
+			sourceTree = "<group>";
+		};
+		107A572024466043000BA7C6 /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */,
+				10A0C222243780C70010D9F6 /* MapViewController.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
+		107A572124466058000BA7C6 /* MapBox */ = {
+			isa = PBXGroup;
+			children = (
+				100CC800243CD15A003C9EDE /* SDLMapBoxMap.storyboard */,
+				100CC802243CD18A003C9EDE /* MapBoxViewController.swift */,
+			);
+			path = MapBox;
+			sourceTree = "<group>";
+		};
+		107A572224466080000BA7C6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */,
+				107A571E2446508B000BA7C6 /* MapManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		107A5723244660C8000BA7C6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				107A571C2446466A000BA7C6 /* SDLMenuButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		107A57242446611F000BA7C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10A0C21E243780C70010D9F6 /* AppDelegate.swift */,
+				10A0C220243780C70010D9F6 /* SceneDelegate.swift */,
+				10A0C227243780C80010D9F6 /* Assets.xcassets */,
+				10A0C229243780C80010D9F6 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		10A0C212243780C70010D9F6 = {
@@ -100,15 +152,9 @@
 		10A0C21D243780C70010D9F6 /* MobileNav */ = {
 			isa = PBXGroup;
 			children = (
-				10A0C224243780C70010D9F6 /* Main.storyboard */,
-				10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */,
-				10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */,
 				10E12C85243E320D00C4B1F7 /* Settings */,
 				101132D52437991500D15779 /* SDL */,
-				10A0C21E243780C70010D9F6 /* AppDelegate.swift */,
-				10A0C220243780C70010D9F6 /* SceneDelegate.swift */,
-				10A0C227243780C80010D9F6 /* Assets.xcassets */,
-				10A0C229243780C80010D9F6 /* LaunchScreen.storyboard */,
+				107A57242446611F000BA7C6 /* Supporting Files */,
 				10A0C22C243780C80010D9F6 /* Info.plist */,
 				100CC816243D0CA8003C9EDE /* keys.plist */,
 			);
@@ -118,6 +164,9 @@
 		10E12C85243E320D00C4B1F7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				10A0C224243780C70010D9F6 /* Main.storyboard */,
+				10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */,
+				10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */,
 				108BCB95243E400C00F67A97 /* StreamSettings.swift */,
 			);
 			path = Settings;
@@ -126,10 +175,10 @@
 		10F20F22243BC0DC005C2E8A /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */,
-				10A0C222243780C70010D9F6 /* MapViewController.swift */,
-				100CC800243CD15A003C9EDE /* SDLMapBoxMap.storyboard */,
-				100CC802243CD18A003C9EDE /* MapBoxViewController.swift */,
+				107A5723244660C8000BA7C6 /* UI */,
+				107A572224466080000BA7C6 /* Managers */,
+				107A572124466058000BA7C6 /* MapBox */,
+				107A572024466043000BA7C6 /* MapKit */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -261,9 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A0C223243780C70010D9F6 /* MapViewController.swift in Sources */,
+				107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */,
 				100CC803243CD18A003C9EDE /* MapBoxViewController.swift in Sources */,
 				10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */,
+				107A571F2446508B000BA7C6 /* MapManager.swift in Sources */,
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
+				107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */,
 				108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */,
 				101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */,
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
