@@ -24,30 +24,20 @@ typealias TouchHandler = ((_ touchPoint: CGPoint, _ touchScale: CGFloat?, _ touc
 
 class SDLMapViewTouchManager: NSObject, SDLTouchManagerDelegate {
     var mapTouchHandler: TouchHandler?
-    var menuButtonTouchHandler: TouchHandler?
 
-    init(mapTouchHandler: TouchHandler? = nil, menuButtonTouchHandler: TouchHandler? = nil, sdlManager: SDLManager) {
+    init(mapTouchHandler: TouchHandler? = nil, sdlManager: SDLManager) {
         super.init()
         sdlManager.streamManager?.touchManager.touchEventDelegate = self
 
         self.mapTouchHandler = mapTouchHandler
-        self.menuButtonTouchHandler = menuButtonTouchHandler
     }
 
     // MARK: - Tap
 
     func touchManager(_ manager: SDLTouchManager, didReceiveSingleTapFor view: UIView?, at point: CGPoint) {
-        if let view = view {
-            switch view {
-            case is UIButton:
-                guard let touchHandler = menuButtonTouchHandler else { return }
-                touchHandler(point, nil, .singleTap)
-            default: break
-            }
-        } else {
-            guard let touchHandler = mapTouchHandler else { return }
-            touchHandler(point, nil, .singleTap)
-        }
+
+        guard let touchHandler = mapTouchHandler else { return }
+        touchHandler(point, nil, .singleTap)
     }
 
     func touchManager(_ manager: SDLTouchManager, didReceiveDoubleTapFor view: UIView?, at point: CGPoint) {
@@ -89,19 +79,5 @@ class SDLMapViewTouchManager: NSObject, SDLTouchManagerDelegate {
     func touchManager(_ manager: SDLTouchManager, pinchDidEndIn view: UIView?, atCenter point: CGPoint) {
         guard let touchHandler = self.mapTouchHandler else { return }
         touchHandler(point, nil, .pinchEnded)
-    }
-}
-
-extension CGPoint {
-    func displacement(toPoint: CGPoint) -> CGPoint {
-        let xDisplacement = x - toPoint.x
-        let yDisplacement = y - toPoint.y
-        return CGPoint(x: xDisplacement, y: yDisplacement)
-    }
-
-    func scalePoint(_ scale: CGFloat) -> CGPoint {
-        let xScale = x / scale
-        let yScale = y / scale
-        return CGPoint(x: xScale, y: yScale)
     }
 }

@@ -24,6 +24,7 @@
 		10A0C226243780C70010D9F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C224243780C70010D9F6 /* Main.storyboard */; };
 		10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C227243780C80010D9F6 /* Assets.xcassets */; };
 		10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C229243780C80010D9F6 /* LaunchScreen.storyboard */; };
+		10A40389245A1CD70040E83D /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A40388245A1CD70040E83D /* SearchManager.swift */; };
 		10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */; };
 		10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */; };
 		10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */; };
@@ -50,6 +51,7 @@
 		10A0C227243780C80010D9F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10A0C22A243780C80010D9F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10A0C22C243780C80010D9F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10A40388245A1CD70040E83D /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionsViewController.swift; sourceTree = "<group>"; };
 		10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMapKitMap.storyboard; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				107A57242446611F000BA7C6 /* Supporting Files */,
 				10A0C22C243780C80010D9F6 /* Info.plist */,
 				100CC816243D0CA8003C9EDE /* keys.plist */,
+				10A40388245A1CD70040E83D /* SearchManager.swift */,
 			);
 			path = MobileNav;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */,
 				101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */,
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
+				10A40389245A1CD70040E83D /* SearchManager.swift in Sources */,
 				10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */,
 				10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */,
 			);
