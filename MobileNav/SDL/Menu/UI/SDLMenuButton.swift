@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SmartDeviceLink
 
 class SDLMenuButton: UIButton {
 
@@ -34,9 +35,9 @@ class SDLMenuButton: UIButton {
         titleLabel?.textAlignment = .center
         titleLabel?.numberOfLines = 1
         titleLabel?.lineBreakMode = .byCharWrapping
-        titleLabel?.font = UIFont.systemFont(ofSize: 64)
+        titleLabel?.font = UIFont.systemFont(ofSize: 48)
     }
-
+    
 }
 
 extension SDLMenuButton {
@@ -51,7 +52,13 @@ extension SDLMenuButton {
     }
 
     private func buttonSelected() {
-        // to do
-        print("button tapped")
+        if let rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion {
+            if rpcVersion.majorVersion.intValue < 6 {
+                let menuViewController = UIStoryboard(name: "SDLMenu", bundle: nil).instantiateInitialViewController() as? SDLMenuViewController
+                ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
+                return
+            }
+            ProxyManager.sharedManager.sdlManager.screenManager.openMenu()
+        }
     }
 }

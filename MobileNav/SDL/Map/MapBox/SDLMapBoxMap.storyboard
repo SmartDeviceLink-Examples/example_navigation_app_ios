@@ -17,7 +17,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2r-hI-FRu" customClass="SDLMenuButton" customModule="MobileNav" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="MENU"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

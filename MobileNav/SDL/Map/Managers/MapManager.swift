@@ -20,20 +20,19 @@ class MapManager: NSObject {
     private var mapViewCenterPoint: CGPoint! = .zero
     private var newMapCenterPoint: CGPoint = .zero
     private var mapZoomLevel: Double = 0.0
+    private var latitude: CLLocationDegrees = 42.331429
+    private var longitude: CLLocationDegrees = -83.045753
 
     func setupMapView(with mapView: MGLMapView, userLocation:CLLocation?) {
         self.mapView = mapView
 
-        mapView.scaleBar.isHidden = false
+        mapView.scaleBar.isHidden = true
         mapView.compassView.isHidden = false
 
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
         mapView.isRotateEnabled = false
         mapView.isPitchEnabled = false
-
-        var latitude = 42.331429
-        var longitude = -83.045753
 
         if let userLocation = userLocation {
             latitude = userLocation.coordinate.latitude

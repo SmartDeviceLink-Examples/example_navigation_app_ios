@@ -28,6 +28,11 @@ class MapBoxViewController: SDLCarWindowViewController {
         setupTouchManager()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
+    }
+
     func setupTouchManager() {
         sdlMapViewTouchManager = SDLMapViewTouchManager(mapTouchHandler: mapManager.mapManagerTouchHandler, menuButtonTouchHandler: menuButton.buttonTouchHandler, sdlManager: ProxyManager.sharedManager.sdlManager)
     }
