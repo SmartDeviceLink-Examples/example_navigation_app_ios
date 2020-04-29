@@ -19,10 +19,20 @@
                                 <rect key="frame" x="10" y="10" width="46" height="30"/>
                                 <state key="normal" title="MENU"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qj8-iM-60e">
+                                <rect key="frame" x="115" y="10" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="8IH-Pb-j1j"/>
+                                    <constraint firstAttribute="width" constant="75" id="YNa-31-OnG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qj8-iM-60e" firstAttribute="top" secondItem="EAx-1D-ptX" secondAttribute="top" constant="10" id="Lpo-7I-iMY"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="width" secondItem="EAx-1D-ptX" secondAttribute="width" multiplier="0.23" id="bDI-g1-WCG"/>
+                            <constraint firstAttribute="trailing" secondItem="qj8-iM-60e" secondAttribute="trailing" constant="10" id="hT6-Bg-etI"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="leading" secondItem="EAx-1D-ptX" secondAttribute="leading" constant="10" id="qp2-l9-sjd"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="height" secondItem="EAx-1D-ptX" secondAttribute="height" multiplier="0.15" id="tQV-dH-w9F"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="top" secondItem="EAx-1D-ptX" secondAttribute="top" constant="10" id="uHl-cn-nXl"/>
@@ -33,11 +43,12 @@
                     <connections>
                         <outlet property="mapView" destination="EAx-1D-ptX" id="p2n-Zf-Qj4"/>
                         <outlet property="menuButton" destination="M2r-hI-FRu" id="78a-lT-Kyv"/>
+                        <outlet property="searchButton" destination="qj8-iM-60e" id="lqh-jj-FC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qei-fv-kei" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="15"/>
+            <point key="canvasLocation" x="18.840579710144929" y="14.732142857142856"/>
         </scene>
     </scenes>
 </document>

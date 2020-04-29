@@ -14,6 +14,7 @@ class MapBoxViewController: SDLCarWindowViewController {
 
     @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var menuButton: SDLMenuButton!
+    @IBOutlet weak var searchButton: UIButton!
 
     private var mapViewCenterPoint: CGPoint! = .zero
     private var newMapCenterPoint: CGPoint = .zero
@@ -26,6 +27,10 @@ class MapBoxViewController: SDLCarWindowViewController {
         super.viewDidLoad()
         getUserLocation()
         setupTouchManager()
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 100, weight: .bold, scale: .large)
+        let searchImage = UIImage(systemName: "magnifyingglass.circle.fill", withConfiguration: imageConfig)
+        searchButton.setImage(searchImage, for: .normal)
+        searchButton.layer.cornerRadius = searchButton.bounds.height/2
     }
 
     override func viewDidLayoutSubviews() {
@@ -51,6 +56,12 @@ class MapBoxViewController: SDLCarWindowViewController {
         } else {
             mapManager.setupMapView(with: mapView, userLocation: nil)
         }
+    }
+}
+
+extension MapBoxViewController: SDLTouchManagerDelegate {
+    func touchManager(_ manager: SDLTouchManager, didReceiveSingleTapFor view: UIView?, at point: CGPoint) {
+        <#code#>
     }
 }
 

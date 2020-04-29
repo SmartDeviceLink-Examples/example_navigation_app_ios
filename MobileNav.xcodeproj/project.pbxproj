@@ -17,7 +17,6 @@
 		107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */; };
 		107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571C2446466A000BA7C6 /* SDLMenuButton.swift */; };
 		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
-		1083E89D244CDA7300C0BDE8 /* SDLMenuTouchManagerMenuTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083E89C244CDA7300C0BDE8 /* SDLMenuTouchManagerMenuTouchManager.swift */; };
 		108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108BCB95243E400C00F67A97 /* StreamSettings.swift */; };
 		10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C21E243780C70010D9F6 /* AppDelegate.swift */; };
 		10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C220243780C70010D9F6 /* SceneDelegate.swift */; };
@@ -42,7 +41,6 @@
 		107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
 		107A571C2446466A000BA7C6 /* SDLMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuButton.swift; sourceTree = "<group>"; };
 		107A571E2446508B000BA7C6 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
-		1083E89C244CDA7300C0BDE8 /* SDLMenuTouchManagerMenuTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuTouchManagerMenuTouchManager.swift; sourceTree = "<group>"; };
 		108BCB95243E400C00F67A97 /* StreamSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSettings.swift; sourceTree = "<group>"; };
 		10A0C21B243780C70010D9F6 /* MobileNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0C21E243780C70010D9F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 			children = (
 				107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */,
 				107A571E2446508B000BA7C6 /* MapManager.swift */,
-				1083E89C244CDA7300C0BDE8 /* SDLMenuTouchManagerMenuTouchManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 				107A571F2446508B000BA7C6 /* MapManager.swift in Sources */,
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
 				107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */,
-				1083E89D244CDA7300C0BDE8 /* SDLMenuTouchManagerMenuTouchManager.swift in Sources */,
 				108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */,
 				101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */,
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,

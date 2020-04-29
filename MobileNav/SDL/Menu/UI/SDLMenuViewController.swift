@@ -12,7 +12,6 @@ import SmartDeviceLink
 class SDLMenuViewController: SDLCarWindowViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var exitAppButton: UIButton!
-    public private(set) var sdlMenuTouchManager: SDLMenuTouchManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()

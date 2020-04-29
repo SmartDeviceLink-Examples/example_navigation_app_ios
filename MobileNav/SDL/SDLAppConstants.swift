@@ -10,8 +10,8 @@ import Foundation
 
 struct SDLAppConstants {
     static let connectionType = ConnectionType.iap
-    static let appName = "MobileNav"
-    static let appId = "12345"
+    static let appName = ""
+    static let appId = ""
     static let ipAddress = ""
     static let port: UInt16 = 12345
 }
