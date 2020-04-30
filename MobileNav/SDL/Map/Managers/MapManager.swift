@@ -18,8 +18,8 @@ class MapManager: NSObject {
     }
 
     private var mapViewCenterPoint: CGPoint! = .zero
-    private var newMapCenterPoint: CGPoint = .zero
-    private var mapZoomLevel: Double = 0.0
+    var newMapCenterPoint: CGPoint = .zero
+    var mapZoomLevel: Double = 0.0
     private var latitude: CLLocationDegrees = 42.331429
     private var longitude: CLLocationDegrees = -83.045753
 
@@ -46,7 +46,7 @@ class MapManager: NSObject {
         mapZoomLevel = mapView.zoomLevel
     }
 
-    private func updateScreen() {
+    func updateScreen() {
         let mapCenterPoint = self.mapViewCenterPoint
         let newMapCenterPoint = self.newMapCenterPoint
         guard mapCenterPoint != newMapCenterPoint else { return }
@@ -56,6 +56,7 @@ class MapManager: NSObject {
             let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: nil)
             self.mapView.setCenter(newMapCenterCoordinate, animated: false)
             self.newMapCenterPoint = self.mapView.center
+            self.mapView.zoomLevel = self.mapZoomLevel
         };
     }
 }

@@ -8,18 +8,18 @@
 
 import Foundation
 import MapKit
+import SmartDeviceLink
 
 class SearchManager: NSObject {
+
+    var choiceCells = [SDLChoiceCell]()
 
     func getSearchResults(from query:String) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
-            for item in response!.mapItems {
-                print(item.name)
-            }
+            // to do
         }
     }
-
 }

@@ -12,38 +12,67 @@
             <objects>
                 <viewController id="qph-a4-knd" customClass="MapBoxViewController" customModule="MobileNav" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EAx-1D-ptX" customClass="MGLMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2r-hI-FRu" customClass="SDLMenuButton" customModule="MobileNav" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="46" height="30"/>
+                                <rect key="frame" x="10" y="10" width="92" height="60"/>
                                 <state key="normal" title="MENU"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qj8-iM-60e">
-                                <rect key="frame" x="115" y="10" width="75" height="75"/>
+                                <rect key="frame" x="315" y="10" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="8IH-Pb-j1j"/>
                                     <constraint firstAttribute="width" constant="75" id="YNa-31-OnG"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3B-Ci-uay">
+                                <rect key="frame" x="340" y="340" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="buJ-s0-rMh"/>
+                                    <constraint firstAttribute="width" constant="50" id="uBk-81-q7K"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s0-vq-4KS">
+                                <rect key="frame" x="340" y="280" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="k8O-7E-j9I"/>
+                                    <constraint firstAttribute="height" constant="50" id="yM9-xD-pZn"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqJ-eh-aN7">
+                                <rect key="frame" x="340" y="220" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="aXu-or-WJZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="cf5-vr-qdb"/>
+                                </constraints>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="s7B-No-Poy" firstAttribute="bottom" secondItem="X3B-Ci-uay" secondAttribute="bottom" constant="10" id="97u-Dd-GWz"/>
                             <constraint firstItem="qj8-iM-60e" firstAttribute="top" secondItem="EAx-1D-ptX" secondAttribute="top" constant="10" id="Lpo-7I-iMY"/>
+                            <constraint firstItem="s7B-No-Poy" firstAttribute="trailing" secondItem="ZqJ-eh-aN7" secondAttribute="trailing" constant="10" id="Rl6-aV-bxr"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="width" secondItem="EAx-1D-ptX" secondAttribute="width" multiplier="0.23" id="bDI-g1-WCG"/>
                             <constraint firstAttribute="trailing" secondItem="qj8-iM-60e" secondAttribute="trailing" constant="10" id="hT6-Bg-etI"/>
+                            <constraint firstItem="X3B-Ci-uay" firstAttribute="top" secondItem="0s0-vq-4KS" secondAttribute="bottom" constant="10" id="jMS-NZ-Y8o"/>
+                            <constraint firstItem="0s0-vq-4KS" firstAttribute="top" secondItem="ZqJ-eh-aN7" secondAttribute="bottom" constant="10" id="q5b-ET-AlG"/>
+                            <constraint firstItem="s7B-No-Poy" firstAttribute="trailing" secondItem="X3B-Ci-uay" secondAttribute="trailing" constant="10" id="qTc-Da-pKL"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="leading" secondItem="EAx-1D-ptX" secondAttribute="leading" constant="10" id="qp2-l9-sjd"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="height" secondItem="EAx-1D-ptX" secondAttribute="height" multiplier="0.15" id="tQV-dH-w9F"/>
                             <constraint firstItem="M2r-hI-FRu" firstAttribute="top" secondItem="EAx-1D-ptX" secondAttribute="top" constant="10" id="uHl-cn-nXl"/>
+                            <constraint firstItem="s7B-No-Poy" firstAttribute="trailing" secondItem="0s0-vq-4KS" secondAttribute="trailing" constant="10" id="vdy-IA-XXu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s7B-No-Poy"/>
                     </view>
-                    <size key="freeformSize" width="200" height="200"/>
+                    <size key="freeformSize" width="400" height="400"/>
                     <connections>
+                        <outlet property="centerMapButton" destination="X3B-Ci-uay" id="wDA-FU-SZ5"/>
                         <outlet property="mapView" destination="EAx-1D-ptX" id="p2n-Zf-Qj4"/>
                         <outlet property="menuButton" destination="M2r-hI-FRu" id="78a-lT-Kyv"/>
                         <outlet property="searchButton" destination="qj8-iM-60e" id="lqh-jj-FC0"/>
+                        <outlet property="zoomInButton" destination="ZqJ-eh-aN7" id="Gn7-mq-AQW"/>
+                        <outlet property="zoomOutButton" destination="0s0-vq-4KS" id="Qev-0T-12l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qei-fv-kei" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

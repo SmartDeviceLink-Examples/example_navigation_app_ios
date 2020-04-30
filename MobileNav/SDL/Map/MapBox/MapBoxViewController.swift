@@ -15,6 +15,9 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var menuButton: SDLMenuButton!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var centerMapButton: UIButton!
+    @IBOutlet weak var zoomOutButton: UIButton!
+    @IBOutlet weak var zoomInButton: UIButton!
 
     private var mapViewCenterPoint: CGPoint! = .zero
     private var newMapCenterPoint: CGPoint = .zero
@@ -24,15 +27,13 @@ class MapBoxViewController: SDLCarWindowViewController {
     public private(set) var sdlMapViewTouchManager: SDLMapViewTouchManager?
     private var mapTouchHandler: TouchHandler?
     private var menuTouchHandler: TouchHandler?
+    private var userLocation: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getUserLocation()
         setupTouchManager()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 100, weight: .bold, scale: .large)
-        let searchImage = UIImage(systemName: "magnifyingglass.circle.fill", withConfiguration: imageConfig)
-        searchButton.setImage(searchImage, for: .normal)
-        searchButton.layer.cornerRadius = searchButton.bounds.height/2
+        setupButtons()
     }
 
     override func viewDidLayoutSubviews() {
@@ -56,10 +57,35 @@ class MapBoxViewController: SDLCarWindowViewController {
             if let location = locationManager.location {
                 mapView.showsUserLocation = true
                 mapManager.setupMapView(with: mapView, userLocation: location)
+                userLocation = location
             }
         } else {
             mapManager.setupMapView(with: mapView, userLocation: nil)
         }
+    }
+
+    func setupButtons() {
+        let searchImageConfig = UIImage.SymbolConfiguration(pointSize: 75, weight: .bold, scale: .medium)
+        let searchImage = UIImage(systemName: "magnifyingglass.circle", withConfiguration: searchImageConfig)
+        searchButton.setImage(searchImage, for: .normal)
+        searchButton.layer.cornerRadius = searchButton.bounds.height/2
+        searchButton.backgroundColor = .white
+
+        let mapImageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold)
+        let centerImage = UIImage(systemName: "location.circle", withConfiguration: mapImageConfig)
+        centerMapButton.setImage(centerImage, for: .normal)
+        centerMapButton.layer.cornerRadius = centerMapButton.bounds.height/2
+        centerMapButton.backgroundColor = .white
+
+        let zoomInImage = UIImage(systemName: "plus.magnifyingglass", withConfiguration: mapImageConfig)
+        zoomInButton.setImage(zoomInImage, for: .normal)
+        zoomInButton.layer.cornerRadius = zoomInButton.bounds.height/2
+        zoomInButton.backgroundColor = .white
+
+        let zoomOutImage = UIImage(systemName: "minus.magnifyingglass", withConfiguration: mapImageConfig)
+        zoomOutButton.setImage(zoomOutImage, for: .normal)
+        zoomOutButton.layer.cornerRadius = zoomOutButton.bounds.height/2
+        zoomOutButton.backgroundColor = .white
     }
 
     func presentKeyboard() {
@@ -94,9 +120,22 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
                     touchHandler(point, nil, .singleTap)
                 }
 
-                if searchButton.frame.contains(point) {
-                    presentKeyboard()
+                if searchButton.frame.contains(point) { presentKeyboard() }
+
+                if zoomInButton.frame.contains(point) {
+                    mapView.setZoomLevel(mapView.zoomLevel + 1, animated: true)
+                    mapManager.updateScreen()
                 }
+
+                if zoomOutButton.frame.contains(point) {
+                    mapView.setZoomLevel(mapView.zoomLevel - 1, animated: true)
+                    mapManager.updateScreen()
+                }
+
+                if centerMapButton.frame.contains(point) {
+                    // to do
+                }
+
             default:break
             }
         } else {
