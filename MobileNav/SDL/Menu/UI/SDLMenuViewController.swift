@@ -34,7 +34,7 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
             switch  view {
             case is UIButton:
                 if backButton.frame.contains(point) {
-                    let mapVC = UIStoryboard(name: "SDLMapBoxMap", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
+                    let mapVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
                     ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapVC
                 }
 

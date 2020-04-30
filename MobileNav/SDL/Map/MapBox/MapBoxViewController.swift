@@ -18,15 +18,16 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBOutlet weak var centerMapButton: UIButton!
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var zoomInButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
 
     private var mapViewCenterPoint: CGPoint! = .zero
     private var newMapCenterPoint: CGPoint = .zero
     private var mapZoomLevel: Double = 0.0
     private let locationManager = CLLocationManager()
-    private var mapManager = MapManager()
+    var mapManager = MapManager()
     public private(set) var sdlMapViewTouchManager: SDLMapViewTouchManager?
-    private var mapTouchHandler: TouchHandler?
-    private var menuTouchHandler: TouchHandler?
+    var mapTouchHandler: TouchHandler?
+    var menuTouchHandler: TouchHandler?
     private var userLocation: CLLocation?
 
     override func viewDidLoad() {
@@ -65,125 +66,37 @@ class MapBoxViewController: SDLCarWindowViewController {
     }
 
     func setupButtons() {
-        let searchImageConfig = UIImage.SymbolConfiguration(pointSize: 75, weight: .bold, scale: .medium)
-        let searchImage = UIImage(systemName: "magnifyingglass.circle", withConfiguration: searchImageConfig)
+        // to do
+        let searchImageConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .medium)
+        let searchImage = UIImage(systemName: "magnifyingglass", withConfiguration: searchImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         searchButton.setImage(searchImage, for: .normal)
         searchButton.layer.cornerRadius = searchButton.bounds.height/2
-        searchButton.backgroundColor = .white
+        searchButton.backgroundColor = .systemBlue
 
         let mapImageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold)
-        let centerImage = UIImage(systemName: "location.circle", withConfiguration: mapImageConfig)
+        let centerImage = UIImage(systemName: "location.circle", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         centerMapButton.setImage(centerImage, for: .normal)
         centerMapButton.layer.cornerRadius = centerMapButton.bounds.height/2
-        centerMapButton.backgroundColor = .white
+        centerMapButton.backgroundColor = .systemBlue
 
-        let zoomInImage = UIImage(systemName: "plus.magnifyingglass", withConfiguration: mapImageConfig)
+        let zoomInImage = UIImage(systemName: "plus.magnifyingglass", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         zoomInButton.setImage(zoomInImage, for: .normal)
         zoomInButton.layer.cornerRadius = zoomInButton.bounds.height/2
-        zoomInButton.backgroundColor = .white
+        zoomInButton.backgroundColor = .systemBlue
 
-        let zoomOutImage = UIImage(systemName: "minus.magnifyingglass", withConfiguration: mapImageConfig)
+        let zoomOutImage = UIImage(systemName: "minus.magnifyingglass", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         zoomOutButton.setImage(zoomOutImage, for: .normal)
         zoomOutButton.layer.cornerRadius = zoomOutButton.bounds.height/2
-        zoomOutButton.backgroundColor = .white
+        zoomOutButton.backgroundColor = .systemBlue
+
+        let settingsImage = UIImage(systemName: "gear", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        settingsButton.setImage(settingsImage, for: .normal)
+        settingsButton.layer.cornerRadius = settingsButton.bounds.height/2
+        settingsButton.backgroundColor = .systemBlue
     }
 
     func presentKeyboard() {
         ProxyManager.sharedManager.sdlManager.screenManager.presentKeyboard(withInitialText: "Search for location", delegate: self)
-    }
-}
-
-extension MapBoxViewController: SDLKeyboardDelegate {
-    func userDidSubmitInput(_ inputText: String, withEvent source: SDLKeyboardEvent) {
-        let searchManager = SearchManager()
-        switch source {
-        case .voice:
-            searchManager.getSearchResults(from: inputText)
-        case .submitted:
-            searchManager.getSearchResults(from: inputText)
-        default: break
-        }
-    }
-
-    func keyboardDidAbort(withReason event: SDLKeyboardEvent) {
-        print("Keyboard was aborted")
-    }
-}
-
-extension MapBoxViewController: SDLTouchManagerDelegate {
-    func touchManager(_ manager: SDLTouchManager, didReceiveSingleTapFor view: UIView?, at point: CGPoint) {
-        if let view = view {
-            switch view {
-            case is UIButton:
-                if menuButton.frame.contains(point) {
-                    guard let touchHandler = menuTouchHandler else { return }
-                    touchHandler(point, nil, .singleTap)
-                }
-
-                if searchButton.frame.contains(point) { presentKeyboard() }
-
-                if zoomInButton.frame.contains(point) {
-                    mapView.setZoomLevel(mapView.zoomLevel + 1, animated: true)
-                    mapManager.updateScreen()
-                }
-
-                if zoomOutButton.frame.contains(point) {
-                    mapView.setZoomLevel(mapView.zoomLevel - 1, animated: true)
-                    mapManager.updateScreen()
-                }
-
-                if centerMapButton.frame.contains(point) {
-                    // to do
-                }
-
-            default:break
-            }
-        } else {
-            guard let touchHandler = mapTouchHandler else { return }
-            touchHandler(point, nil, .singleTap)
-        }
-    }
-
-
-    func touchManager(_ manager: SDLTouchManager, didReceiveDoubleTapFor view: UIView?, at point: CGPoint) {
-        // Double tap will be disabled if the `tapTimeThreshold` is set to 0
-        guard let touchHandler = self.mapTouchHandler else { return }
-        touchHandler(point, nil, .doubleTap)
-    }
-
-    // MARK: - Pan
-
-    func touchManager(_ manager: SDLTouchManager, panningDidStartIn view: UIView?, at point: CGPoint) {
-        guard let touchHandler = self.mapTouchHandler else { return }
-        touchHandler(point, nil, .panStarted)
-    }
-
-    func touchManager(_ manager: SDLTouchManager, didReceivePanningFrom fromPoint: CGPoint, to toPoint: CGPoint) {
-        guard let touchHandler = mapTouchHandler else { return }
-        let displacementPoint = fromPoint.displacement(toPoint: toPoint)
-        touchHandler(displacementPoint, nil, .panMoved)
-    }
-
-    func touchManager(_ manager: SDLTouchManager, panningDidEndIn view: UIView?, at point: CGPoint) {
-        guard let touchHandler = self.mapTouchHandler else { return }
-        touchHandler(point, nil, .panEnded)
-    }
-
-    // MARK: - Pinch
-
-    func touchManager(_ manager: SDLTouchManager, pinchDidStartIn view: UIView?, atCenter point: CGPoint) {
-        guard let touchHandler = self.mapTouchHandler else { return }
-        touchHandler(point, nil, .pinchStarted)
-    }
-
-    func touchManager(_ manager: SDLTouchManager, didReceivePinchAtCenter point: CGPoint, withScale scale: CGFloat) {
-        guard let touchHandler = mapTouchHandler else { return }
-        touchHandler(point, scale, .pinchMoved)
-    }
-
-    func touchManager(_ manager: SDLTouchManager, pinchDidEndIn view: UIView?, atCenter point: CGPoint) {
-        guard let touchHandler = self.mapTouchHandler else { return }
-        touchHandler(point, nil, .pinchEnded)
     }
 }
 

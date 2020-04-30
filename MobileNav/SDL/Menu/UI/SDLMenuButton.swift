@@ -35,7 +35,7 @@ class SDLMenuButton: UIButton {
         titleLabel?.textAlignment = .center
         titleLabel?.numberOfLines = 1
         titleLabel?.lineBreakMode = .byCharWrapping
-        titleLabel?.font = UIFont.systemFont(ofSize: 48)
+        titleLabel?.font = UIFont.systemFont(ofSize: 36)
     }
     
 }

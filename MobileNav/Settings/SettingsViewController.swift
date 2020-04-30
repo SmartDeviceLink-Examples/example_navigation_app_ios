@@ -19,10 +19,10 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var settingsTableView: UITableView!
     @IBAction func startPressed(_ sender: UIButton) {
         if let selectedRenderType = selectedRenderType, let selectedStreamType = selectedStreamType {
-
             switch proxyState {
             case .stopped:
                 startSDL(with: selectedRenderType, streamType: selectedStreamType)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             case .searching:
                 ProxyManager.sharedManager.stopConnection()
             case .connected:
@@ -53,7 +53,7 @@ class SettingsViewController: UIViewController {
     private func startSDL(with renderType:RenderType, streamType:StreamType) {
         let carWindowRenderType: SDLCarWindowRenderingType
         var isOffScreen: Bool = false
-        let viewControllerToStream = UIStoryboard(name: "SDLMapBoxMap", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
+        let viewControllerToStream = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
 
         switch renderType {
         case .layer:

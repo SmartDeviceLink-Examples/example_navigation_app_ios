@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		100CC801243CD15A003C9EDE /* SDLMapBoxMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 100CC800243CD15A003C9EDE /* SDLMapBoxMap.storyboard */; };
 		100CC803243CD18A003C9EDE /* MapBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100CC802243CD18A003C9EDE /* MapBoxViewController.swift */; };
 		100CC818243D0CCB003C9EDE /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 100CC816243D0CA8003C9EDE /* keys.plist */; };
 		101132D72437A40300D15779 /* ProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132D62437A40300D15779 /* ProxyManager.swift */; };
 		101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132DA2437D47C00D15779 /* SDLAppConstants.swift */; };
 		1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1047312324476BB800819B15 /* SDLMenu.storyboard */; };
 		1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047312524476C4C00819B15 /* SDLMenuViewController.swift */; };
+		1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */; };
 		107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */; };
 		107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571C2446466A000BA7C6 /* SDLMenuButton.swift */; };
 		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
@@ -32,13 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		100CC800243CD15A003C9EDE /* SDLMapBoxMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMapBoxMap.storyboard; sourceTree = "<group>"; };
 		100CC802243CD18A003C9EDE /* MapBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxViewController.swift; sourceTree = "<group>"; };
 		100CC816243D0CA8003C9EDE /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		101132D62437A40300D15779 /* ProxyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyManager.swift; sourceTree = "<group>"; };
 		101132DA2437D47C00D15779 /* SDLAppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLAppConstants.swift; sourceTree = "<group>"; };
 		1047312324476BB800819B15 /* SDLMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMenu.storyboard; sourceTree = "<group>"; };
 		1047312524476C4C00819B15 /* SDLMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuViewController.swift; sourceTree = "<group>"; };
+		1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapBoxViewController+SDL.swift"; sourceTree = "<group>"; };
 		107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
 		107A571C2446466A000BA7C6 /* SDLMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuButton.swift; sourceTree = "<group>"; };
 		107A571E2446508B000BA7C6 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 		107A572124466058000BA7C6 /* MapBox */ = {
 			isa = PBXGroup;
 			children = (
-				100CC800243CD15A003C9EDE /* SDLMapBoxMap.storyboard */,
 				100CC802243CD18A003C9EDE /* MapBoxViewController.swift */,
+				1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */,
 			);
 			path = MapBox;
 			sourceTree = "<group>";
@@ -273,7 +273,6 @@
 			files = (
 				100CC818243D0CCB003C9EDE /* keys.plist in Resources */,
 				1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */,
-				100CC801243CD15A003C9EDE /* SDLMapBoxMap.storyboard in Resources */,
 				10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */,
 				10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */,
 				10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */,
@@ -334,6 +333,7 @@
 				107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */,
 				100CC803243CD18A003C9EDE /* MapBoxViewController.swift in Sources */,
 				1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */,
+				1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */,
 				10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */,
 				107A571F2446508B000BA7C6 /* MapManager.swift in Sources */,
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
