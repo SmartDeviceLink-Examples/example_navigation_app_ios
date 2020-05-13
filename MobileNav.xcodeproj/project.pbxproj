@@ -27,6 +27,8 @@
 		10A40389245A1CD70040E83D /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A40388245A1CD70040E83D /* SearchManager.swift */; };
 		10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */; };
 		10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */; };
+		10EA2DE9246C7E9700A4DB3A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */; };
+		10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DEB246C956F00A4DB3A /* Search.storyboard */; };
 		10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */; };
 		DF52484B0BFFA9B38D01FD66 /* Pods_MobileNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735759190470A036D9B4493A /* Pods_MobileNav.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,8 @@
 		10A40388245A1CD70040E83D /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionsViewController.swift; sourceTree = "<group>"; };
 		10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		10EA2DEB246C956F00A4DB3A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMapKitMap.storyboard; sourceTree = "<group>"; };
 		5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.release.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.release.xcconfig"; sourceTree = "<group>"; };
 		735759190470A036D9B4493A /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +173,7 @@
 		10A0C21D243780C70010D9F6 /* MobileNav */ = {
 			isa = PBXGroup;
 			children = (
+				10EA2DEA246C952E00A4DB3A /* Search */,
 				10E12C85243E320D00C4B1F7 /* Settings */,
 				101132D52437991500D15779 /* SDL */,
 				107A57242446611F000BA7C6 /* Supporting Files */,
@@ -183,11 +188,20 @@
 			isa = PBXGroup;
 			children = (
 				10A0C224243780C70010D9F6 /* Main.storyboard */,
+				10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */,
 				10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */,
 				10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */,
 				108BCB95243E400C00F67A97 /* StreamSettings.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		10EA2DEA246C952E00A4DB3A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				10EA2DEB246C956F00A4DB3A /* Search.storyboard */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		10F20F22243BC0DC005C2E8A /* Map */ = {
@@ -276,6 +290,8 @@
 				10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */,
 				10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */,
 				10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */,
+				10EA2DE9246C7E9700A4DB3A /* Settings.storyboard in Resources */,
+				10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */,
 				10A0C226243780C70010D9F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

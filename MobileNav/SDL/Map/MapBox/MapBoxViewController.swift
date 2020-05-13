@@ -20,6 +20,12 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBOutlet weak var zoomInButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
 
+    @IBAction func searchButtonTapped(_ sender: UIButton) { performSearch() }
+    @IBAction func zoomInButtonTapped(_ sender: UIButton) { zoomIn() }
+    @IBAction func zoomOutButtonTapped(_ sender: UIButton) { zoomOut() }
+    @IBAction func centerLocationButtonTapped(_ sender: UIButton) { centerLocation() }
+    @IBAction func settingsButtonTapped(_ sender: UIButton) { presentSettings() }
+
     private var mapViewCenterPoint: CGPoint! = .zero
     private var newMapCenterPoint: CGPoint = .zero
     private var mapZoomLevel: Double = 0.0
@@ -95,9 +101,32 @@ class MapBoxViewController: SDLCarWindowViewController {
         settingsButton.backgroundColor = .systemBlue
     }
 
-    func presentKeyboard() {
-        ProxyManager.sharedManager.sdlManager.screenManager.presentKeyboard(withInitialText: "Search for location", delegate: self)
+    func performSearch() {
+
     }
+
+    func zoomIn() {
+        mapView.setZoomLevel(mapView.zoomLevel + 1, animated: true)
+    }
+
+    func zoomOut() {
+        mapView.setZoomLevel(mapView.zoomLevel - 1, animated: true)
+    }
+
+    func centerLocation() {
+        if let userLocation = userLocation {
+            self.mapView.setCenter(CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude), animated: false)
+        }
+    }
+
+    func presentSettings() {
+        let storyboard = UIStoryboard.init(name: "Settings", bundle: nil)
+        let settingsVC = storyboard.instantiateViewController(withIdentifier: "Settings")
+        settingsVC.navigationItem.title = "Settings"
+        let navController = UINavigationController(rootViewController: settingsVC)
+        present(navController, animated: true, completion: nil)
+    }
+
 }
 
 extension CGPoint {

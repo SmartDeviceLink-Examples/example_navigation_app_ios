@@ -53,7 +53,7 @@ class MapManager: NSObject {
 
         DispatchQueue.main.async { [unowned self] in
             // Set new center
-            let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: nil)
+            let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: self.mapView)
             self.mapView.setCenter(newMapCenterCoordinate, animated: false)
             self.newMapCenterPoint = self.mapView.center
             self.mapView.zoomLevel = self.mapZoomLevel

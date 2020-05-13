@@ -22,4 +22,39 @@ class SearchManager: NSObject {
             // to do
         }
     }
+
+    func findCoffeeShops(from userLocation:CLLocation) -> [MKMapItem] {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "coffee"
+        request.region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            // to do
+        }
+        return []
+    }
+
+    func findRestaurants(from userLocation:CLLocation) -> [MKMapItem] {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "restaurants"
+        request.region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            // to do
+        }
+        return []
+    }
+
+    func findGasStations(from userLocation:CLLocation) -> [MKMapItem] {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "gas stations"
+        request.region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            // to do
+        }
+        return []
+    }
+
+
 }

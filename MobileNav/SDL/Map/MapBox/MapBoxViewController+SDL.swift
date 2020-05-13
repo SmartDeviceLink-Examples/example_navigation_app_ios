@@ -37,20 +37,9 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
                 }
 
                 if searchButton.frame.contains(point) { presentKeyboard() }
-
-                if zoomInButton.frame.contains(point) {
-                    mapView.setZoomLevel(mapView.zoomLevel + 1, animated: true)
-                    mapManager.updateScreen()
-                }
-
-                if zoomOutButton.frame.contains(point) {
-                    mapView.setZoomLevel(mapView.zoomLevel - 1, animated: true)
-                    mapManager.updateScreen()
-                }
-
-                if centerMapButton.frame.contains(point) {
-                    // to do
-                }
+                if zoomInButton.frame.contains(point) { zoomIn() }
+                if zoomOutButton.frame.contains(point) { zoomOut() }
+                if centerMapButton.frame.contains(point) { centerLocation() }
 
             default:break
             }
@@ -60,6 +49,9 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
         }
     }
 
+    func presentKeyboard() {
+        ProxyManager.sharedManager.sdlManager.screenManager.presentKeyboard(withInitialText: "Search for location", delegate: self)
+    }
 
     func touchManager(_ manager: SDLTouchManager, didReceiveDoubleTapFor view: UIView?, at point: CGPoint) {
         // Double tap will be disabled if the `tapTimeThreshold` is set to 0
