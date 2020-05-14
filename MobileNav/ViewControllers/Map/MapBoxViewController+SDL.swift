@@ -39,7 +39,9 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
                 if searchButton.frame.contains(point) { presentKeyboard() }
                 if zoomInButton.frame.contains(point) { zoomIn() }
                 if zoomOutButton.frame.contains(point) { zoomOut() }
-                if centerMapButton.frame.contains(point) { centerLocation() }
+                if centerMapButton.frame.contains(point) {
+                    centerLocation(lat: userLocation!.coordinate.latitude, long: userLocation!.coordinate.longitude)
+                }
 
             default:break
             }

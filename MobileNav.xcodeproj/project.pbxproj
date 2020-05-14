@@ -29,6 +29,7 @@
 		10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */; };
 		10EA2DE9246C7E9700A4DB3A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */; };
 		10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DEB246C956F00A4DB3A /* Search.storyboard */; };
+		10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */; };
 		10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */; };
 		DF52484B0BFFA9B38D01FD66 /* Pods_MobileNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735759190470A036D9B4493A /* Pods_MobileNav.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		10EA2DEB246C956F00A4DB3A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMapKitMap.storyboard; sourceTree = "<group>"; };
 		5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.release.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.release.xcconfig"; sourceTree = "<group>"; };
 		735759190470A036D9B4493A /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,47 +92,9 @@
 			children = (
 				101132D62437A40300D15779 /* ProxyManager.swift */,
 				101132DA2437D47C00D15779 /* SDLAppConstants.swift */,
-				108B1B1C24475B05008A3FEA /* Menu */,
-				10F20F22243BC0DC005C2E8A /* Map */,
+				10EA2DF4246DCA3800A4DB3A /* SDL UI */,
 			);
 			path = SDL;
-			sourceTree = "<group>";
-		};
-		107A572024466043000BA7C6 /* MapKit */ = {
-			isa = PBXGroup;
-			children = (
-				10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */,
-				10A0C222243780C70010D9F6 /* MapViewController.swift */,
-			);
-			path = MapKit;
-			sourceTree = "<group>";
-		};
-		107A572124466058000BA7C6 /* MapBox */ = {
-			isa = PBXGroup;
-			children = (
-				100CC802243CD18A003C9EDE /* MapBoxViewController.swift */,
-				1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */,
-			);
-			path = MapBox;
-			sourceTree = "<group>";
-		};
-		107A572224466080000BA7C6 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */,
-				107A571E2446508B000BA7C6 /* MapManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		107A5723244660C8000BA7C6 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				107A571C2446466A000BA7C6 /* SDLMenuButton.swift */,
-				1047312324476BB800819B15 /* SDLMenu.storyboard */,
-				1047312524476C4C00819B15 /* SDLMenuViewController.swift */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		107A57242446611F000BA7C6 /* Supporting Files */ = {
@@ -147,7 +111,9 @@
 		108B1B1C24475B05008A3FEA /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				107A5723244660C8000BA7C6 /* UI */,
+				107A571C2446466A000BA7C6 /* SDLMenuButton.swift */,
+				1047312324476BB800819B15 /* SDLMenu.storyboard */,
+				1047312524476C4C00819B15 /* SDLMenuViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -173,7 +139,8 @@
 		10A0C21D243780C70010D9F6 /* MobileNav */ = {
 			isa = PBXGroup;
 			children = (
-				10EA2DEA246C952E00A4DB3A /* Search */,
+				10EA2DF1246DC66500A4DB3A /* ViewControllers */,
+				10EA2DF0246DC64500A4DB3A /* Storyboards */,
 				10E12C85243E320D00C4B1F7 /* Settings */,
 				101132D52437991500D15779 /* SDL */,
 				107A57242446611F000BA7C6 /* Supporting Files */,
@@ -187,29 +154,65 @@
 		10E12C85243E320D00C4B1F7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				10A0C224243780C70010D9F6 /* Main.storyboard */,
-				10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */,
-				10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */,
-				10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */,
 				108BCB95243E400C00F67A97 /* StreamSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		10EA2DEA246C952E00A4DB3A /* Search */ = {
+		10EA2DF0246DC64500A4DB3A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				10A0C224243780C70010D9F6 /* Main.storyboard */,
 				10EA2DEB246C956F00A4DB3A /* Search.storyboard */,
+				10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */,
 			);
-			path = Search;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		10EA2DF1246DC66500A4DB3A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				10EA2DF3246DC6EE00A4DB3A /* Map */,
+				10EA2DF2246DC6E100A4DB3A /* Settings */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		10EA2DF2246DC6E100A4DB3A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */,
+				10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		10EA2DF3246DC6EE00A4DB3A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				100CC802243CD18A003C9EDE /* MapBoxViewController.swift */,
+				1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */,
+				10A0C222243780C70010D9F6 /* MapViewController.swift */,
+				10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		10EA2DF4246DCA3800A4DB3A /* SDL UI */ = {
+			isa = PBXGroup;
+			children = (
+				10F20F22243BC0DC005C2E8A /* Map */,
+				108B1B1C24475B05008A3FEA /* Menu */,
+			);
+			path = "SDL UI";
 			sourceTree = "<group>";
 		};
 		10F20F22243BC0DC005C2E8A /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				107A572224466080000BA7C6 /* Managers */,
-				107A572124466058000BA7C6 /* MapBox */,
-				107A572024466043000BA7C6 /* MapKit */,
+				107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */,
+				107A571E2446508B000BA7C6 /* MapManager.swift */,
+				10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
 				107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */,
 				108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */,
+				10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */,
 				101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */,
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
 				10A40389245A1CD70040E83D /* SearchManager.swift in Sources */,

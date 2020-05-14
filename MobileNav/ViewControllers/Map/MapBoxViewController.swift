@@ -23,7 +23,9 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBAction func searchButtonTapped(_ sender: UIButton) { performSearch() }
     @IBAction func zoomInButtonTapped(_ sender: UIButton) { zoomIn() }
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) { zoomOut() }
-    @IBAction func centerLocationButtonTapped(_ sender: UIButton) { centerLocation() }
+    @IBAction func centerLocationButtonTapped(_ sender: UIButton) {
+        centerLocation(lat: (userLocation!.coordinate.latitude), long: userLocation!.coordinate.longitude)
+    }
     @IBAction func settingsButtonTapped(_ sender: UIButton) { presentSettings() }
 
     private var mapViewCenterPoint: CGPoint! = .zero
@@ -31,10 +33,11 @@ class MapBoxViewController: SDLCarWindowViewController {
     private var mapZoomLevel: Double = 0.0
     private let locationManager = CLLocationManager()
     var mapManager = MapManager()
+    private var annotation: MGLPointAnnotation?
     public private(set) var sdlMapViewTouchManager: SDLMapViewTouchManager?
     var mapTouchHandler: TouchHandler?
     var menuTouchHandler: TouchHandler?
-    private var userLocation: CLLocation?
+    var userLocation: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +105,10 @@ class MapBoxViewController: SDLCarWindowViewController {
     }
 
     func performSearch() {
-
+        let storyboard = UIStoryboard.init(name: "Search", bundle: nil)
+        let searchVC = storyboard.instantiateViewController(withIdentifier: "Search") as! SearchViewController
+        searchVC.delegate = self
+        present(searchVC, animated: true, completion: nil)
     }
 
     func zoomIn() {
@@ -113,10 +119,11 @@ class MapBoxViewController: SDLCarWindowViewController {
         mapView.setZoomLevel(mapView.zoomLevel - 1, animated: true)
     }
 
-    func centerLocation() {
-        if let userLocation = userLocation {
-            self.mapView.setCenter(CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude), animated: false)
-        }
+    func centerLocation(lat:CLLocationDegrees, long:CLLocationDegrees) {
+//        if let userLocation = userLocation {
+//            self.mapView.setCenter(CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude), animated: false)
+//        }
+        self.mapView.setCenter(CLLocationCoordinate2DMake(lat, long), animated: false)
     }
 
     func presentSettings() {
@@ -165,4 +172,18 @@ extension MapBoxViewController: CLLocationManagerDelegate {
         }
     }
 }
+
+extension MapBoxViewController: SearchViewControllerDelegate {
+    func didSelectPlace(coordinate: CLLocationCoordinate2D) {
+        print("Latitude is \(coordinate.latitude), longitude is \(coordinate.longitude)")
+        if annotation != nil {
+            self.mapView.removeAnnotation(annotation!)
+        }
+        annotation = MGLPointAnnotation()
+        annotation!.coordinate = coordinate
+        self.mapView.addAnnotation(annotation!)
+        self.centerLocation(lat: annotation!.coordinate.latitude, long: annotation!.coordinate.longitude)
+    }
+}
+
 
