@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        // Default stream settings
         let streamSettings = StreamSettings(renderType: .viewAfterScreenUpdates, isOffScreen: true, viewControllerToStream: (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController)!)
         ProxyManager.sharedManager.connect(with: .iap, streamSettings: streamSettings)
 

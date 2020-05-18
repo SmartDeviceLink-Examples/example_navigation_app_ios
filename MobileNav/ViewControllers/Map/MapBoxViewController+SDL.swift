@@ -9,6 +9,8 @@
 import Foundation
 import SmartDeviceLink
 
+// MARK: - SDLKeyboardDelegate
+
 extension MapBoxViewController: SDLKeyboardDelegate {
     func userDidSubmitInput(_ inputText: String, withEvent source: SDLKeyboardEvent) {
         let searchManager = SearchManager()
@@ -25,6 +27,8 @@ extension MapBoxViewController: SDLKeyboardDelegate {
         print("Keyboard was aborted")
     }
 }
+
+// MARK: - SDLTouchManagerDelegate
 
 extension MapBoxViewController: SDLTouchManagerDelegate {
     func touchManager(_ manager: SDLTouchManager, didReceiveSingleTapFor view: UIView?, at point: CGPoint) {

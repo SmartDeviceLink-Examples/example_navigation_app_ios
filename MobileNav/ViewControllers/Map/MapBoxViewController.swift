@@ -24,7 +24,13 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBAction func zoomInButtonTapped(_ sender: UIButton) { zoomIn() }
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) { zoomOut() }
     @IBAction func centerLocationButtonTapped(_ sender: UIButton) {
-        centerLocation(lat: (userLocation!.coordinate.latitude), long: userLocation!.coordinate.longitude)
+        if let userLocation = userLocation {
+            centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+        } else {
+            let alert = UIAlertController(title: "Cant find user location", message: "Make sure you have location permissions enabled", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+        }
     }
     @IBAction func settingsButtonTapped(_ sender: UIButton) { presentSettings() }
 
@@ -50,7 +56,11 @@ class MapBoxViewController: SDLCarWindowViewController {
         super.viewDidLayoutSubviews()
         NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
     }
+}
 
+// MARK: - Helper Functions
+
+extension MapBoxViewController {
     func setupTouchManager() {
         mapTouchHandler = mapManager.mapManagerTouchHandler
         menuTouchHandler = menuButton.buttonTouchHandler
@@ -75,33 +85,22 @@ class MapBoxViewController: SDLCarWindowViewController {
     }
 
     func setupButtons() {
-        // to do
         let searchImageConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .medium)
         let searchImage = UIImage(systemName: "magnifyingglass", withConfiguration: searchImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         searchButton.setImage(searchImage, for: .normal)
-        searchButton.layer.cornerRadius = searchButton.bounds.height/2
-        searchButton.backgroundColor = .systemBlue
 
         let mapImageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold)
         let centerImage = UIImage(systemName: "location.circle", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         centerMapButton.setImage(centerImage, for: .normal)
-        centerMapButton.layer.cornerRadius = centerMapButton.bounds.height/2
-        centerMapButton.backgroundColor = .systemBlue
 
         let zoomInImage = UIImage(systemName: "plus.magnifyingglass", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         zoomInButton.setImage(zoomInImage, for: .normal)
-        zoomInButton.layer.cornerRadius = zoomInButton.bounds.height/2
-        zoomInButton.backgroundColor = .systemBlue
 
         let zoomOutImage = UIImage(systemName: "minus.magnifyingglass", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         zoomOutButton.setImage(zoomOutImage, for: .normal)
-        zoomOutButton.layer.cornerRadius = zoomOutButton.bounds.height/2
-        zoomOutButton.backgroundColor = .systemBlue
 
         let settingsImage = UIImage(systemName: "gear", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         settingsButton.setImage(settingsImage, for: .normal)
-        settingsButton.layer.cornerRadius = settingsButton.bounds.height/2
-        settingsButton.backgroundColor = .systemBlue
     }
 
     func performSearch() {
@@ -120,9 +119,6 @@ class MapBoxViewController: SDLCarWindowViewController {
     }
 
     func centerLocation(lat:CLLocationDegrees, long:CLLocationDegrees) {
-//        if let userLocation = userLocation {
-//            self.mapView.setCenter(CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude), animated: false)
-//        }
         self.mapView.setCenter(CLLocationCoordinate2DMake(lat, long), animated: false)
     }
 
@@ -133,22 +129,9 @@ class MapBoxViewController: SDLCarWindowViewController {
         let navController = UINavigationController(rootViewController: settingsVC)
         present(navController, animated: true, completion: nil)
     }
-
 }
 
-extension CGPoint {
-    func displacement(toPoint: CGPoint) -> CGPoint {
-        let xDisplacement = x - toPoint.x
-        let yDisplacement = y - toPoint.y
-        return CGPoint(x: xDisplacement, y: yDisplacement)
-    }
-
-    func scalePoint(_ scale: CGFloat) -> CGPoint {
-        let xScale = x / scale
-        let yScale = y / scale
-        return CGPoint(x: xScale, y: yScale)
-    }
-}
+// MARK: - CLLocationManagerDelegate
 
 extension MapBoxViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -173,9 +156,10 @@ extension MapBoxViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: - SearchViewControllerDelegate
+
 extension MapBoxViewController: SearchViewControllerDelegate {
     func didSelectPlace(coordinate: CLLocationCoordinate2D) {
-        print("Latitude is \(coordinate.latitude), longitude is \(coordinate.longitude)")
         if annotation != nil {
             self.mapView.removeAnnotation(annotation!)
         }

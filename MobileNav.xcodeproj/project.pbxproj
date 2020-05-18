@@ -11,6 +11,8 @@
 		100CC818243D0CCB003C9EDE /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 100CC816243D0CA8003C9EDE /* keys.plist */; };
 		101132D72437A40300D15779 /* ProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132D62437A40300D15779 /* ProxyManager.swift */; };
 		101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101132DA2437D47C00D15779 /* SDLAppConstants.swift */; };
+		10463E59246DDB4700B19762 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10463E58246DDB4700B19762 /* MenuManager.swift */; };
+		10463E5C246DE1A000B19762 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10463E5B246DE1A000B19762 /* Extensions.swift */; };
 		1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1047312324476BB800819B15 /* SDLMenu.storyboard */; };
 		1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047312524476C4C00819B15 /* SDLMenuViewController.swift */; };
 		1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */; };
@@ -31,6 +33,7 @@
 		10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DEB246C956F00A4DB3A /* Search.storyboard */; };
 		10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */; };
 		10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */; };
+		10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621DE246DE67C00BDCC88 /* MapButton.swift */; };
 		DF52484B0BFFA9B38D01FD66 /* Pods_MobileNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735759190470A036D9B4493A /* Pods_MobileNav.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,8 @@
 		100CC816243D0CA8003C9EDE /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		101132D62437A40300D15779 /* ProxyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyManager.swift; sourceTree = "<group>"; };
 		101132DA2437D47C00D15779 /* SDLAppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLAppConstants.swift; sourceTree = "<group>"; };
+		10463E58246DDB4700B19762 /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
+		10463E5B246DE1A000B19762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1047312324476BB800819B15 /* SDLMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMenu.storyboard; sourceTree = "<group>"; };
 		1047312524476C4C00819B15 /* SDLMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuViewController.swift; sourceTree = "<group>"; };
 		1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapBoxViewController+SDL.swift"; sourceTree = "<group>"; };
@@ -61,6 +66,7 @@
 		10EA2DEB246C956F00A4DB3A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMapKitMap.storyboard; sourceTree = "<group>"; };
+		10F621DE246DE67C00BDCC88 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.release.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.release.xcconfig"; sourceTree = "<group>"; };
 		735759190470A036D9B4493A /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B3861B60DEB606EB7B5E3D /* Pods-MobileNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.debug.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,9 +98,19 @@
 			children = (
 				101132D62437A40300D15779 /* ProxyManager.swift */,
 				101132DA2437D47C00D15779 /* SDLAppConstants.swift */,
+				10463E58246DDB4700B19762 /* MenuManager.swift */,
 				10EA2DF4246DCA3800A4DB3A /* SDL UI */,
 			);
 			path = SDL;
+			sourceTree = "<group>";
+		};
+		10463E5A246DE18200B19762 /* Helpers + Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				10463E5B246DE1A000B19762 /* Extensions.swift */,
+				10A40388245A1CD70040E83D /* SearchManager.swift */,
+			);
+			path = "Helpers + Extensions";
 			sourceTree = "<group>";
 		};
 		107A57242446611F000BA7C6 /* Supporting Files */ = {
@@ -142,11 +158,12 @@
 				10EA2DF1246DC66500A4DB3A /* ViewControllers */,
 				10EA2DF0246DC64500A4DB3A /* Storyboards */,
 				10E12C85243E320D00C4B1F7 /* Settings */,
-				101132D52437991500D15779 /* SDL */,
+				10463E5A246DE18200B19762 /* Helpers + Extensions */,
 				107A57242446611F000BA7C6 /* Supporting Files */,
+				101132D52437991500D15779 /* SDL */,
 				10A0C22C243780C80010D9F6 /* Info.plist */,
 				100CC816243D0CA8003C9EDE /* keys.plist */,
-				10A40388245A1CD70040E83D /* SearchManager.swift */,
+				10F621DE246DE67C00BDCC88 /* MapButton.swift */,
 			);
 			path = MobileNav;
 			sourceTree = "<group>";
@@ -349,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A0C223243780C70010D9F6 /* MapViewController.swift in Sources */,
+				10463E5C246DE1A000B19762 /* Extensions.swift in Sources */,
 				107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */,
 				100CC803243CD18A003C9EDE /* MapBoxViewController.swift in Sources */,
 				1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */,
@@ -356,11 +374,13 @@
 				10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */,
 				107A571F2446508B000BA7C6 /* MapManager.swift in Sources */,
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
+				10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */,
 				107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */,
 				108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */,
 				10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */,
 				101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */,
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
+				10463E59246DDB4700B19762 /* MenuManager.swift in Sources */,
 				10A40389245A1CD70040E83D /* SearchManager.swift in Sources */,
 				10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */,
 				10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */,

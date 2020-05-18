@@ -29,6 +29,8 @@ class SearchViewController: UIViewController {
 
 }
 
+// MARK: - UITableViewDelegate and UITableViewDataSource Methods
+
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
@@ -63,6 +65,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - UISearchBarDelegate
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
@@ -70,6 +74,8 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
 }
+
+// MARK: - MKLocalSearchCompleterDelegate
 
 extension SearchViewController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
