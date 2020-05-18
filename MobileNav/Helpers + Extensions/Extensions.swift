@@ -21,3 +21,8 @@ extension CGPoint {
         return CGPoint(x: xScale, y: yScale)
     }
 }
+
+extension Notification.Name {
+    static let offScreenConnected = Notification.Name("offScreenConnected")
+    static let offScreenDisconnected = Notification.Name("offScreenDisconnected")
+}

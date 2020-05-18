@@ -30,6 +30,7 @@ class ProxyManager: NSObject {
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
     weak var delegate: ProxyManagerDelegate?
+    private var isOffScreen = false
 
     private override init() {
         super.init()
@@ -40,7 +41,11 @@ class ProxyManager: NSObject {
         delegate?.didChangeProxyState(.searching)
         if sdlManager == nil {
             sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP(streamSettings: streamSettings) : ProxyManager.connectTCP(streamSettings: streamSettings), delegate:self)
+            if streamSettings.isOffScreen {
+                isOffScreen = true
+            }
         }
+
         sdlManager.start { (success, error) in
             if success {
                 self.delegate?.didChangeProxyState(.connected)
@@ -75,11 +80,7 @@ class ProxyManager: NSObject {
         }
         
         lifecycleConfiguration.appType = .navigation
-        var lockscreenConfig = SDLLockScreenConfiguration.disabled()
-        if !streamSettings.isOffScreen {
-            lockscreenConfig = SDLLockScreenConfiguration.enabled()
-            lockscreenConfig.displayMode = .always
-        }
+        let lockscreenConfig = SDLLockScreenConfiguration.enabled()
 
         return SDLConfiguration(lifecycle: lifecycleConfiguration, lockScreen: lockscreenConfig, logging: ProxyManager.logConfiguration(), streamingMedia:ProxyManager.streamingMediaConfiguration(streamSettings: streamSettings), fileManager: .default(), encryption: nil)
     }
@@ -145,6 +146,12 @@ extension ProxyManager: SDLManagerDelegate {
         if delegate?.proxyState != .some(.stopped) {
             delegate?.didChangeProxyState(.searching)
         }
+
+        if isOffScreen {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(Notification(name: .offScreenDisconnected))
+            }
+        }
     }
 
     func hmiLevel(_ oldLevel: SDLHMILevel, didChangeToLevel newLevel: SDLHMILevel) {
@@ -155,6 +162,12 @@ extension ProxyManager: SDLManagerDelegate {
         } else {
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = false
+            }
+        }
+
+        if oldLevel == .none && newLevel == .full && isOffScreen {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(Notification(name: .offScreenConnected))
             }
         }
     }

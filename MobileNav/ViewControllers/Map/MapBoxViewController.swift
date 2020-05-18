@@ -47,6 +47,9 @@ class MapBoxViewController: SDLCarWindowViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(presentOffScreen), name: .offScreenConnected, object: nil)
+
         getUserLocation()
         setupTouchManager()
         setupButtons()
@@ -128,6 +131,13 @@ extension MapBoxViewController {
         settingsVC.navigationItem.title = "Settings"
         let navController = UINavigationController(rootViewController: settingsVC)
         present(navController, animated: true, completion: nil)
+    }
+
+    @objc func presentOffScreen() {
+        let storyboard = UIStoryboard.init(name: "OffScreen", bundle: nil)
+        let offScreenVC = storyboard.instantiateViewController(withIdentifier: "OffScreen") as! OffScreenViewController
+        offScreenVC.modalPresentationStyle = .overFullScreen
+        present(offScreenVC, animated: true, completion: nil)
     }
 }
 

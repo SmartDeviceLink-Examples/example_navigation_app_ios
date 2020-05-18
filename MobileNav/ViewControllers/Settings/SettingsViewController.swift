@@ -18,6 +18,11 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var settingsTableView: UITableView!
     @IBAction func startPressed(_ sender: UIButton) {
+
+        if ProxyManager.sharedManager.sdlManager != nil {
+            ProxyManager.sharedManager.stopConnection()
+        }
+
         if let selectedRenderType = selectedRenderType, let selectedStreamType = selectedStreamType {
             switch proxyState {
             case .stopped:
@@ -56,19 +61,14 @@ class SettingsViewController: UIViewController {
         let viewControllerToStream = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
 
         switch renderType {
-        case .layer:
-            carWindowRenderType = .layer
-        case .viewAfterScreenUpdates:
-            carWindowRenderType = .viewAfterScreenUpdates
-        case .viewBeforeScreenUpdates:
-            carWindowRenderType = .viewBeforeScreenUpdates
+        case .layer: carWindowRenderType = .layer
+        case .viewAfterScreenUpdates: carWindowRenderType = .viewAfterScreenUpdates
+        case .viewBeforeScreenUpdates: carWindowRenderType = .viewBeforeScreenUpdates
         }
 
         switch streamType {
-        case .offScreen:
-            isOffScreen = true
-        case .onScreen:
-            isOffScreen = false
+        case .offScreen: isOffScreen = true
+        case .onScreen: isOffScreen = false
         }
 
         let streamSettings = StreamSettings(renderType: carWindowRenderType, isOffScreen: isOffScreen, viewControllerToStream:viewControllerToStream!)
@@ -76,7 +76,9 @@ class SettingsViewController: UIViewController {
 
         if !isOffScreen {
             self.show(viewControllerToStream!, sender: self)
-            return
+        } else {
+            let offScreen = UIStoryboard(name: "OffScreen", bundle: nil).instantiateInitialViewController()!
+            self.show(offScreen, sender: self)
         }
     }
 }

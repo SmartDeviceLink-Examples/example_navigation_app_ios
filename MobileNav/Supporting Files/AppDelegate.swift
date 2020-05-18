@@ -7,28 +7,12 @@
 //
 
 import UIKit
-import Mapbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        if let url = Bundle.main.url(forResource: "keys", withExtension: "plist") {
-            do {
-              let data = try Data(contentsOf:url)
-              let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
-                MGLAccountManager.accessToken = keysDictionary["MGLMapboxAccessToken"]
-            } catch {
-               print(error)
-            }
-        }
-
-        // Default stream settings
-        let streamSettings = StreamSettings(renderType: .viewAfterScreenUpdates, isOffScreen: true, viewControllerToStream: (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController)!)
-        ProxyManager.sharedManager.connect(with: .iap, streamSettings: streamSettings)
 
         return true
     }

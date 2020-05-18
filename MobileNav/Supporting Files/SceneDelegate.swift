@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mapbox
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,7 +18,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: windowScene)
+
+        if let url = Bundle.main.url(forResource: "keys", withExtension: "plist") {
+            do {
+              let data = try Data(contentsOf:url)
+              let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
+                MGLAccountManager.accessToken = keysDictionary["MGLMapboxAccessToken"]
+            } catch {
+               print(error)
+            }
+        }
+
+        // Default stream settings
+        let streamSettings = StreamSettings(renderType: .viewAfterScreenUpdates, isOffScreen: true, viewControllerToStream: (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController)!)
+        ProxyManager.sharedManager.connect(with: .iap, streamSettings: streamSettings)
+
+        let mapBoxStoryboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MapBoxViewController
+        self.window?.rootViewController = mapBoxStoryboard
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
