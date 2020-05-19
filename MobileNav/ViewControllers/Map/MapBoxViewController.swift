@@ -18,11 +18,11 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBOutlet weak var centerMapButton: UIButton!
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var zoomInButton: UIButton!
-    @IBOutlet weak var settingsButton: UIButton!
 
     @IBAction func searchButtonTapped(_ sender: UIButton) { performSearch() }
     @IBAction func zoomInButtonTapped(_ sender: UIButton) { zoomIn() }
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) { zoomOut() }
+    @IBAction func menuButtonTapped(_ sender: UIButton) { presentSettings() }
     @IBAction func centerLocationButtonTapped(_ sender: UIButton) {
         if let userLocation = userLocation {
             centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
@@ -32,7 +32,6 @@ class MapBoxViewController: SDLCarWindowViewController {
             alert.addAction(action)
         }
     }
-    @IBAction func settingsButtonTapped(_ sender: UIButton) { presentSettings() }
 
     private var mapViewCenterPoint: CGPoint! = .zero
     private var newMapCenterPoint: CGPoint = .zero
@@ -88,22 +87,10 @@ extension MapBoxViewController {
     }
 
     func setupButtons() {
-        let searchImageConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .medium)
-        let searchImage = UIImage(systemName: "magnifyingglass", withConfiguration: searchImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        searchButton.setImage(searchImage, for: .normal)
-
-        let mapImageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold)
-        let centerImage = UIImage(systemName: "location.circle", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        centerMapButton.setImage(centerImage, for: .normal)
-
-        let zoomInImage = UIImage(systemName: "plus.magnifyingglass", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        zoomInButton.setImage(zoomInImage, for: .normal)
-
-        let zoomOutImage = UIImage(systemName: "minus.magnifyingglass", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        zoomOutButton.setImage(zoomOutImage, for: .normal)
-
-        let settingsImage = UIImage(systemName: "gear", withConfiguration: mapImageConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        settingsButton.setImage(settingsImage, for: .normal)
+        searchButton.setImage(UIImage(named: "search"), for: .normal)
+        centerMapButton.setImage(UIImage(named: "center"), for: .normal)
+        zoomInButton.setImage(UIImage(named: "zoom_in"), for: .normal)
+        zoomOutButton.setImage(UIImage(named: "zoom_out"), for: .normal)
     }
 
     func performSearch() {

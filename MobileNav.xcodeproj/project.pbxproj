@@ -21,7 +21,6 @@
 		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
 		108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108BCB95243E400C00F67A97 /* StreamSettings.swift */; };
 		10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C21E243780C70010D9F6 /* AppDelegate.swift */; };
-		10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C220243780C70010D9F6 /* SceneDelegate.swift */; };
 		10A0C223243780C70010D9F6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C222243780C70010D9F6 /* MapViewController.swift */; };
 		10A0C226243780C70010D9F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C224243780C70010D9F6 /* Main.storyboard */; };
 		10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C227243780C80010D9F6 /* Assets.xcassets */; };
@@ -56,7 +55,6 @@
 		108BCB95243E400C00F67A97 /* StreamSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSettings.swift; sourceTree = "<group>"; };
 		10A0C21B243780C70010D9F6 /* MobileNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0C21E243780C70010D9F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10A0C220243780C70010D9F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		10A0C222243780C70010D9F6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		10A0C225243780C70010D9F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10A0C227243780C80010D9F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				10A0C21E243780C70010D9F6 /* AppDelegate.swift */,
-				10A0C220243780C70010D9F6 /* SceneDelegate.swift */,
 				10A0C227243780C80010D9F6 /* Assets.xcassets */,
 				10A0C229243780C80010D9F6 /* LaunchScreen.storyboard */,
 			);
@@ -395,7 +392,6 @@
 				10463E59246DDB4700B19762 /* MenuManager.swift in Sources */,
 				10A40389245A1CD70040E83D /* SearchManager.swift in Sources */,
 				10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */,
-				10A0C221243780C70010D9F6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -525,7 +521,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

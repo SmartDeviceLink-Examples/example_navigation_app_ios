@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-Rl-m5u" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-Rl-m5u" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
                                 <rect key="frame" x="329" y="54" width="75" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -37,8 +37,11 @@
                                     <constraint firstAttribute="width" constant="200" id="h2K-Rb-yJs"/>
                                 </constraints>
                                 <state key="normal" title="MENU"/>
+                                <connections>
+                                    <action selector="menuButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="MZf-Lx-ngo"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfd-J5-7Ny" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfd-J5-7Ny" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
                                 <rect key="frame" x="354" y="766" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -49,7 +52,7 @@
                                     <action selector="centerLocationButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="xpG-UJ-iyi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9F8-LW-oxR" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9F8-LW-oxR" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
                                 <rect key="frame" x="354" y="706" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -60,7 +63,7 @@
                                     <action selector="zoomOutButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="p9H-gd-kzG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZA-6a-RfH" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZA-6a-RfH" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
                                 <rect key="frame" x="354" y="646" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -71,24 +74,12 @@
                                     <action selector="zoomInButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="sR7-pj-jvN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jo8-Da-J8b" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
-                                <rect key="frame" x="10" y="766" width="50" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="CGs-AV-Ar4"/>
-                                    <constraint firstAttribute="height" constant="50" id="gSQ-J0-5R0"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="settingsButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="YQQ-28-UAj"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Cg2-P3-ekp" firstAttribute="top" secondItem="wn7-uJ-XJm" secondAttribute="bottom" constant="10" id="1ay-EI-vmy"/>
                             <constraint firstAttribute="trailing" secondItem="Rfd-J5-7Ny" secondAttribute="trailing" constant="10" id="59Z-eb-388"/>
                             <constraint firstAttribute="trailing" secondItem="9F8-LW-oxR" secondAttribute="trailing" constant="10" id="6QV-3a-5cC"/>
-                            <constraint firstItem="Ior-IT-bS8" firstAttribute="top" secondItem="Jo8-Da-J8b" secondAttribute="bottom" constant="46" id="Flh-v7-pOD"/>
                             <constraint firstItem="3Ab-Rl-m5u" firstAttribute="top" secondItem="wn7-uJ-XJm" secondAttribute="bottom" constant="10" id="Gwe-MM-6Os"/>
                             <constraint firstItem="Cg2-P3-ekp" firstAttribute="leading" secondItem="jso-2Y-A3j" secondAttribute="leading" constant="10" id="UHk-3A-eaR"/>
                             <constraint firstItem="Rfd-J5-7Ny" firstAttribute="top" secondItem="9F8-LW-oxR" secondAttribute="bottom" constant="10" id="bvt-Tp-czo"/>
@@ -96,7 +87,6 @@
                             <constraint firstAttribute="trailing" secondItem="ZZA-6a-RfH" secondAttribute="trailing" constant="10" id="lZZ-zP-LfD"/>
                             <constraint firstItem="Ior-IT-bS8" firstAttribute="top" secondItem="Rfd-J5-7Ny" secondAttribute="bottom" constant="46" id="sWe-7N-gwc"/>
                             <constraint firstItem="9F8-LW-oxR" firstAttribute="top" secondItem="ZZA-6a-RfH" secondAttribute="bottom" constant="10" id="wUH-kq-bcX"/>
-                            <constraint firstItem="Jo8-Da-J8b" firstAttribute="leading" secondItem="jso-2Y-A3j" secondAttribute="leading" constant="10" id="xdJ-ZJ-X2R"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bDK-XU-fab">
@@ -107,7 +97,6 @@
                         <outlet property="mapView" destination="jso-2Y-A3j" id="GGr-WR-6FV"/>
                         <outlet property="menuButton" destination="Cg2-P3-ekp" id="nYf-1Y-fuf"/>
                         <outlet property="searchButton" destination="3Ab-Rl-m5u" id="uxf-ht-5f3"/>
-                        <outlet property="settingsButton" destination="Jo8-Da-J8b" id="Suf-3q-3Qh"/>
                         <outlet property="zoomInButton" destination="ZZA-6a-RfH" id="NS9-ho-xYK"/>
                         <outlet property="zoomOutButton" destination="9F8-LW-oxR" id="Rwf-D7-GMD"/>
                     </connections>
