@@ -30,7 +30,7 @@ class MenuManager: NSObject {
         cells.append(searchCell)
 
         let coffeeCell = SDLMenuCell(title: "Coffee Near Me", icon: nil, voiceCommands: ["Coffee Near Me", "Coffee"]) { (source: SDLTriggerSource) in
-
+            
         }
         cells.append(coffeeCell)
 

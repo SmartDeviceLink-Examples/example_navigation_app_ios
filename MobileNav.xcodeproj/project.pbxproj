@@ -36,6 +36,8 @@
 		10F621E12472D10900BDCC88 /* OffScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F621E02472D10900BDCC88 /* OffScreen.storyboard */; };
 		10F621E32472E28700BDCC88 /* OffScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E22472E28700BDCC88 /* OffScreenViewController.swift */; };
 		10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E42473239F00BDCC88 /* AppUserDefaults.swift */; };
+		10F621ED2474446400BDCC88 /* MapItemsListInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */; };
+		10F621F1247467C700BDCC88 /* KeyboardSearchInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */; };
 		DF52484B0BFFA9B38D01FD66 /* Pods_MobileNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735759190470A036D9B4493A /* Pods_MobileNav.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		10F621E02472D10900BDCC88 /* OffScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OffScreen.storyboard; sourceTree = "<group>"; };
 		10F621E22472E28700BDCC88 /* OffScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffScreenViewController.swift; sourceTree = "<group>"; };
 		10F621E42473239F00BDCC88 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
+		10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemsListInteraction.swift; sourceTree = "<group>"; };
+		10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSearchInteraction.swift; sourceTree = "<group>"; };
 		5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.release.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.release.xcconfig"; sourceTree = "<group>"; };
 		735759190470A036D9B4493A /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B3861B60DEB606EB7B5E3D /* Pods-MobileNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.debug.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				101132DA2437D47C00D15779 /* SDLAppConstants.swift */,
 				10463E58246DDB4700B19762 /* MenuManager.swift */,
 				10EA2DF4246DCA3800A4DB3A /* SDL UI */,
+				10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */,
+				10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */,
 			);
 			path = SDL;
 			sourceTree = "<group>";
@@ -379,8 +385,10 @@
 				10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */,
 				1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */,
 				1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */,
+				10F621F1247467C700BDCC88 /* KeyboardSearchInteraction.swift in Sources */,
 				10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */,
 				107A571F2446508B000BA7C6 /* MapManager.swift in Sources */,
+				10F621ED2474446400BDCC88 /* MapItemsListInteraction.swift in Sources */,
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
 				10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */,
 				10F621E32472E28700BDCC88 /* OffScreenViewController.swift in Sources */,

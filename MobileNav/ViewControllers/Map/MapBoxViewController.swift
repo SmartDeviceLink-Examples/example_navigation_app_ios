@@ -124,7 +124,7 @@ extension MapBoxViewController {
         let storyboard = UIStoryboard.init(name: "OffScreen", bundle: nil)
         let offScreenVC = storyboard.instantiateViewController(withIdentifier: "OffScreen") as! OffScreenViewController
         offScreenVC.modalPresentationStyle = .overFullScreen
-        present(offScreenVC, animated: true, completion: nil)
+        present(offScreenVC, animated: false, completion: nil)
     }
 }
 

@@ -9,25 +9,6 @@
 import Foundation
 import SmartDeviceLink
 
-// MARK: - SDLKeyboardDelegate
-
-extension MapBoxViewController: SDLKeyboardDelegate {
-    func userDidSubmitInput(_ inputText: String, withEvent source: SDLKeyboardEvent) {
-        let searchManager = SearchManager()
-        switch source {
-        case .voice:
-            searchManager.getSearchResults(from: inputText)
-        case .submitted:
-            searchManager.getSearchResults(from: inputText)
-        default: break
-        }
-    }
-
-    func keyboardDidAbort(withReason event: SDLKeyboardEvent) {
-        print("Keyboard was aborted")
-    }
-}
-
 // MARK: - SDLTouchManagerDelegate
 
 extension MapBoxViewController: SDLTouchManagerDelegate {
@@ -56,7 +37,8 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
     }
 
     func presentKeyboard() {
-        ProxyManager.sharedManager.sdlManager.screenManager.presentKeyboard(withInitialText: "Search for location", delegate: self)
+        let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
+        keyboard.present()
     }
 
     func touchManager(_ manager: SDLTouchManager, didReceiveDoubleTapFor view: UIView?, at point: CGPoint) {

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Q9-Wb-xEZ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,33 +16,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuF-l3-r2o">
-                                <rect key="frame" x="50" y="68" width="305" height="50"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6a-3e-4qb">
+                                <rect key="frame" x="8" y="8" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="BqF-jO-7YX"/>
+                                    <constraint firstAttribute="height" constant="30" id="suy-NL-bCa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="&lt; Back To Map"/>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLb-Qv-2xq">
+                                <rect key="frame" x="20" y="48" width="335" height="40"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="lB9-fm-DP5"/>
+                                    <constraint firstAttribute="height" constant="40" id="ISs-JF-qEa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg9-RD-71G">
+                                <rect key="frame" x="20" y="96" width="335" height="40"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dFO-fp-gcy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Find Restaurants Near Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpA-35-OZG">
+                                <rect key="frame" x="20" y="144" width="335" height="40"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="22c-86-YZq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Find Coffee Near Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbG-3a-DZH">
+                                <rect key="frame" x="20" y="192" width="335" height="40"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BG6-fZ-SxP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Find Gas Stations Near Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuF-l3-r2o">
+                                <rect key="frame" x="20" y="240" width="335" height="40"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="lB9-fm-DP5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Exit Application">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6a-3e-4qb">
-                                <rect key="frame" x="8" y="8" width="150" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="BqF-jO-7YX"/>
-                                    <constraint firstAttribute="height" constant="50" id="suy-NL-bCa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="&lt; Back To Map"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="yuF-l3-r2o" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="50" id="9q8-pf-liN"/>
-                            <constraint firstItem="yuF-l3-r2o" firstAttribute="top" secondItem="b6a-3e-4qb" secondAttribute="bottom" constant="10" id="Sog-nT-8Tq"/>
+                            <constraint firstItem="Qvw-iH-S04" firstAttribute="trailing" secondItem="tpA-35-OZG" secondAttribute="trailing" constant="20" id="0M0-Ua-mGG"/>
+                            <constraint firstItem="Qvw-iH-S04" firstAttribute="trailing" secondItem="kbG-3a-DZH" secondAttribute="trailing" constant="20" id="1yX-vc-PKY"/>
+                            <constraint firstItem="yuF-l3-r2o" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="20" id="2As-vv-Apg"/>
+                            <constraint firstItem="yuF-l3-r2o" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="20" id="9q8-pf-liN"/>
+                            <constraint firstItem="Qvw-iH-S04" firstAttribute="trailing" secondItem="wLb-Qv-2xq" secondAttribute="trailing" constant="20" id="Lek-6W-8Gb"/>
+                            <constraint firstItem="Qvw-iH-S04" firstAttribute="trailing" secondItem="Vg9-RD-71G" secondAttribute="trailing" constant="20" id="OHb-9z-x9j"/>
+                            <constraint firstItem="yuF-l3-r2o" firstAttribute="top" secondItem="kbG-3a-DZH" secondAttribute="bottom" constant="8" id="Xvo-Rn-dHj"/>
+                            <constraint firstItem="kbG-3a-DZH" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="20" id="Zbp-1U-A1y"/>
+                            <constraint firstItem="tpA-35-OZG" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="20" id="ZkL-Qi-eEq"/>
+                            <constraint firstItem="wLb-Qv-2xq" firstAttribute="top" secondItem="b6a-3e-4qb" secondAttribute="bottom" constant="10" id="dAZ-es-q8O"/>
                             <constraint firstItem="Qvw-iH-S04" firstAttribute="trailing" secondItem="yuF-l3-r2o" secondAttribute="trailing" constant="20" id="daY-6g-C6p"/>
+                            <constraint firstItem="Vg9-RD-71G" firstAttribute="top" secondItem="wLb-Qv-2xq" secondAttribute="bottom" constant="8" id="dvq-IN-Bcq"/>
+                            <constraint firstItem="Vg9-RD-71G" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="20" id="iKM-Yw-VHo"/>
                             <constraint firstItem="b6a-3e-4qb" firstAttribute="top" secondItem="Qvw-iH-S04" secondAttribute="top" constant="8" id="jNw-eC-OhY"/>
+                            <constraint firstItem="kbG-3a-DZH" firstAttribute="top" secondItem="tpA-35-OZG" secondAttribute="bottom" constant="8" id="nDR-ut-9n0"/>
+                            <constraint firstItem="Qvw-iH-S04" firstAttribute="trailing" secondItem="yuF-l3-r2o" secondAttribute="trailing" constant="20" id="nF2-1D-xeT"/>
+                            <constraint firstItem="wLb-Qv-2xq" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="20" id="nIE-p2-R98"/>
+                            <constraint firstItem="tpA-35-OZG" firstAttribute="top" secondItem="Vg9-RD-71G" secondAttribute="bottom" constant="8" id="ttJ-qw-EUb"/>
                             <constraint firstItem="b6a-3e-4qb" firstAttribute="leading" secondItem="Qvw-iH-S04" secondAttribute="leading" constant="8" id="vCS-rw-bjy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qvw-iH-S04"/>
@@ -49,7 +108,11 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="b6a-3e-4qb" id="hX0-Ci-Gkd"/>
+                        <outlet property="coffeeButton" destination="tpA-35-OZG" id="UBr-74-9Ul"/>
                         <outlet property="exitAppButton" destination="yuF-l3-r2o" id="6Sd-XT-iYR"/>
+                        <outlet property="gasStationsButton" destination="kbG-3a-DZH" id="nqa-RN-2DZ"/>
+                        <outlet property="restaurantsButton" destination="Vg9-RD-71G" id="Sjn-Xy-3Pn"/>
+                        <outlet property="searchButton" destination="wLb-Qv-2xq" id="5ri-4H-KVF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCy-74-QzS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

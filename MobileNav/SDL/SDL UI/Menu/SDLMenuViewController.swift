@@ -12,6 +12,12 @@ import SmartDeviceLink
 class SDLMenuViewController: SDLCarWindowViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var exitAppButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var restaurantsButton: UIButton!
+    @IBOutlet weak var coffeeButton: UIButton!
+    @IBOutlet weak var gasStationsButton: UIButton!
+    private var searchManager = SearchManager()
+    private var mapInteraction: MapItemsListInteraction?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +42,23 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
                 if backButton.frame.contains(point) {
                     let mapVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
                     ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapVC
+                }
+
+                if searchButton.frame.contains(point) {
+                    let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
+                    keyboard.present()
+                }
+
+                if restaurantsButton.frame.contains(point) {
+
+                }
+
+                if coffeeButton.frame.contains(point) {
+
+                }
+
+                if gasStationsButton.frame.contains(point) {
+
                 }
 
                 if exitAppButton.frame.contains(point) {

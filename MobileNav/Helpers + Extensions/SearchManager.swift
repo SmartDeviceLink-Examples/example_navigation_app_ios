@@ -13,47 +13,58 @@ import SmartDeviceLink
 class SearchManager: NSObject {
 
     var choiceCells = [SDLChoiceCell]()
+    var results = [MKMapItem]()
 
-    func getSearchResults(from query:String) {
+    func getSearchResults(from query:String) -> [MKMapItem] {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
-            // to do
+            if error == nil {
+                self.results = response!.mapItems
+            }
+            // to do error handling
         }
+        return results
     }
 
-    func findCoffeeShops(from userLocation:CLLocation) -> [MKMapItem] {
+    func findCoffeeShops() -> [MKMapItem] {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = "coffee"
-        request.region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
-            // to do
+            if error == nil {
+                self.results = response!.mapItems
+            }
+            // to do error handling
         }
-        return []
+        return results
     }
 
-    func findRestaurants(from userLocation:CLLocation) -> [MKMapItem] {
+    func findRestaurants() -> [MKMapItem] {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = "restaurants"
-        request.region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
-            // to do
+            if error == nil {
+                self.results = response!.mapItems
+            }
+            // to do error handling
         }
-        return []
+        return results
     }
 
-    func findGasStations(from userLocation:CLLocation) -> [MKMapItem] {
+    func findGasStations() -> [MKMapItem] {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = "gas stations"
-        request.region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
-            // to do
+            if error == nil {
+                self.results = response!.mapItems
+            }
+            // to do error handling
         }
-        return []
+        return results
     }
 
 

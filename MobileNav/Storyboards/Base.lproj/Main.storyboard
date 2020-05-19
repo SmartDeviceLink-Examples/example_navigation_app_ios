@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-Rl-m5u" customClass="MapButton" customModule="MobileNav" customModuleProvider="target">
-                                <rect key="frame" x="329" y="54" width="75" height="75"/>
+                                <rect key="frame" x="354" y="54" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="1hh-hp-Yw0"/>
-                                    <constraint firstAttribute="height" constant="75" id="vn8-Ct-ON6"/>
+                                    <constraint firstAttribute="width" constant="50" id="1hh-hp-Yw0"/>
+                                    <constraint firstAttribute="height" constant="50" id="vn8-Ct-ON6"/>
                                 </constraints>
                                 <connections>
                                     <action selector="searchButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="fHb-2Z-JXS"/>

@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController {
         AppUserDefaults.shared.streamType = streamType
 
         let streamSettings = StreamSettings(renderType: renderType, streamType:streamType, viewControllerToStream:viewControllerToStream!)
-        ProxyManager.sharedManager.connect(with: .iap, streamSettings: streamSettings)
+        ProxyManager.sharedManager.connect(with: SDLAppConstants.connectionType, streamSettings: streamSettings)
     }
 }
 

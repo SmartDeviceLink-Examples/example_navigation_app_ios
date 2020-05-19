@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppUserDefaults.setDefaults()
 
         let streamSettings = StreamSettings(renderType: AppUserDefaults.shared.renderType!, streamType:AppUserDefaults.shared.streamType!, viewControllerToStream: (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController)!)
-        ProxyManager.sharedManager.connect(with: .iap, streamSettings: streamSettings)
+        ProxyManager.sharedManager.connect(with: SDLAppConstants.connectionType, streamSettings: streamSettings)
 
         let mapBoxStoryboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MapBoxViewController
         self.window?.rootViewController = mapBoxStoryboard
