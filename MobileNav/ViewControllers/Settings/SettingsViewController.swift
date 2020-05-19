@@ -14,27 +14,25 @@ class SettingsViewController: UIViewController {
     private var settingOptions = [String]()
     private var selectedRenderType: RenderType?
     private var selectedStreamType: StreamType?
-    var proxyState = ProxyState.stopped
+    var proxyState: ProxyState {
+        get {
+            return ProxyManager.sharedManager.proxyState
+        }
+    }
 
     @IBOutlet weak var settingsTableView: UITableView!
     @IBAction func startPressed(_ sender: UIButton) {
-
-        if ProxyManager.sharedManager.sdlManager != nil {
-            ProxyManager.sharedManager.stopConnection()
-        }
-
-        if let selectedRenderType = selectedRenderType, let selectedStreamType = selectedStreamType {
-            switch proxyState {
-            case .stopped:
+        switch proxyState {
+        case .stopped:
+            if let selectedRenderType = selectedRenderType, let selectedStreamType = selectedStreamType {
                 startSDL(with: selectedRenderType, streamType: selectedStreamType)
                 self.navigationController?.dismiss(animated: true, completion: nil)
-            case .searching:
-                ProxyManager.sharedManager.stopConnection()
-            case .connected:
-                ProxyManager.sharedManager.stopConnection()
+            } else {
+                presentAlertController()
             }
-        } else {
-            presentAlertController()
+        case .searching, .connected:
+            ProxyManager.sharedManager.stopConnection()
+            updateButtonProxyState(proxyState)
         }
     }
 
@@ -42,10 +40,14 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ProxyManager.sharedManager.delegate = self
         self.settingsTableView.delegate = self
         self.settingsTableView.dataSource = self
         settingsTableView.tableFooterView = UIView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateButtonProxyState(proxyState)
     }
 
     private func presentAlertController() {
@@ -56,36 +58,18 @@ class SettingsViewController: UIViewController {
     }
 
     private func startSDL(with renderType:RenderType, streamType:StreamType) {
-        let carWindowRenderType: SDLCarWindowRenderingType
-        var isOffScreen: Bool = false
         let viewControllerToStream = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
 
-        switch renderType {
-        case .layer: carWindowRenderType = .layer
-        case .viewAfterScreenUpdates: carWindowRenderType = .viewAfterScreenUpdates
-        case .viewBeforeScreenUpdates: carWindowRenderType = .viewBeforeScreenUpdates
-        }
+        AppUserDefaults.shared.renderType = renderType
+        AppUserDefaults.shared.streamType = streamType
 
-        switch streamType {
-        case .offScreen: isOffScreen = true
-        case .onScreen: isOffScreen = false
-        }
-
-        let streamSettings = StreamSettings(renderType: carWindowRenderType, isOffScreen: isOffScreen, viewControllerToStream:viewControllerToStream!)
+        let streamSettings = StreamSettings(renderType: renderType, streamType:streamType, viewControllerToStream:viewControllerToStream!)
         ProxyManager.sharedManager.connect(with: .iap, streamSettings: streamSettings)
-
-        if !isOffScreen {
-            self.show(viewControllerToStream!, sender: self)
-        } else {
-            let offScreen = UIStoryboard(name: "OffScreen", bundle: nil).instantiateInitialViewController()!
-            self.show(offScreen, sender: self)
-        }
     }
 }
 
-extension SettingsViewController: ProxyManagerDelegate {
-    func didChangeProxyState(_ newState: ProxyState) {
-        proxyState = newState
+extension SettingsViewController {
+    func updateButtonProxyState(_ newState: ProxyState) {
         var newColor: UIColor? = nil
         var newTitle: String? = nil
 

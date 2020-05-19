@@ -49,7 +49,7 @@ class MapBoxViewController: SDLCarWindowViewController {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(presentOffScreen), name: .offScreenConnected, object: nil)
-
+        
         getUserLocation()
         setupTouchManager()
         setupButtons()

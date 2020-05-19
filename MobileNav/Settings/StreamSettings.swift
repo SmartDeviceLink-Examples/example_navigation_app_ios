@@ -49,13 +49,13 @@ enum StreamType: Int, CaseIterable, CustomStringConvertible {
 
 class StreamSettings: NSObject {
 
-    let carWindowRenderType: SDLCarWindowRenderingType
-    let isOffScreen: Bool
+    let renderType: RenderType
+    let streamType: StreamType
     let viewControllerToStream: UIViewController
 
-    init(renderType: SDLCarWindowRenderingType, isOffScreen: Bool, viewControllerToStream:UIViewController) {
-        self.carWindowRenderType = renderType
-        self.isOffScreen = isOffScreen
+    init(renderType: RenderType, streamType: StreamType, viewControllerToStream:UIViewController) {
+        self.renderType = renderType
+        self.streamType = streamType
         self.viewControllerToStream = viewControllerToStream
         super.init()
     }

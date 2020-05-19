@@ -9,11 +9,6 @@
 import UIKit
 import SmartDeviceLink
 
-protocol ProxyManagerDelegate: class {
-    var proxyState: ProxyState { get }
-    func didChangeProxyState(_ newState: ProxyState)
-}
-
 enum ConnectionType {
     case tcp
     case iap
@@ -29,8 +24,9 @@ class ProxyManager: NSObject {
 
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
-    weak var delegate: ProxyManagerDelegate?
     private var isOffScreen = false
+    var proxyState = ProxyState.stopped
+    var rpcVersion: Int?
 
     private override init() {
         super.init()
@@ -38,17 +34,21 @@ class ProxyManager: NSObject {
     }
 
     func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
-        delegate?.didChangeProxyState(.searching)
+        proxyState = .searching
+        if streamSettings.streamType == .offScreen {
+            isOffScreen = true
+        } else {
+            isOffScreen = false
+        }
+
         if sdlManager == nil {
             sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP(streamSettings: streamSettings) : ProxyManager.connectTCP(streamSettings: streamSettings), delegate:self)
-            if streamSettings.isOffScreen {
-                isOffScreen = true
-            }
         }
 
         sdlManager.start { (success, error) in
             if success {
-                self.delegate?.didChangeProxyState(.connected)
+                self.proxyState = .connected
+                self.rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion?.majorVersion.intValue
             } else {
                 print("SDL Connection Error: \(error!)")
             }
@@ -56,11 +56,16 @@ class ProxyManager: NSObject {
     }
 
     func stopConnection() {
+        guard sdlManager != nil else {
+            proxyState = .stopped
+            return
+        }
+
         DispatchQueue.main.async { [weak self] in
             self?.sdlManager.stop()
         }
 
-        delegate?.didChangeProxyState(.stopped)
+        proxyState = .stopped
     }
 
     class func connectIAP(streamSettings:StreamSettings) -> SDLConfiguration {
@@ -93,9 +98,17 @@ class ProxyManager: NSObject {
 
     class func streamingMediaConfiguration(streamSettings: StreamSettings) -> SDLStreamingMediaConfiguration {
         let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: streamSettings.viewControllerToStream)
-        streamingMediaConfig.carWindowRenderingType = streamSettings.carWindowRenderType
+        streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
 
         return streamingMediaConfig
+    }
+
+    class func getSDLRenderType(from renderType:RenderType) -> SDLCarWindowRenderingType {
+        switch renderType {
+        case .layer: return .layer
+        case .viewAfterScreenUpdates: return .viewAfterScreenUpdates
+        case .viewBeforeScreenUpdates: return .viewBeforeScreenUpdates
+        }
     }
 
 }
@@ -143,8 +156,8 @@ private extension ProxyManager {
 
 extension ProxyManager: SDLManagerDelegate {
     func managerDidDisconnect() {
-        if delegate?.proxyState != .some(.stopped) {
-            delegate?.didChangeProxyState(.searching)
+        if proxyState != .stopped {
+            proxyState = .searching
         }
 
         if isOffScreen {

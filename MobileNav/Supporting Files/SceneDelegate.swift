@@ -32,7 +32,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         // Default stream settings
-        let streamSettings = StreamSettings(renderType: .viewAfterScreenUpdates, isOffScreen: true, viewControllerToStream: (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController)!)
+        AppUserDefaults.setDefaults()
+
+        let streamSettings = StreamSettings(renderType: AppUserDefaults.shared.renderType!, streamType:AppUserDefaults.shared.streamType!, viewControllerToStream: (UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController)!)
         ProxyManager.sharedManager.connect(with: .iap, streamSettings: streamSettings)
 
         let mapBoxStoryboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MapBoxViewController

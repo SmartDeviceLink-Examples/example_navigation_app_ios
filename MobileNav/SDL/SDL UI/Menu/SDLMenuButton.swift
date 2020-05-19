@@ -52,13 +52,12 @@ extension SDLMenuButton {
     }
 
     private func buttonSelected() {
-        if let rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion {
-            if rpcVersion.majorVersion.intValue < 6 {
-                let menuViewController = UIStoryboard(name: "SDLMenu", bundle: nil).instantiateInitialViewController() as? SDLMenuViewController
-                ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
-                return
-            }
-            ProxyManager.sharedManager.sdlManager.screenManager.openMenu()
+        if ProxyManager.sharedManager.rpcVersion! < 6 {
+            let menuViewController = UIStoryboard(name: "SDLMenu", bundle: nil).instantiateInitialViewController() as? SDLMenuViewController
+            ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
+            return
         }
+        ProxyManager.sharedManager.sdlManager.screenManager.openMenu()
     }
+
 }
