@@ -51,12 +51,10 @@ class StreamSettings: NSObject {
 
     let renderType: RenderType
     let streamType: StreamType
-    let viewControllerToStream: UIViewController
 
-    init(renderType: RenderType, streamType: StreamType, viewControllerToStream:UIViewController) {
+    init(renderType: RenderType, streamType: StreamType) {
         self.renderType = renderType
         self.streamType = streamType
-        self.viewControllerToStream = viewControllerToStream
         super.init()
     }
 }

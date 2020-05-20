@@ -58,12 +58,10 @@ class SettingsViewController: UIViewController {
     }
 
     private func startSDL(with renderType:RenderType, streamType:StreamType) {
-        let viewControllerToStream = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
-
         AppUserDefaults.shared.renderType = renderType
         AppUserDefaults.shared.streamType = streamType
 
-        let streamSettings = StreamSettings(renderType: renderType, streamType:streamType, viewControllerToStream:viewControllerToStream!)
+        let streamSettings = StreamSettings(renderType: renderType, streamType:streamType)
         ProxyManager.sharedManager.connect(with: SDLAppConstants.connectionType, streamSettings: streamSettings)
     }
 }

@@ -20,10 +20,8 @@ class MapManager: NSObject {
     private var mapViewCenterPoint: CGPoint! = .zero
     var newMapCenterPoint: CGPoint = .zero
     var mapZoomLevel: Double = 0.0
-    private var latitude: CLLocationDegrees = 42.331429
-    private var longitude: CLLocationDegrees = -83.045753
 
-    func setupMapView(with mapView: MGLMapView, userLocation:CLLocation?) {
+    func setupMapView(with mapView: MGLMapView, userLocation:CLLocation) {
         self.mapView = mapView
 
         mapView.scaleBar.isHidden = true
@@ -34,12 +32,7 @@ class MapManager: NSObject {
         mapView.isRotateEnabled = false
         mapView.isPitchEnabled = false
 
-        if let userLocation = userLocation {
-            latitude = userLocation.coordinate.latitude
-            longitude = userLocation.coordinate.longitude
-        }
-
-        let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        let coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
         mapView.setCenter(coordinate, zoomLevel: 12, animated: false)
 
         newMapCenterPoint = mapView.center
@@ -57,8 +50,21 @@ class MapManager: NSObject {
             self.mapView.setCenter(newMapCenterCoordinate, animated: false)
             self.newMapCenterPoint = self.mapView.center
             self.mapView.zoomLevel = self.mapZoomLevel
-        };
+        }
     }
+
+    func zoomIn() {
+        mapView.setZoomLevel(mapView.zoomLevel + 1, animated: true)
+    }
+
+    func zoomOut() {
+        mapView.setZoomLevel(mapView.zoomLevel - 1, animated: true)
+    }
+
+    func centerLocation(lat:CLLocationDegrees, long:CLLocationDegrees) {
+        self.mapView.setCenter(CLLocationCoordinate2DMake(lat, long), animated: false)
+    }
+
 }
 
 extension MapManager {
@@ -109,7 +115,7 @@ extension MapManager {
             y: newMapCenterPoint.y + displacement.y)
     }
 
-    /// A very pinch algorithm that zooms around the current center of the map.
+    /// A pinch algorithm that zooms around the current center of the map.
     ///
     /// - Parameters:
     ///   - centerPoint: The center point of the pinch gesture

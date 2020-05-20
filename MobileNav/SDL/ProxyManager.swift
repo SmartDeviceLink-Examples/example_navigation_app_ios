@@ -27,6 +27,8 @@ class ProxyManager: NSObject {
     private var isOffScreen = false
     var proxyState = ProxyState.stopped
     var rpcVersion: Int?
+    var mapManager = MapManager()
+    var mapBoxViewController: MapBoxViewController?
 
     private override init() {
         super.init()
@@ -35,11 +37,7 @@ class ProxyManager: NSObject {
 
     func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
         proxyState = .searching
-        if streamSettings.streamType == .offScreen {
-            isOffScreen = true
-        } else {
-            isOffScreen = false
-        }
+        isOffScreen = streamSettings.streamType == .offScreen ? true : false
 
         if sdlManager == nil {
             sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP(streamSettings: streamSettings) : ProxyManager.connectTCP(streamSettings: streamSettings), delegate:self)
@@ -49,6 +47,14 @@ class ProxyManager: NSObject {
             if success {
                 self.proxyState = .connected
                 self.rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion?.majorVersion.intValue
+
+                // If RPC version is 6.0, subscribe buttons and hide them on view controller
+                if self.rpcVersion != nil && self.rpcVersion! >= 6 {
+                    self.subscribeButtons()
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(Notification(name: .hideSubscribedButtons))
+                    }
+                }
             } else {
                 print("SDL Connection Error: \(error!)")
             }
@@ -97,7 +103,9 @@ class ProxyManager: NSObject {
     }
 
     class func streamingMediaConfiguration(streamSettings: StreamSettings) -> SDLStreamingMediaConfiguration {
-        let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: streamSettings.viewControllerToStream)
+        let mapBoxViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
+
+        let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: mapBoxViewController!)
         streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
 
         return streamingMediaConfig
@@ -165,6 +173,10 @@ extension ProxyManager: SDLManagerDelegate {
                 NotificationCenter.default.post(Notification(name: .offScreenDisconnected))
             }
         }
+
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(Notification(name: .showHiddenButtons))
+        }
     }
 
     func hmiLevel(_ oldLevel: SDLHMILevel, didChangeToLevel newLevel: SDLHMILevel) {
@@ -183,5 +195,31 @@ extension ProxyManager: SDLManagerDelegate {
                 NotificationCenter.default.post(Notification(name: .offScreenConnected))
             }
         }
+    }
+}
+
+private extension ProxyManager {
+    private func subscribeButtons() {
+
+        let zoomInbutton = SDLSubscribeButton(buttonName: .navZoomIn) { [unowned self] (press, event) in
+            guard press != nil else { return }
+            self.mapManager.zoomIn()
+        }
+
+        let zoomOutButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
+            guard press != nil else { return }
+            self.mapManager.zoomOut()
+        }
+
+        let centerMapButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
+            guard press != nil else { return }
+            if let userLocation = LocationManager.sharedManager.userLocation {
+                self.mapManager.centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+            } else {
+                // to do handle alert
+            }
+        }
+
+        sdlManager.send([zoomInbutton, zoomOutButton, centerMapButton], progressHandler: nil, completionHandler: nil)
     }
 }

@@ -20,12 +20,12 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBOutlet weak var zoomInButton: UIButton!
 
     @IBAction func searchButtonTapped(_ sender: UIButton) { performSearch() }
-    @IBAction func zoomInButtonTapped(_ sender: UIButton) { zoomIn() }
-    @IBAction func zoomOutButtonTapped(_ sender: UIButton) { zoomOut() }
+    @IBAction func zoomInButtonTapped(_ sender: UIButton) { mapManager.zoomIn() }
+    @IBAction func zoomOutButtonTapped(_ sender: UIButton) { mapManager.zoomOut() }
     @IBAction func menuButtonTapped(_ sender: UIButton) { presentSettings() }
     @IBAction func centerLocationButtonTapped(_ sender: UIButton) {
         if let userLocation = userLocation {
-            centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+            mapManager.centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
         } else {
             let alert = UIAlertController(title: "Cant find user location", message: "Make sure you have location permissions enabled", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -36,19 +36,21 @@ class MapBoxViewController: SDLCarWindowViewController {
     private var mapViewCenterPoint: CGPoint! = .zero
     private var newMapCenterPoint: CGPoint = .zero
     private var mapZoomLevel: Double = 0.0
-    private let locationManager = CLLocationManager()
     var mapManager = MapManager()
     private var annotation: MGLPointAnnotation?
     public private(set) var sdlMapViewTouchManager: SDLMapViewTouchManager?
     var mapTouchHandler: TouchHandler?
     var menuTouchHandler: TouchHandler?
     var userLocation: CLLocation?
+    private var subscribedButtonsHidden = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         NotificationCenter.default.addObserver(self, selector: #selector(presentOffScreen), name: .offScreenConnected, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(getUserLocation), name: .locationUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideSubscribedButtons), name: .hideSubscribedButtons, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showHiddenButtons), name: .showHiddenButtons, object: nil)
+
         getUserLocation()
         setupTouchManager()
         setupButtons()
@@ -69,20 +71,14 @@ extension MapBoxViewController {
         ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
     }
 
-    func getUserLocation() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestLocation()
-            if let location = locationManager.location {
-                mapView.showsUserLocation = true
-                mapManager.setupMapView(with: mapView, userLocation: location)
-                userLocation = location
-            }
+    @objc func getUserLocation() {
+        if let location = LocationManager.sharedManager.userLocation {
+            mapView.showsUserLocation = true
+            mapManager.setupMapView(with: mapView, userLocation: location)
+            userLocation = location
         } else {
-            mapManager.setupMapView(with: mapView, userLocation: nil)
+            userLocation = CLLocation(latitude: 42.331429, longitude: -83.045753)
+            mapManager.setupMapView(with: mapView, userLocation: userLocation!)
         }
     }
 
@@ -91,6 +87,13 @@ extension MapBoxViewController {
         centerMapButton.setImage(UIImage(named: "center"), for: .normal)
         zoomInButton.setImage(UIImage(named: "zoom_in"), for: .normal)
         zoomOutButton.setImage(UIImage(named: "zoom_out"), for: .normal)
+
+        // Hide buttons if we are going to subscribe them
+        if let rpcVersion = ProxyManager.sharedManager.rpcVersion {
+            if rpcVersion >= 6 {
+                hideSubscribedButtons()
+            }
+        }
     }
 
     func performSearch() {
@@ -98,18 +101,6 @@ extension MapBoxViewController {
         let searchVC = storyboard.instantiateViewController(withIdentifier: "Search") as! SearchViewController
         searchVC.delegate = self
         present(searchVC, animated: true, completion: nil)
-    }
-
-    func zoomIn() {
-        mapView.setZoomLevel(mapView.zoomLevel + 1, animated: true)
-    }
-
-    func zoomOut() {
-        mapView.setZoomLevel(mapView.zoomLevel - 1, animated: true)
-    }
-
-    func centerLocation(lat:CLLocationDegrees, long:CLLocationDegrees) {
-        self.mapView.setCenter(CLLocationCoordinate2DMake(lat, long), animated: false)
     }
 
     func presentSettings() {
@@ -126,29 +117,20 @@ extension MapBoxViewController {
         offScreenVC.modalPresentationStyle = .overFullScreen
         present(offScreenVC, animated: false, completion: nil)
     }
-}
 
-// MARK: - CLLocationManagerDelegate
-
-extension MapBoxViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
+    @objc func hideSubscribedButtons() {
+        centerMapButton.isHidden = true
+        zoomInButton.isHidden = true
+        zoomOutButton.isHidden = true
+        self.subscribedButtonsHidden = true
     }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        case .authorizedWhenInUse:
-            getUserLocation()
-        case .denied:
-            print("Cannot access user location, permission was denied by user.")
-        default:
-            break
+    @objc func showHiddenButtons() {
+        if subscribedButtonsHidden {
+            centerMapButton.isHidden = false
+            zoomInButton.isHidden = false
+            zoomOutButton.isHidden = false
+            subscribedButtonsHidden = false
         }
     }
 }
@@ -163,7 +145,7 @@ extension MapBoxViewController: SearchViewControllerDelegate {
         annotation = MGLPointAnnotation()
         annotation!.coordinate = coordinate
         self.mapView.addAnnotation(annotation!)
-        self.centerLocation(lat: annotation!.coordinate.latitude, long: annotation!.coordinate.longitude)
+        mapManager.centerLocation(lat: annotation!.coordinate.latitude, long: annotation!.coordinate.longitude)
     }
 }
 

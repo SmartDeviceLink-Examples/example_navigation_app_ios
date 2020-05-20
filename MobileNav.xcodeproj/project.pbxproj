@@ -21,17 +21,16 @@
 		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
 		108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108BCB95243E400C00F67A97 /* StreamSettings.swift */; };
 		10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C21E243780C70010D9F6 /* AppDelegate.swift */; };
-		10A0C223243780C70010D9F6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0C222243780C70010D9F6 /* MapViewController.swift */; };
 		10A0C226243780C70010D9F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C224243780C70010D9F6 /* Main.storyboard */; };
 		10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C227243780C80010D9F6 /* Assets.xcassets */; };
 		10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0C229243780C80010D9F6 /* LaunchScreen.storyboard */; };
 		10A40389245A1CD70040E83D /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A40388245A1CD70040E83D /* SearchManager.swift */; };
 		10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */; };
 		10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */; };
+		10E90B2D24749B84003C41ED /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E90B2C24749B84003C41ED /* LocationManager.swift */; };
 		10EA2DE9246C7E9700A4DB3A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */; };
 		10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DEB246C956F00A4DB3A /* Search.storyboard */; };
 		10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */; };
-		10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */; };
 		10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621DE246DE67C00BDCC88 /* MapButton.swift */; };
 		10F621E12472D10900BDCC88 /* OffScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F621E02472D10900BDCC88 /* OffScreen.storyboard */; };
 		10F621E32472E28700BDCC88 /* OffScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E22472E28700BDCC88 /* OffScreenViewController.swift */; };
@@ -57,7 +56,6 @@
 		108BCB95243E400C00F67A97 /* StreamSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSettings.swift; sourceTree = "<group>"; };
 		10A0C21B243780C70010D9F6 /* MobileNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0C21E243780C70010D9F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10A0C222243780C70010D9F6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		10A0C225243780C70010D9F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10A0C227243780C80010D9F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10A0C22A243780C80010D9F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,10 +63,10 @@
 		10A40388245A1CD70040E83D /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		10B17672243E556C001EE3C5 /* SettingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionsViewController.swift; sourceTree = "<group>"; };
 		10E12C83243E2A1200C4B1F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		10E90B2C24749B84003C41ED /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		10EA2DEB246C956F00A4DB3A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMapKitMap.storyboard; sourceTree = "<group>"; };
 		10F621DE246DE67C00BDCC88 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		10F621E02472D10900BDCC88 /* OffScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OffScreen.storyboard; sourceTree = "<group>"; };
 		10F621E22472E28700BDCC88 /* OffScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffScreenViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +118,7 @@
 				10463E5B246DE1A000B19762 /* Extensions.swift */,
 				10A40388245A1CD70040E83D /* SearchManager.swift */,
 				10F621E42473239F00BDCC88 /* AppUserDefaults.swift */,
+				10E90B2C24749B84003C41ED /* LocationManager.swift */,
 			);
 			path = "Helpers + Extensions";
 			sourceTree = "<group>";
@@ -192,7 +191,6 @@
 				10A0C224243780C70010D9F6 /* Main.storyboard */,
 				10EA2DEB246C956F00A4DB3A /* Search.storyboard */,
 				10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */,
-				10F20F23243BC100005C2E8A /* SDLMapKitMap.storyboard */,
 				10F621E02472D10900BDCC88 /* OffScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -222,7 +220,6 @@
 			children = (
 				100CC802243CD18A003C9EDE /* MapBoxViewController.swift */,
 				1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */,
-				10A0C222243780C70010D9F6 /* MapViewController.swift */,
 				10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */,
 			);
 			path = Map;
@@ -320,7 +317,6 @@
 				100CC818243D0CCB003C9EDE /* keys.plist in Resources */,
 				1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */,
 				10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */,
-				10F20F24243BC100005C2E8A /* SDLMapKitMap.storyboard in Resources */,
 				10F621E12472D10900BDCC88 /* OffScreen.storyboard in Resources */,
 				10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */,
 				10EA2DE9246C7E9700A4DB3A /* Settings.storyboard in Resources */,
@@ -378,13 +374,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10A0C223243780C70010D9F6 /* MapViewController.swift in Sources */,
 				10463E5C246DE1A000B19762 /* Extensions.swift in Sources */,
 				107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */,
 				100CC803243CD18A003C9EDE /* MapBoxViewController.swift in Sources */,
 				10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */,
 				1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */,
 				1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */,
+				10E90B2D24749B84003C41ED /* LocationManager.swift in Sources */,
 				10F621F1247467C700BDCC88 /* KeyboardSearchInteraction.swift in Sources */,
 				10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */,
 				107A571F2446508B000BA7C6 /* MapManager.swift in Sources */,
