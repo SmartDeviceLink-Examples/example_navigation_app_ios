@@ -25,19 +25,20 @@ class MenuManager: NSObject {
         var cells: [SDLMenuCell] = []
 
         let searchCell = SDLMenuCell(title: "Search", icon: nil, voiceCommands: ["Search"]) { (source: SDLTriggerSource) in
-
+            let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
+            keyboard.present()
         }
         cells.append(searchCell)
-
-        let coffeeCell = SDLMenuCell(title: "Coffee Near Me", icon: nil, voiceCommands: ["Coffee Near Me", "Coffee"]) { (source: SDLTriggerSource) in
-            
-        }
-        cells.append(coffeeCell)
 
         let restaurantsCell = SDLMenuCell(title: "Restaurants Near Me", icon: nil, voiceCommands: ["Restaurants Near Me", "Restaurants"]) { (source: SDLTriggerSource) in
 
         }
         cells.append(restaurantsCell)
+
+        let coffeeCell = SDLMenuCell(title: "Coffee Near Me", icon: nil, voiceCommands: ["Coffee Near Me", "Coffee"]) { (source: SDLTriggerSource) in
+            
+        }
+        cells.append(coffeeCell)
 
         let gasStationsCell = SDLMenuCell(title: "Gas Stations Near Me", icon: nil, voiceCommands: ["Gas Stations Near Me", "Gas Stations"]) { (source: SDLTriggerSource) in
 

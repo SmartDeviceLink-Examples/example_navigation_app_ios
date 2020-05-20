@@ -31,6 +31,8 @@
 		10EA2DE9246C7E9700A4DB3A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */; };
 		10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EA2DEB246C956F00A4DB3A /* Search.storyboard */; };
 		10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */; };
+		10F4A48B24759D0B00DAB205 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4A48A24759D0B00DAB205 /* Alert.swift */; };
+		10F4A48D2475C44300DAB205 /* NotificationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4A48C2475C44300DAB205 /* NotificationQueue.swift */; };
 		10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621DE246DE67C00BDCC88 /* MapButton.swift */; };
 		10F621E12472D10900BDCC88 /* OffScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F621E02472D10900BDCC88 /* OffScreen.storyboard */; };
 		10F621E32472E28700BDCC88 /* OffScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E22472E28700BDCC88 /* OffScreenViewController.swift */; };
@@ -67,6 +69,8 @@
 		10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		10EA2DEB246C956F00A4DB3A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		10F4A48A24759D0B00DAB205 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		10F4A48C2475C44300DAB205 /* NotificationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQueue.swift; sourceTree = "<group>"; };
 		10F621DE246DE67C00BDCC88 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		10F621E02472D10900BDCC88 /* OffScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OffScreen.storyboard; sourceTree = "<group>"; };
 		10F621E22472E28700BDCC88 /* OffScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffScreenViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				10EA2DF4246DCA3800A4DB3A /* SDL UI */,
 				10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */,
 				10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */,
+				10F4A48A24759D0B00DAB205 /* Alert.swift */,
 			);
 			path = SDL;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 				10A40388245A1CD70040E83D /* SearchManager.swift */,
 				10F621E42473239F00BDCC88 /* AppUserDefaults.swift */,
 				10E90B2C24749B84003C41ED /* LocationManager.swift */,
+				10F4A48C2475C44300DAB205 /* NotificationQueue.swift */,
 			);
 			path = "Helpers + Extensions";
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				10463E5C246DE1A000B19762 /* Extensions.swift in Sources */,
 				107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */,
 				100CC803243CD18A003C9EDE /* MapBoxViewController.swift in Sources */,
+				10F4A48B24759D0B00DAB205 /* Alert.swift in Sources */,
 				10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */,
 				1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */,
 				1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */,
@@ -395,6 +402,7 @@
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
 				10463E59246DDB4700B19762 /* MenuManager.swift in Sources */,
 				10A40389245A1CD70040E83D /* SearchManager.swift in Sources */,
+				10F4A48D2475C44300DAB205 /* NotificationQueue.swift in Sources */,
 				10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

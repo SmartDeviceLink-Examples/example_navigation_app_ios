@@ -38,4 +38,7 @@ extension Notification.Name {
 
     /** A notification that informs the receiver to show previously hidden buttons */
     static let showHiddenButtons = Notification.Name("showHiddenButtons")
+
+    /** A notification that informs the receiver center map on place */
+    static let sdl_centerMapOnPlace = Notification.Name("sdl_centerMapOnPlace")
 }

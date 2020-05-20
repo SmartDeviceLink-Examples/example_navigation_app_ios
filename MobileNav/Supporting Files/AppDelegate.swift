@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Start looking for user location
         LocationManager.sharedManager.start()
+        NotificationQueue.shared.start()
     }
 
 }

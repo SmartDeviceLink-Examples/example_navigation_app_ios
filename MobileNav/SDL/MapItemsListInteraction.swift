@@ -13,10 +13,12 @@ import MapKit
 class MapItemsListInteraction: NSObject {
     private let cells: [SDLChoiceCell]
     private let screenManager: SDLScreenManager
+    private let mapItems: [MKMapItem]
 
     init(screenManager: SDLScreenManager, mapItems: [MKMapItem]) {
         self.cells = MapItemsListInteraction.createChoices(from: mapItems)
         self.screenManager = screenManager
+        self.mapItems = mapItems
     }
 
     private class func createChoices(from mapItems: [MKMapItem]) -> [SDLChoiceCell] {
@@ -25,7 +27,7 @@ class MapItemsListInteraction: NSObject {
 
         for item in mapItems {
             if item.name != nil {
-                choiceCell = SDLChoiceCell(text: item.name!, secondaryText: item.description, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
+                choiceCell = SDLChoiceCell(text: item.name!, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
                 cells.append(choiceCell)
             } else {
                 let choiceCell = SDLChoiceCell(text: item.description, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
@@ -45,7 +47,9 @@ class MapItemsListInteraction: NSObject {
 
 extension MapItemsListInteraction: SDLChoiceSetDelegate {
     func choiceSet(_ choiceSet: SDLChoiceSet, didSelectChoice choice: SDLChoiceCell, withSource source: SDLTriggerSource, atRowIndex rowIndex: UInt) {
-        print(choice.text)
+        let mapItem = mapItems[Int(rowIndex)]
+        let dict: [String : MKMapItem] = ["mapItem": mapItem]
+        NotificationCenter.default.post(name: .sdl_centerMapOnPlace, object: dict)
     }
 
     func choiceSet(_ choiceSet: SDLChoiceSet, didReceiveError error: Error) {

@@ -15,57 +15,20 @@ class SearchManager: NSObject {
     var choiceCells = [SDLChoiceCell]()
     var results = [MKMapItem]()
 
-    func getSearchResults(from query:String) -> [MKMapItem] {
+    func searchFor(searchTerm: String, handler: @escaping (_ mapItems:[MKMapItem]?, _ error:Error?)-> Void) {
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = query
+        request.naturalLanguageQuery = searchTerm
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
-            if error == nil {
-                self.results = response!.mapItems
+            if error != nil {
+                handler(nil, error)
+                return
             }
-            // to do error handling
-        }
-        return results
-    }
 
-    func findCoffeeShops() -> [MKMapItem] {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "coffee"
-        let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
-            if error == nil {
-                self.results = response!.mapItems
+            if let response = response {
+                handler(response.mapItems, nil)
             }
-            // to do error handling
         }
-        return results
     }
-
-    func findRestaurants() -> [MKMapItem] {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "restaurants"
-        let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
-            if error == nil {
-                self.results = response!.mapItems
-            }
-            // to do error handling
-        }
-        return results
-    }
-
-    func findGasStations() -> [MKMapItem] {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "gas stations"
-        let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
-            if error == nil {
-                self.results = response!.mapItems
-            }
-            // to do error handling
-        }
-        return results
-    }
-
 
 }

@@ -104,7 +104,6 @@ class ProxyManager: NSObject {
 
     class func streamingMediaConfiguration(streamSettings: StreamSettings) -> SDLStreamingMediaConfiguration {
         let mapBoxViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
-
         let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: mapBoxViewController!)
         streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
 
@@ -216,7 +215,8 @@ private extension ProxyManager {
             if let userLocation = LocationManager.sharedManager.userLocation {
                 self.mapManager.centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
             } else {
-                // to do handle alert
+                Alert.presentUnableToFindLocation()
+                return
             }
         }
 

@@ -21,7 +21,7 @@ class MapManager: NSObject {
     var newMapCenterPoint: CGPoint = .zero
     var mapZoomLevel: Double = 0.0
 
-    func setupMapView(with mapView: MGLMapView, userLocation:CLLocation) {
+    func setupMapView(with mapView: MGLMapView, location:CLLocation) {
         self.mapView = mapView
 
         mapView.scaleBar.isHidden = true
@@ -32,7 +32,7 @@ class MapManager: NSObject {
         mapView.isRotateEnabled = false
         mapView.isPitchEnabled = false
 
-        let coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
+        let coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         mapView.setCenter(coordinate, zoomLevel: 12, animated: false)
 
         newMapCenterPoint = mapView.center

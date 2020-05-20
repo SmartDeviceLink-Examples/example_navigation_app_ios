@@ -13,7 +13,6 @@ import MapKit
 class KeyboardSearchInteraction: NSObject {
     private let screenManager: SDLScreenManager
     private var mapInteraction: MapItemsListInteraction?
-//    private var voiceSearchInteraction: VoiceSearchInteraction?
     let searchManager = SearchManager()
 
     init(screenManager: SDLScreenManager) {
@@ -29,26 +28,17 @@ extension KeyboardSearchInteraction: SDLKeyboardDelegate {
     func userDidSubmitInput(_ inputText: String, withEvent source: SDLKeyboardEvent) {
         switch source {
         case .submitted:
-            let results = searchManager.getSearchResults(from: inputText)
+            searchManager.searchFor(searchTerm: inputText) { (mapItems, error) in
+                if error != nil {
+                    Alert.presentSearchErrorAlert()
+                    return
+                }
 
-            var okSoftButton: SDLSoftButton {
-                return SDLSoftButton(type: .text, text: "OK", image: nil, highlighted: false, buttonId: 1, systemAction: nil, handler: nil)
+                if let mapItems = mapItems {
+                    self.mapInteraction = MapItemsListInteraction(screenManager: self.screenManager, mapItems: mapItems)
+                    self.mapInteraction?.present()
+                }
             }
-
-            guard !results.isEmpty else {
-                let alert = SDLAlert()
-                alert.duration = 5000 as NSNumber
-                alert.alertText1 = "No search results for"
-                alert.alertText2 = "\"\(inputText)\""
-                alert.softButtons = [okSoftButton]
-                alert.ttsChunks = [SDLTTSChunk(text: "No search results for \"\(inputText)\"", type: .text)]
-                ProxyManager.sharedManager.sdlManager.send(request: alert)
-
-                return
-            }
-
-            mapInteraction = MapItemsListInteraction(screenManager: screenManager, mapItems: results)
-            mapInteraction?.present()
         case .voice:
             print("voice")
             // to do
