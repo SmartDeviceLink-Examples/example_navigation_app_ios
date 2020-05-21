@@ -6,13 +6,12 @@
 //  Copyright © 2020 Livio Inc. All rights reserved.
 //
 
-import UIKit
-import SmartDeviceLink
 import Mapbox
 import MapKit
+import SmartDeviceLink
+import UIKit
 
 class MapBoxViewController: SDLCarWindowViewController {
-
     @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var menuButton: SDLMenuButton!
     @IBOutlet weak var searchButton: UIButton!
@@ -20,6 +19,40 @@ class MapBoxViewController: SDLCarWindowViewController {
     @IBOutlet weak var zoomOutButton: UIButton!
     @IBOutlet weak var zoomInButton: UIButton!
 
+    private var mapViewCenterPoint: CGPoint! = .zero
+    private var newMapCenterPoint: CGPoint = .zero
+    private var mapZoomLevel: Double = 0.0
+    var mapManager = MapManager()
+    private var annotation: MGLPointAnnotation?
+    public private(set) var sdlMapViewTouchManager: SDLMapViewTouchManager?
+    private var mapTouchHandler: TouchHandler?
+    private var menuTouchHandler: TouchHandler?
+    private var userLocation: CLLocation?
+    private var subscribedButtonsHidden = false
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(presentOffScreen), name: .offScreenConnected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getUserLocation), name: .locationUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideSubscribedButtons), name: .hideSubscribedButtons, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showHiddenButtons), name: .showHiddenButtons, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .sdl_centerMapOnPlace, object: nil)
+
+        DispatchQueue.main.async {
+            self.getUserLocation()
+            self.setup()
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
+    }
+}
+
+// MARK: - Button Actions
+
+extension MapBoxViewController {
     @IBAction func searchButtonTapped(_ sender: UIButton) { performSearch() }
     @IBAction func zoomInButtonTapped(_ sender: UIButton) { mapManager.zoomIn() }
     @IBAction func zoomOutButtonTapped(_ sender: UIButton) { mapManager.zoomOut() }
@@ -33,62 +66,21 @@ class MapBoxViewController: SDLCarWindowViewController {
             alert.addAction(action)
         }
     }
-
-    private var mapViewCenterPoint: CGPoint! = .zero
-    private var newMapCenterPoint: CGPoint = .zero
-    private var mapZoomLevel: Double = 0.0
-    var mapManager = MapManager()
-    private var annotation: MGLPointAnnotation?
-    public private(set) var sdlMapViewTouchManager: SDLMapViewTouchManager?
-    var mapTouchHandler: TouchHandler?
-    var menuTouchHandler: TouchHandler?
-    var userLocation: CLLocation?
-    private var subscribedButtonsHidden = false
-    var searchManager = SearchManager()
-    var mapInteraction: MapItemsListInteraction?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(presentOffScreen), name: .offScreenConnected, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(getUserLocation), name: .locationUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideSubscribedButtons), name: .hideSubscribedButtons, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showHiddenButtons), name: .showHiddenButtons, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .sdl_centerMapOnPlace, object: nil)
-
-        getUserLocation()
-        setupTouchManager()
-        setupButtons()
-
-        if NotificationQueue.shared.lastNotification != nil {
-            NotificationCenter.default.post(name: .sdl_centerMapOnPlace, object: nil)
-        }
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
-    }
 }
 
 // MARK: - Helper Functions
 
 extension MapBoxViewController {
+
+    func setup() {
+        setupTouchManager()
+        setupButtons()
+    }
+
     private func setupTouchManager() {
         mapTouchHandler = mapManager.mapManagerTouchHandler
         menuTouchHandler = menuButton.buttonTouchHandler
         ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
-    }
-
-    @objc func getUserLocation() {
-        if let location = LocationManager.sharedManager.userLocation {
-            mapView.showsUserLocation = true
-            mapManager.setupMapView(with: mapView, location: location)
-            userLocation = location
-        } else {
-            // Can't find user location, setting it to Detroit
-            userLocation = CLLocation(latitude: 42.331429, longitude: -83.045753)
-            mapManager.setupMapView(with: mapView, location: userLocation!)
-        }
     }
 
     private func setupButtons() {
@@ -120,6 +112,21 @@ extension MapBoxViewController {
         present(navController, animated: true, completion: nil)
     }
 
+
+    // MARK: - Notification
+
+    @objc private func getUserLocation() {
+        if let location = LocationManager.sharedManager.userLocation {
+            mapView.showsUserLocation = true
+            mapManager.setupMapView(with: mapView, location: location)
+            userLocation = location
+        } else {
+            // Can't find user location, setting it to Detroit
+            userLocation = CLLocation(latitude: 42.331429, longitude: -83.045753)
+            mapManager.setupMapView(with: mapView, location: userLocation!)
+        }
+    }
+
     @objc private func presentOffScreen() {
         let storyboard = UIStoryboard.init(name: "OffScreen", bundle: nil)
         let offScreenVC = storyboard.instantiateViewController(withIdentifier: "OffScreen") as! OffScreenViewController
@@ -128,22 +135,18 @@ extension MapBoxViewController {
     }
 
     @objc private func hideSubscribedButtons() {
-        DispatchQueue.main.async {
-            self.centerMapButton.isHidden = true
-            self.zoomInButton.isHidden = true
-            self.zoomOutButton.isHidden = true
-            self.subscribedButtonsHidden = true
-        }
+        self.centerMapButton.isHidden = true
+        self.zoomInButton.isHidden = true
+        self.zoomOutButton.isHidden = true
+        self.subscribedButtonsHidden = true
     }
 
     @objc private func showHiddenButtons() {
-        DispatchQueue.main.async {
-            if self.subscribedButtonsHidden {
+        if self.subscribedButtonsHidden {
             self.centerMapButton.isHidden = false
             self.zoomInButton.isHidden = false
             self.zoomOutButton.isHidden = false
             self.subscribedButtonsHidden = false
-        }
         }
     }
 }
@@ -172,10 +175,84 @@ extension MapBoxViewController {
                 annotation = MGLPointAnnotation()
                 annotation!.coordinate = mapItem.placemark.coordinate
                 self.mapView.addAnnotation(annotation!)
-                mapManager.centerLocation(lat: annotation!.coordinate.latitude, long: annotation!.coordinate.longitude)
+                let location = CLLocation(latitude: annotation!.coordinate.latitude, longitude: annotation!.coordinate.longitude)
+                self.mapManager.setupMapView(with: mapView, location: location)
             }
         }
     }
 }
 
 
+// MARK: - SDLTouchManagerDelegate
+
+extension MapBoxViewController: SDLTouchManagerDelegate {
+    func touchManager(_ manager: SDLTouchManager, didReceiveSingleTapFor view: UIView?, at point: CGPoint) {
+        if let view = view {
+            switch view {
+            case is UIButton:
+                if menuButton.frame.contains(point) {
+                    guard let touchHandler = menuTouchHandler else { return }
+                    touchHandler(point, nil, .singleTap)
+                }
+
+                if searchButton.frame.contains(point) { presentKeyboard() }
+                if zoomInButton.frame.contains(point) { mapManager.zoomIn() }
+                if zoomOutButton.frame.contains(point) { mapManager.zoomOut() }
+                if centerMapButton.frame.contains(point) {
+                    mapManager.centerLocation(lat: userLocation!.coordinate.latitude, long: userLocation!.coordinate.longitude)
+                }
+
+            default:break
+            }
+        } else {
+            guard let touchHandler = mapTouchHandler else { return }
+            touchHandler(point, nil, .singleTap)
+        }
+    }
+
+    func presentKeyboard() {
+        let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
+        keyboard.present()
+    }
+
+    func touchManager(_ manager: SDLTouchManager, didReceiveDoubleTapFor view: UIView?, at point: CGPoint) {
+        // Double tap will be disabled if the `tapTimeThreshold` is set to 0
+        guard let touchHandler = self.mapTouchHandler else { return }
+        touchHandler(point, nil, .doubleTap)
+    }
+
+    // MARK: - Pan
+
+    func touchManager(_ manager: SDLTouchManager, panningDidStartIn view: UIView?, at point: CGPoint) {
+        guard let touchHandler = self.mapTouchHandler else { return }
+        touchHandler(point, nil, .panStarted)
+    }
+
+    func touchManager(_ manager: SDLTouchManager, didReceivePanningFrom fromPoint: CGPoint, to toPoint: CGPoint) {
+        guard let touchHandler = mapTouchHandler else { return }
+        let displacementPoint = fromPoint.displacement(toPoint: toPoint)
+        touchHandler(displacementPoint, nil, .panMoved)
+    }
+
+    func touchManager(_ manager: SDLTouchManager, panningDidEndIn view: UIView?, at point: CGPoint) {
+        guard let touchHandler = self.mapTouchHandler else { return }
+        touchHandler(point, nil, .panEnded)
+    }
+
+    // MARK: - Pinch
+
+    func touchManager(_ manager: SDLTouchManager, pinchDidStartIn view: UIView?, atCenter point: CGPoint) {
+        guard let touchHandler = self.mapTouchHandler else { return }
+        touchHandler(point, nil, .pinchStarted)
+    }
+
+    func touchManager(_ manager: SDLTouchManager, didReceivePinchAtCenter point: CGPoint, withScale scale: CGFloat) {
+        guard let touchHandler = mapTouchHandler else { return }
+        touchHandler(point, scale, .pinchMoved)
+    }
+
+    func touchManager(_ manager: SDLTouchManager, pinchDidEndIn view: UIView?, atCenter point: CGPoint) {
+        guard let touchHandler = self.mapTouchHandler else { return }
+        touchHandler(point, nil, .pinchEnded)
+    }
+}

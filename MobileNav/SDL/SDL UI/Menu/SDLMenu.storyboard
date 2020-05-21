@@ -26,10 +26,10 @@
                                 <state key="normal" title="&lt; Back To Map"/>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLb-Qv-2xq">
-                                <rect key="frame" x="20" y="48" width="335" height="40"/>
+                                <rect key="frame" x="20" y="48" width="335" height="45"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ISs-JF-qEa"/>
+                                    <constraint firstAttribute="height" constant="45" id="ISs-JF-qEa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Search">
@@ -37,10 +37,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg9-RD-71G">
-                                <rect key="frame" x="20" y="96" width="335" height="40"/>
+                                <rect key="frame" x="20" y="101" width="335" height="45"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="dFO-fp-gcy"/>
+                                    <constraint firstAttribute="height" constant="45" id="dFO-fp-gcy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Find Restaurants Near Me">
@@ -48,10 +48,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpA-35-OZG">
-                                <rect key="frame" x="20" y="144" width="335" height="40"/>
+                                <rect key="frame" x="20" y="154" width="335" height="45"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="22c-86-YZq"/>
+                                    <constraint firstAttribute="height" constant="45" id="22c-86-YZq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Find Coffee Near Me">
@@ -59,10 +59,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbG-3a-DZH">
-                                <rect key="frame" x="20" y="192" width="335" height="40"/>
+                                <rect key="frame" x="20" y="207" width="335" height="45"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="BG6-fZ-SxP"/>
+                                    <constraint firstAttribute="height" constant="45" id="BG6-fZ-SxP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Find Gas Stations Near Me">
@@ -70,10 +70,10 @@
                                 </state>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuF-l3-r2o">
-                                <rect key="frame" x="20" y="240" width="335" height="40"/>
+                                <rect key="frame" x="20" y="260" width="335" height="45"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="lB9-fm-DP5"/>
+                                    <constraint firstAttribute="height" constant="45" id="lB9-fm-DP5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Exit Application">

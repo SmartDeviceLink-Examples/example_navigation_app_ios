@@ -37,6 +37,10 @@ class MapManager: NSObject {
 
         newMapCenterPoint = mapView.center
         mapZoomLevel = mapView.zoomLevel
+
+        if NotificationQueue.shared.lastNotification != nil {
+            NotificationCenter.default.post(name: .sdl_centerMapOnPlace, object: nil)
+        }
     }
 
     func updateScreen() {

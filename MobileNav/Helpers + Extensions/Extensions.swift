@@ -42,3 +42,28 @@ extension Notification.Name {
     /** A notification that informs the receiver center map on place */
     static let sdl_centerMapOnPlace = Notification.Name("sdl_centerMapOnPlace")
 }
+
+extension Array {
+    func sdl_addSuffixToDuplicates() -> [String] {
+        var dict = [String: (itemCount: Int, indexOfFirstItem: Int)]()
+
+        var newArray = [String]()
+
+        for (index, item) in self.enumerated() {
+            let itemCountAndFirstIndex = dict[item as! String, default: (0, 0)]
+
+            if itemCountAndFirstIndex.itemCount == 0 {
+                newArray.append(item as! String)
+                dict[item as! String] = (1, index)
+            } else {
+                if itemCountAndFirstIndex.itemCount == 1 {
+                    newArray[itemCountAndFirstIndex.indexOfFirstItem] = "\(item) (1)"
+                }
+
+                newArray.append("\(item) (\(itemCountAndFirstIndex.itemCount + 1))")
+                dict[item as! String]?.itemCount += 1
+            }
+        }
+        return newArray
+    }
+}

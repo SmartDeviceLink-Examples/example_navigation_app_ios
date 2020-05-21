@@ -25,10 +25,12 @@ class ProxyManager: NSObject {
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
     private var isOffScreen = false
-    var proxyState = ProxyState.stopped
-    var rpcVersion: Int?
-    var mapManager = MapManager()
-    var mapBoxViewController: MapBoxViewController?
+    public private(set) var proxyState = ProxyState.stopped
+    public private(set) var rpcVersion: Int?
+    private var mapManager = MapManager()
+    private var mapBoxViewController: MapBoxViewController?
+    public private(set) var menuManager: MenuManager!
+    private var firstHMINotNil = true
 
     private override init() {
         super.init()
@@ -51,6 +53,7 @@ class ProxyManager: NSObject {
                 // If RPC version is 6.0, subscribe buttons and hide them on view controller
                 if self.rpcVersion != nil && self.rpcVersion! >= 6 {
                     self.subscribeButtons()
+                    self.menuManager = MenuManager(with: self.sdlManager)
                     DispatchQueue.main.async {
                         NotificationCenter.default.post(Notification(name: .hideSubscribedButtons))
                     }
@@ -103,8 +106,7 @@ class ProxyManager: NSObject {
     }
 
     class func streamingMediaConfiguration(streamSettings: StreamSettings) -> SDLStreamingMediaConfiguration {
-        let mapBoxViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
-        let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: mapBoxViewController!)
+        let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: SDLViewControllers.map!)
         streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
 
         return streamingMediaConfig
@@ -167,6 +169,10 @@ extension ProxyManager: SDLManagerDelegate {
             proxyState = .searching
         }
 
+        guard !firstHMINotNil else {
+            return
+        }
+
         if isOffScreen {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(Notification(name: .offScreenDisconnected))
@@ -176,10 +182,13 @@ extension ProxyManager: SDLManagerDelegate {
         DispatchQueue.main.async {
             NotificationCenter.default.post(Notification(name: .showHiddenButtons))
         }
+
+        firstHMINotNil = true
     }
 
     func hmiLevel(_ oldLevel: SDLHMILevel, didChangeToLevel newLevel: SDLHMILevel) {
-        if newLevel != .none {
+
+        if newLevel != .none && firstHMINotNil == true {
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = true
             }

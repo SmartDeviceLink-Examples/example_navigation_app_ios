@@ -6,20 +6,19 @@
 //  Copyright © 2020 Livio Inc. All rights reserved.
 //
 
-import UIKit
 import MapKit
+import UIKit
 
 protocol SearchViewControllerDelegate: class {
     func didSelectPlace(coordinate:CLLocationCoordinate2D)
 }
 
 class SearchViewController: UIViewController {
-
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
 
-    var searchCompleter = MKLocalSearchCompleter()
-    var searchResults = [MKLocalSearchCompletion]()
+    private var searchCompleter = MKLocalSearchCompleter()
+    private var searchResults = [MKLocalSearchCompletion]()
     weak var delegate: SearchViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -29,7 +28,7 @@ class SearchViewController: UIViewController {
 
 }
 
-// MARK: - UITableViewDelegate and UITableViewDataSource Methods
+// MARK: - UITableViewDelegate & UITableViewDataSource
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

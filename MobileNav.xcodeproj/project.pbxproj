@@ -15,7 +15,6 @@
 		10463E5C246DE1A000B19762 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10463E5B246DE1A000B19762 /* Extensions.swift */; };
 		1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1047312324476BB800819B15 /* SDLMenu.storyboard */; };
 		1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047312524476C4C00819B15 /* SDLMenuViewController.swift */; };
-		1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */; };
 		107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */; };
 		107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571C2446466A000BA7C6 /* SDLMenuButton.swift */; };
 		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
@@ -51,7 +50,6 @@
 		10463E5B246DE1A000B19762 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1047312324476BB800819B15 /* SDLMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMenu.storyboard; sourceTree = "<group>"; };
 		1047312524476C4C00819B15 /* SDLMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuViewController.swift; sourceTree = "<group>"; };
-		1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapBoxViewController+SDL.swift"; sourceTree = "<group>"; };
 		107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
 		107A571C2446466A000BA7C6 /* SDLMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuButton.swift; sourceTree = "<group>"; };
 		107A571E2446508B000BA7C6 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
@@ -120,11 +118,9 @@
 		10463E5A246DE18200B19762 /* Helpers + Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				10F4A48E2476080300DAB205 /* Managers and Singletons */,
 				10463E5B246DE1A000B19762 /* Extensions.swift */,
-				10A40388245A1CD70040E83D /* SearchManager.swift */,
 				10F621E42473239F00BDCC88 /* AppUserDefaults.swift */,
-				10E90B2C24749B84003C41ED /* LocationManager.swift */,
-				10F4A48C2475C44300DAB205 /* NotificationQueue.swift */,
 			);
 			path = "Helpers + Extensions";
 			sourceTree = "<group>";
@@ -225,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				100CC802243CD18A003C9EDE /* MapBoxViewController.swift */,
-				1055D626245B51EA003F84EC /* MapBoxViewController+SDL.swift */,
 				10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */,
 			);
 			path = Map;
@@ -247,6 +242,16 @@
 				107A571E2446508B000BA7C6 /* MapManager.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		10F4A48E2476080300DAB205 /* Managers and Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				10A40388245A1CD70040E83D /* SearchManager.swift */,
+				10E90B2C24749B84003C41ED /* LocationManager.swift */,
+				10F4A48C2475C44300DAB205 /* NotificationQueue.swift */,
+			);
+			path = "Managers and Singletons";
 			sourceTree = "<group>";
 		};
 		ED0354DD10141251D757372C /* Frameworks */ = {
@@ -386,7 +391,6 @@
 				10F4A48B24759D0B00DAB205 /* Alert.swift in Sources */,
 				10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */,
 				1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */,
-				1055D627245B51EA003F84EC /* MapBoxViewController+SDL.swift in Sources */,
 				10E90B2D24749B84003C41ED /* LocationManager.swift in Sources */,
 				10F621F1247467C700BDCC88 /* KeyboardSearchInteraction.swift in Sources */,
 				10E12C84243E2A1200C4B1F7 /* SettingsViewController.swift in Sources */,

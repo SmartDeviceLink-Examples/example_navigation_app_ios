@@ -34,8 +34,12 @@ class SDLMenuViewController: SDLCarWindowViewController {
     }
 
     func returnToMap() {
-        let mapVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
-        ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapVC
+        guard let mapViewController = SDLViewControllers.map else {
+            SDLLog.e("Error loading the SDL map view")
+            return
+        }
+        ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapViewController
+        mapViewController.setup()
     }
 }
 

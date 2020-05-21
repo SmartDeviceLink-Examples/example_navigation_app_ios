@@ -25,14 +25,17 @@ class MapItemsListInteraction: NSObject {
         var cells = [SDLChoiceCell]()
         var choiceCell: SDLChoiceCell
 
+        var itemNames = [String]()
         for item in mapItems {
             if item.name != nil {
-                choiceCell = SDLChoiceCell(text: item.name!, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
-                cells.append(choiceCell)
-            } else {
-                let choiceCell = SDLChoiceCell(text: item.description, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
-                cells.append(choiceCell)
+                itemNames.append(item.name!)
             }
+        }
+        let newArray = itemNames.sdl_addSuffixToDuplicates()
+
+        for placeName in newArray {
+            choiceCell = SDLChoiceCell(text: placeName, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
+            cells.append(choiceCell)
         }
 
         return cells
@@ -50,6 +53,12 @@ extension MapItemsListInteraction: SDLChoiceSetDelegate {
         let mapItem = mapItems[Int(rowIndex)]
         let dict: [String : MKMapItem] = ["mapItem": mapItem]
         NotificationCenter.default.post(name: .sdl_centerMapOnPlace, object: dict)
+        guard let mapViewController = SDLViewControllers.map else {
+            SDLLog.e("Error loading the SDL map view")
+            return
+        }
+        ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapViewController
+        mapViewController.setup()
     }
 
     func choiceSet(_ choiceSet: SDLChoiceSet, didReceiveError error: Error) {

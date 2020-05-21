@@ -6,11 +6,10 @@
 //  Copyright © 2020 Livio Inc. All rights reserved.
 //
 
-import UIKit
 import SmartDeviceLink
+import UIKit
 
 class SettingsViewController: UIViewController {
-
     private var settingOptions = [String]()
     private var selectedRenderType: RenderType?
     private var selectedStreamType: StreamType?
@@ -21,6 +20,7 @@ class SettingsViewController: UIViewController {
     }
 
     @IBOutlet weak var settingsTableView: UITableView!
+    @IBOutlet weak var startButton: UIButton!
     @IBAction func startPressed(_ sender: UIButton) {
         switch proxyState {
         case .stopped:
@@ -35,8 +35,6 @@ class SettingsViewController: UIViewController {
             updateButtonProxyState(proxyState)
         }
     }
-
-    @IBOutlet weak var startButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +56,18 @@ class SettingsViewController: UIViewController {
     }
 
     private func startSDL(with renderType:RenderType, streamType:StreamType) {
+
+        // Save selected options to user defaults
         AppUserDefaults.shared.renderType = renderType
         AppUserDefaults.shared.streamType = streamType
 
+        // Connect SDL with selected settings
         let streamSettings = StreamSettings(renderType: renderType, streamType:streamType)
         ProxyManager.sharedManager.connect(with: SDLAppConstants.connectionType, streamSettings: streamSettings)
     }
 }
+
+// MARK: - Update Button State
 
 extension SettingsViewController {
     func updateButtonProxyState(_ newState: ProxyState) {
@@ -92,6 +95,8 @@ extension SettingsViewController {
     }
 }
 
+// MARK: - Selecting Options
+
 extension SettingsViewController: SettingOptionsViewControllerDelegate {
     func optionSelected(option: Int) {
         if settingOptions == RenderType.allCases.map({ $0.description }) {
@@ -102,6 +107,8 @@ extension SettingsViewController: SettingOptionsViewControllerDelegate {
         settingsTableView.reloadData()
     }
 }
+
+// MARK: - UITableViewDelegate & UITableViewDataSource
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

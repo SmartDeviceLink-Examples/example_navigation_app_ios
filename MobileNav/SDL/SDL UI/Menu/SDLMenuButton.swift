@@ -53,8 +53,12 @@ extension SDLMenuButton {
 
     private func buttonSelected() {
         if ProxyManager.sharedManager.rpcVersion! < 6 {
-            let menuViewController = UIStoryboard(name: "SDLMenu", bundle: nil).instantiateInitialViewController() as? SDLMenuViewController
+            guard let menuViewController = SDLViewControllers.menu else {
+                print("Error loading the SDL menu view controller")
+                return
+            }
             ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
+            menuViewController.setupTouchManager()
             return
         }
         ProxyManager.sharedManager.sdlManager.screenManager.openMenu()
