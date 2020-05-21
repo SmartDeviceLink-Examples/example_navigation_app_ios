@@ -16,6 +16,7 @@
 		1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1047312324476BB800819B15 /* SDLMenu.storyboard */; };
 		1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047312524476C4C00819B15 /* SDLMenuViewController.swift */; };
 		107203FD2476C5E100502835 /* SecretValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107203FC2476C5E100502835 /* SecretValues.swift */; };
+		107203FF2476D81A00502835 /* VoiceSearchInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107203FE2476D81A00502835 /* VoiceSearchInteraction.swift */; };
 		107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */; };
 		107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571C2446466A000BA7C6 /* SDLMenuButton.swift */; };
 		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
@@ -52,6 +53,7 @@
 		1047312324476BB800819B15 /* SDLMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SDLMenu.storyboard; sourceTree = "<group>"; };
 		1047312524476C4C00819B15 /* SDLMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuViewController.swift; sourceTree = "<group>"; };
 		107203FC2476C5E100502835 /* SecretValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretValues.swift; sourceTree = "<group>"; };
+		107203FE2476D81A00502835 /* VoiceSearchInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSearchInteraction.swift; sourceTree = "<group>"; };
 		107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
 		107A571C2446466A000BA7C6 /* SDLMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuButton.swift; sourceTree = "<group>"; };
 		107A571E2446508B000BA7C6 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				10EA2DF4246DCA3800A4DB3A /* SDL UI */,
 				10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */,
 				10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */,
+				107203FE2476D81A00502835 /* VoiceSearchInteraction.swift */,
 				10F4A48A24759D0B00DAB205 /* Alert.swift */,
 			);
 			path = SDL;
@@ -406,6 +409,7 @@
 				107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */,
 				108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */,
 				10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */,
+				107203FF2476D81A00502835 /* VoiceSearchInteraction.swift in Sources */,
 				101132DB2437D47C00D15779 /* SDLAppConstants.swift in Sources */,
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
 				10463E59246DDB4700B19762 /* MenuManager.swift in Sources */,

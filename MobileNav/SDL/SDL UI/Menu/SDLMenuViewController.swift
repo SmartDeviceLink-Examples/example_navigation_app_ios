@@ -65,7 +65,7 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
                         }
 
                         if let mapItems = mapItems {
-                            self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, mapItems: mapItems)
+                            self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "restaurants", mapItems: mapItems)
                             self.mapInteraction?.present()
                         }
                     }
@@ -79,7 +79,7 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
                         }
 
                         if let mapItems = mapItems {
-                            self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, mapItems: mapItems)
+                            self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "coffee shops", mapItems: mapItems)
                             self.mapInteraction?.present()
                         }
                     }
@@ -93,7 +93,7 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
                         }
 
                         if let mapItems = mapItems {
-                            self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, mapItems: mapItems)
+                            self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "gas stations", mapItems: mapItems)
                             self.mapInteraction?.present()
                         }
                     }

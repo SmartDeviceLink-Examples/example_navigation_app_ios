@@ -39,7 +39,7 @@ class MapManager: NSObject {
         mapZoomLevel = mapView.zoomLevel
 
         if NotificationQueue.shared.lastNotification != nil {
-            NotificationCenter.default.post(name: .sdl_centerMapOnPlace, object: nil)
+            NotificationCenter.default.post(name: .centerMapOnPlace, object: nil)
         }
     }
 

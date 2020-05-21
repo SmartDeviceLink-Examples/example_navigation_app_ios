@@ -13,10 +13,13 @@ class MenuManager: NSObject {
     private let sdlManager: SDLManager
     private let searchManager = SearchManager()
     private var mapInteraction: MapItemsListInteraction?
+    private var isDriverDistracted = false
 
     init(with sdlManager:SDLManager) {
         self.sdlManager = sdlManager
         super.init()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(driverDistractionDidChange(_:)), name: .SDLDidChangeDriverDistractionState, object: nil)
     }
 
     func start() {
@@ -27,6 +30,11 @@ class MenuManager: NSObject {
         var cells: [SDLMenuCell] = []
 
         let searchCell = SDLMenuCell(title: "Search", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
+            if self.isDriverDistracted {
+                Alert.presentDriverDistraction()
+                return
+            }
+
             let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
             keyboard.present()
         }
@@ -42,7 +50,7 @@ class MenuManager: NSObject {
                     }
 
                     if let mapItems = mapItems {
-                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, mapItems: mapItems)
+                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "restaurants", mapItems: mapItems)
                         self.mapInteraction?.present()
                     }
                 }
@@ -62,7 +70,7 @@ class MenuManager: NSObject {
                     }
 
                     if let mapItems = mapItems {
-                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, mapItems: mapItems)
+                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "coffee shops", mapItems: mapItems)
                         self.mapInteraction?.present()
                     }
                 }
@@ -82,7 +90,7 @@ class MenuManager: NSObject {
                     }
 
                     if let mapItems = mapItems {
-                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, mapItems: mapItems)
+                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "gas stations", mapItems: mapItems)
                         self.mapInteraction?.present()
                     }
                 }
@@ -95,5 +103,11 @@ class MenuManager: NSObject {
     }
 }
 
+// MARK: - Driver Distraction Status
 
-
+private extension MenuManager {
+    @objc func driverDistractionDidChange(_ notification: SDLRPCNotificationNotification) {
+        guard let driverDistraction = notification.notification as? SDLOnDriverDistraction else { return }
+        isDriverDistracted = (driverDistraction.state == .on)
+    }
+}

@@ -13,6 +13,7 @@ import UIKit
 class KeyboardSearchInteraction: NSObject {
     private let screenManager: SDLScreenManager
     private var mapInteraction: MapItemsListInteraction?
+    private var voiceSearchInteraction: VoiceSearchInteraction?
     let searchManager = SearchManager()
 
     init(screenManager: SDLScreenManager) {
@@ -35,13 +36,13 @@ extension KeyboardSearchInteraction: SDLKeyboardDelegate {
                 }
 
                 if let mapItems = mapItems {
-                    self.mapInteraction = MapItemsListInteraction(screenManager: self.screenManager, mapItems: mapItems)
+                    self.mapInteraction = MapItemsListInteraction(screenManager: self.screenManager, searchText: inputText, mapItems: mapItems)
                     self.mapInteraction?.present()
                 }
             }
         case .voice:
-            print("voice")
-            // to do
+            voiceSearchInteraction = VoiceSearchInteraction(screenManager: self.screenManager)
+            voiceSearchInteraction?.present()
         default:
             fatalError()
         }

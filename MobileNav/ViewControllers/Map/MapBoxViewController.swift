@@ -36,7 +36,7 @@ class MapBoxViewController: SDLCarWindowViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(getUserLocation), name: .locationUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideSubscribedButtons), name: .hideSubscribedButtons, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showHiddenButtons), name: .showHiddenButtons, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .sdl_centerMapOnPlace, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .centerMapOnPlace, object: nil)
 
         DispatchQueue.main.async {
             self.getUserLocation()
