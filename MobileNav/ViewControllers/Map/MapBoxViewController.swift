@@ -38,10 +38,7 @@ class MapBoxViewController: SDLCarWindowViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showHiddenButtons), name: .showHiddenButtons, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .centerMapOnPlace, object: nil)
 
-        DispatchQueue.main.async {
-            self.getUserLocation()
-            self.setup()
-        }
+        setup()
     }
 
     override func viewDidLayoutSubviews() {
@@ -73,8 +70,10 @@ extension MapBoxViewController {
 extension MapBoxViewController {
 
     func setup() {
-        setupTouchManager()
-        setupButtons()
+        DispatchQueue.main.async {
+            self.setupTouchManager()
+            self.setupButtons()
+        }
     }
 
     private func setupTouchManager() {
@@ -120,10 +119,6 @@ extension MapBoxViewController {
             mapView.showsUserLocation = true
             mapManager.setupMapView(with: mapView, location: location)
             userLocation = location
-        } else {
-            // Can't find user location, setting it to Detroit
-            userLocation = CLLocation(latitude: 42.331429, longitude: -83.045753)
-            mapManager.setupMapView(with: mapView, location: userLocation!)
         }
     }
 
@@ -135,18 +130,22 @@ extension MapBoxViewController {
     }
 
     @objc private func hideSubscribedButtons() {
-        self.centerMapButton.isHidden = true
-        self.zoomInButton.isHidden = true
-        self.zoomOutButton.isHidden = true
-        self.subscribedButtonsHidden = true
+        DispatchQueue.main.async {
+            self.centerMapButton.isHidden = true
+            self.zoomInButton.isHidden = true
+            self.zoomOutButton.isHidden = true
+            self.subscribedButtonsHidden = true
+        }
     }
 
     @objc private func showHiddenButtons() {
-        if self.subscribedButtonsHidden {
-            self.centerMapButton.isHidden = false
-            self.zoomInButton.isHidden = false
-            self.zoomOutButton.isHidden = false
-            self.subscribedButtonsHidden = false
+        DispatchQueue.main.async {
+            if self.subscribedButtonsHidden {
+                self.centerMapButton.isHidden = false
+                self.zoomInButton.isHidden = false
+                self.zoomOutButton.isHidden = false
+                self.subscribedButtonsHidden = false
+            }
         }
     }
 }
@@ -169,14 +168,16 @@ extension MapBoxViewController {
     @objc func centerMapOnLocation(_ notification: Notification) {
         if let dict = notification.object as? [String: MKMapItem] {
             if let mapItem = dict["mapItem"] {
-                if annotation != nil {
-                    self.mapView.removeAnnotation(annotation!)
+                DispatchQueue.main.async {
+                    if self.annotation != nil {
+                        self.mapView.removeAnnotation(self.annotation!)
+                    }
+                    self.annotation = MGLPointAnnotation()
+                    self.annotation!.coordinate = mapItem.placemark.coordinate
+                    self.mapView.addAnnotation(self.annotation!)
+                    let location = CLLocation(latitude: self.annotation!.coordinate.latitude, longitude: self.annotation!.coordinate.longitude)
+                    self.mapManager.setupMapView(with: self.mapView, location: location)
                 }
-                annotation = MGLPointAnnotation()
-                annotation!.coordinate = mapItem.placemark.coordinate
-                self.mapView.addAnnotation(annotation!)
-                let location = CLLocation(latitude: annotation!.coordinate.latitude, longitude: annotation!.coordinate.longitude)
-                self.mapManager.setupMapView(with: mapView, location: location)
             }
         }
     }

@@ -181,10 +181,7 @@ extension ProxyManager: SDLManagerDelegate {
             }
         }
 
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(Notification(name: .showHiddenButtons))
-        }
-
+        NotificationCenter.default.post(Notification(name: .showHiddenButtons))
         firstHMINotNil = true
     }
 

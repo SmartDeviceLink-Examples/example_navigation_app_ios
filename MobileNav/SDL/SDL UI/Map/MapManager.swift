@@ -47,14 +47,13 @@ class MapManager: NSObject {
         let mapCenterPoint = self.mapViewCenterPoint
         let newMapCenterPoint = self.newMapCenterPoint
         guard mapCenterPoint != newMapCenterPoint else { return }
-
-        DispatchQueue.main.async { [unowned self] in
-            // Set new center
-            let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: self.mapView)
-            self.mapView.setCenter(newMapCenterCoordinate, animated: false)
-            self.newMapCenterPoint = self.mapView.center
-            self.mapView.zoomLevel = self.mapZoomLevel
-        }
+        
+        
+        // Set new center
+        let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: self.mapView)
+        self.mapView.setCenter(newMapCenterCoordinate, animated: false)
+        self.newMapCenterPoint = self.mapView.center
+        self.mapView.zoomLevel = self.mapZoomLevel
     }
 
     func zoomIn() {

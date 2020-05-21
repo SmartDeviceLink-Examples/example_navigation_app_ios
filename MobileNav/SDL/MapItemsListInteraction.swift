@@ -27,18 +27,11 @@ class MapItemsListInteraction: NSObject {
         var cells = [SDLChoiceCell]()
         var choiceCell: SDLChoiceCell
 
-        // Make duplicate place names unique
-        var itemNames = [String]()
         for item in mapItems {
             if item.name != nil {
-                itemNames.append(item.name!)
+                choiceCell = SDLChoiceCell(text: item.name!, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
+                cells.append(choiceCell)
             }
-        }
-        let newArray = itemNames.sdl_addSuffixToDuplicates()
-
-        for placeName in newArray {
-            choiceCell = SDLChoiceCell(text: placeName, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
-            cells.append(choiceCell)
         }
 
         return cells
@@ -50,8 +43,30 @@ class MapItemsListInteraction: NSObject {
             return
         }
 
-        let choiceSet = SDLChoiceSet(title: "Search Results", delegate: self, layout: .list, timeout: 30, initialPromptString: "Search Results", timeoutPromptString: "Search selection timed out", helpPromptString: nil, vrHelpList: nil, choices: cells)
+        let fixedDuplicateCells = fixDuplicates(cells: cells)
+
+        let choiceSet = SDLChoiceSet(title: "Search Results", delegate: self, layout: .list, timeout: 30, initialPromptString: "Search Results", timeoutPromptString: "Search selection timed out", helpPromptString: nil, vrHelpList: nil, choices: fixedDuplicateCells)
         screenManager.present(choiceSet, mode: .manualOnly)
+    }
+
+    func fixDuplicates(cells: [SDLChoiceCell]) -> [SDLChoiceCell] {
+        var duplicateCount: [String: Int] = [:]
+        var newCells: [SDLChoiceCell] = []
+        cells.forEach { (cell: SDLChoiceCell) in
+            let newCell: SDLChoiceCell
+            if duplicateCount[cell.text] == nil {
+                duplicateCount[cell.text] = 1
+                newCell = cell
+            } else {
+                let newText = "\(cell.text) (\(duplicateCount[cell.text]!))"
+                newCell = SDLChoiceCell(text: newText, secondaryText: cell.secondaryText, tertiaryText: cell.tertiaryText, voiceCommands: cell.voiceCommands, artwork: cell.artwork, secondaryArtwork: cell.secondaryArtwork)
+                duplicateCount[cell.text] = duplicateCount[cell.text]! + 1
+            }
+
+            newCells.append(newCell)
+        }
+
+        return newCells
     }
 }
 

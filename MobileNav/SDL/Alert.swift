@@ -48,7 +48,7 @@ class Alert {
         alert.alertText1 = "Driver distraction is currently on"
         alert.alertText2 = "Please try again when it is safe to do so"
         alert.softButtons = [okSoftButton]
-        alert.ttsChunks = [SDLTTSChunk(text: "Not supported", type: .text)]
+        alert.ttsChunks = [SDLTTSChunk(text: "Driver Distraction", type: .text)]
 
         ProxyManager.sharedManager.sdlManager.send(request: alert)
     }
