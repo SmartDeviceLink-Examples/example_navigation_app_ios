@@ -15,13 +15,10 @@ class AppUserDefaults {
     }
 
     static let shared = AppUserDefaults()
-
     static func setDefaults() {
         var defaults: [String: Any] = [:]
-
         defaults[Keys.renderType] = RenderType.viewAfterScreenUpdates.rawValue
         defaults[Keys.streamType] = StreamType.offScreen.rawValue
-
         UserDefaults.standard.register(defaults: defaults)
     }
 

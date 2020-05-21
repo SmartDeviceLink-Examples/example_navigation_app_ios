@@ -11,7 +11,6 @@ import MapKit
 import SmartDeviceLink
 
 class SearchManager: NSObject {
-
     var choiceCells = [SDLChoiceCell]()
     var results = [MKMapItem]()
 
@@ -30,5 +29,4 @@ class SearchManager: NSObject {
             }
         }
     }
-
 }

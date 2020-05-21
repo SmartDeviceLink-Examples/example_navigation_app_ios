@@ -6,9 +6,9 @@
 //  Copyright © 2020 Livio Inc. All rights reserved.
 //
 
-import UIKit
-import SmartDeviceLink
 import MapKit
+import SmartDeviceLink
+import UIKit
 
 class KeyboardSearchInteraction: NSObject {
     private let screenManager: SDLScreenManager

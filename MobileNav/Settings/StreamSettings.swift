@@ -9,7 +9,7 @@
 import Foundation
 import SmartDeviceLink
 
-enum SettingsSection: Int, CaseIterable, CustomStringConvertible {
+enum SettingsOptions: Int, CaseIterable, CustomStringConvertible {
     case render
     case stream
 

@@ -6,8 +6,8 @@
 //  Copyright © 2020 Livio Inc. All rights reserved.
 //
 
-import UIKit
 import SmartDeviceLink
+import UIKit
 
 enum ConnectionType {
     case tcp
@@ -21,7 +21,6 @@ enum ProxyState {
 }
 
 class ProxyManager: NSObject {
-
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
     private var isOffScreen = false
@@ -119,8 +118,9 @@ class ProxyManager: NSObject {
         case .viewBeforeScreenUpdates: return .viewBeforeScreenUpdates
         }
     }
-
 }
+
+// MARK: - Register for Audio and Video Notifications
 
 private extension ProxyManager {
     func registerForNotifications() {
@@ -163,6 +163,8 @@ private extension ProxyManager {
     }
 }
 
+// MARK: - SDLManagerDelegate
+
 extension ProxyManager: SDLManagerDelegate {
     func managerDidDisconnect() {
         if proxyState != .stopped {
@@ -187,7 +189,6 @@ extension ProxyManager: SDLManagerDelegate {
     }
 
     func hmiLevel(_ oldLevel: SDLHMILevel, didChangeToLevel newLevel: SDLHMILevel) {
-
         if newLevel != .none && firstHMINotNil == true {
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = true
@@ -206,9 +207,10 @@ extension ProxyManager: SDLManagerDelegate {
     }
 }
 
+// MARK: - Subscribe Buttons
+
 private extension ProxyManager {
     private func subscribeButtons() {
-
         let zoomInbutton = SDLSubscribeButton(buttonName: .navZoomIn) { [unowned self] (press, event) in
             guard press != nil else { return }
             self.mapManager.zoomIn()

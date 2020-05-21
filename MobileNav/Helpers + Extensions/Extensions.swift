@@ -44,6 +44,7 @@ extension Notification.Name {
 }
 
 extension Array {
+    /** Used to make duplicates returned from search unique for SDLChoiceCells in SDLChoiceSet */
     func sdl_addSuffixToDuplicates() -> [String] {
         var dict = [String: (itemCount: Int, indexOfFirstItem: Int)]()
 

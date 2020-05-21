@@ -25,6 +25,7 @@ class MapItemsListInteraction: NSObject {
         var cells = [SDLChoiceCell]()
         var choiceCell: SDLChoiceCell
 
+        // Make duplicate place names unique
         var itemNames = [String]()
         for item in mapItems {
             if item.name != nil {

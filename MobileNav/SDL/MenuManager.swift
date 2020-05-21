@@ -6,8 +6,8 @@
 //  Copyright © 2020 Livio Inc. All rights reserved.
 //
 
-import UIKit
 import SmartDeviceLink
+import UIKit
 
 class MenuManager: NSObject {
     private let sdlManager: SDLManager
@@ -26,13 +26,13 @@ class MenuManager: NSObject {
     func loadMenuCells() {
         var cells: [SDLMenuCell] = []
 
-        let searchCell = SDLMenuCell(title: "Search", icon: nil, voiceCommands: ["Search"]) { (source: SDLTriggerSource) in
+        let searchCell = SDLMenuCell(title: "Search", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
             let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
             keyboard.present()
         }
         cells.append(searchCell)
 
-        let restaurantsCell = SDLMenuCell(title: "Restaurants Near Me", icon: nil, voiceCommands: ["Restaurants Near Me", "Restaurants"]) { (source: SDLTriggerSource) in
+        let restaurantsCell = SDLMenuCell(title: "Restaurants Near Me", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: "restaurants") { (mapItems, error) in
@@ -52,7 +52,7 @@ class MenuManager: NSObject {
         }
         cells.append(restaurantsCell)
 
-        let coffeeCell = SDLMenuCell(title: "Coffee Near Me", icon: nil, voiceCommands: ["Coffee Near Me", "Coffee"]) { (source: SDLTriggerSource) in
+        let coffeeCell = SDLMenuCell(title: "Coffee Near Me", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: "coffee shops") { (mapItems, error) in
@@ -72,7 +72,7 @@ class MenuManager: NSObject {
         }
         cells.append(coffeeCell)
 
-        let gasStationsCell = SDLMenuCell(title: "Gas Stations Near Me", icon: nil, voiceCommands: ["Gas Stations Near Me", "Gas Stations"]) { (source: SDLTriggerSource) in
+        let gasStationsCell = SDLMenuCell(title: "Gas Stations Near Me", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: "gas stations") { (mapItems, error) in

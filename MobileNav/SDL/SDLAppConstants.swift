@@ -10,8 +10,8 @@ import UIKit
 
 struct SDLAppConstants {
     static let connectionType = ConnectionType.iap
-    static let appName = ""
-    static let appId = ""
+    static let appName = SecretValues.appName() ?? ""
+    static let appId = SecretValues.appID() ?? ""
     static let ipAddress = ""
     static let port: UInt16 = 12345
 }

@@ -6,14 +6,13 @@
 //  Copyright © 2020 Livio Inc. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 class LocationManager: NSObject {
-
-    var locationManager = CLLocationManager()
     static let sharedManager = LocationManager()
-    var lastLocationUpdate = Date(timeIntervalSince1970: 0)
+    private var locationManager = CLLocationManager()
+    private var lastLocationUpdate = Date(timeIntervalSince1970: 0)
     var userLocation: CLLocation?
 
     override init() {
@@ -32,11 +31,11 @@ class LocationManager: NSObject {
     func stop() {
         locationManager.stopMonitoringSignificantLocationChanges()
     }
-
 }
 
-extension LocationManager: CLLocationManagerDelegate {
+// MARK: - CLLocationManagerDelegate
 
+extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
         let date = Date()
@@ -65,5 +64,4 @@ extension LocationManager: CLLocationManagerDelegate {
             break
         }
     }
-
 }

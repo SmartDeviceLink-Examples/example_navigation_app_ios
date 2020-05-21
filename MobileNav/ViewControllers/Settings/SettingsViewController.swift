@@ -112,7 +112,7 @@ extension SettingsViewController: SettingOptionsViewControllerDelegate {
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingsSection.allCases.count
+        return SettingsOptions.allCases.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -121,11 +121,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = SettingsSection(rawValue: indexPath.row)?.description
+        cell.textLabel?.text = SettingsOptions(rawValue: indexPath.row)?.description
 
-        if SettingsSection(rawValue: indexPath.row)?.description == "Render Type" {
+        if SettingsOptions(rawValue: indexPath.row)?.description == "Render Type" {
             cell.detailTextLabel?.text = self.selectedRenderType?.description
-        } else if SettingsSection(rawValue: indexPath.row)?.description == "Stream Type" {
+        } else if SettingsOptions(rawValue: indexPath.row)?.description == "Stream Type" {
             cell.detailTextLabel?.text = self.selectedStreamType?.description
         }
 
@@ -133,7 +133,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let section = SettingsSection(rawValue: indexPath.row) else { return }
+        guard let section = SettingsOptions(rawValue: indexPath.row) else { return }
         switch section {
         case .render:
             settingOptions = RenderType.allCases.map { $0.description }

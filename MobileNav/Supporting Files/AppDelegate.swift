@@ -19,15 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         // Register MapBox Access Token by looking for keys.plist file
-        if let url = Bundle.main.url(forResource: "keys", withExtension: "plist") {
-            do {
-              let data = try Data(contentsOf:url)
-              let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
-                MGLAccountManager.accessToken = keysDictionary["MGLMapboxAccessToken"]
-            } catch {
-               print(error)
-            }
-        }
+        SecretValues.setAccessToken()
 
         // Default stream settings
         AppUserDefaults.setDefaults()
@@ -44,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Start looking for user location
         LocationManager.sharedManager.start()
+
+        // Start looking for notifications
         NotificationQueue.shared.start()
     }
 

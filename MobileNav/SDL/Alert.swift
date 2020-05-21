@@ -10,7 +10,6 @@ import Foundation
 import SmartDeviceLink
 
 class Alert {
-
     private static let defaultDuration = 5000 as NSNumber
     private static var okSoftButton: SDLSoftButton {
         return SDLSoftButton(type: .text, text: "OK", image: nil, highlighted: false, buttonId: nextAlertSoftButtonId(), systemAction: nil, handler: nil)
@@ -42,5 +41,4 @@ class Alert {
 
         ProxyManager.sharedManager.sdlManager.send(request: alert)
     }
-
 }
