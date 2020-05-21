@@ -54,7 +54,7 @@ extension SDLMenuButton {
     private func buttonSelected() {
         if ProxyManager.sharedManager.rpcVersion! < 6 {
             guard let menuViewController = SDLViewControllers.menu else {
-                print("Error loading the SDL menu view controller")
+                SDLLog.e("Error loading the SDL menu view controller")
                 return
             }
             ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
