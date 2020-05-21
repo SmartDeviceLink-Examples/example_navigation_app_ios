@@ -111,11 +111,8 @@
 				101132D62437A40300D15779 /* ProxyManager.swift */,
 				101132DA2437D47C00D15779 /* SDLAppConstants.swift */,
 				10463E58246DDB4700B19762 /* MenuManager.swift */,
+				107204002477403F00502835 /* Search */,
 				10EA2DF4246DCA3800A4DB3A /* SDL UI */,
-				10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */,
-				10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */,
-				107203FE2476D81A00502835 /* VoiceSearchInteraction.swift */,
-				10F4A48A24759D0B00DAB205 /* Alert.swift */,
 			);
 			path = SDL;
 			sourceTree = "<group>";
@@ -129,6 +126,24 @@
 				107203FC2476C5E100502835 /* SecretValues.swift */,
 			);
 			path = "Helpers + Extensions";
+			sourceTree = "<group>";
+		};
+		107204002477403F00502835 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */,
+				10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */,
+				107203FE2476D81A00502835 /* VoiceSearchInteraction.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		107204012477409000502835 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10F621DE246DE67C00BDCC88 /* MapButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		107A57242446611F000BA7C6 /* Supporting Files */ = {
@@ -174,13 +189,13 @@
 			children = (
 				10EA2DF1246DC66500A4DB3A /* ViewControllers */,
 				10EA2DF0246DC64500A4DB3A /* Storyboards */,
+				107204012477409000502835 /* Views */,
 				10E12C85243E320D00C4B1F7 /* Settings */,
 				10463E5A246DE18200B19762 /* Helpers + Extensions */,
 				107A57242446611F000BA7C6 /* Supporting Files */,
 				101132D52437991500D15779 /* SDL */,
 				10A0C22C243780C80010D9F6 /* Info.plist */,
 				100CC816243D0CA8003C9EDE /* keys.plist */,
-				10F621DE246DE67C00BDCC88 /* MapButton.swift */,
 			);
 			path = MobileNav;
 			sourceTree = "<group>";
@@ -235,6 +250,7 @@
 		10EA2DF4246DCA3800A4DB3A /* SDL UI */ = {
 			isa = PBXGroup;
 			children = (
+				10F4A48A24759D0B00DAB205 /* Alert.swift */,
 				10F20F22243BC0DC005C2E8A /* Map */,
 				108B1B1C24475B05008A3FEA /* Menu */,
 			);

@@ -11,9 +11,7 @@ import UIKit
 class MapButton: UIButton {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-
         self.layer.cornerRadius = self.bounds.height/2
         self.backgroundColor = .systemBlue
     }
-
 }
