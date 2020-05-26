@@ -23,7 +23,7 @@ enum ProxyState {
 class ProxyManager: NSObject {
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
-    private var isOffScreen = false
+    private static var isOffScreen = false
     public private(set) var proxyState = ProxyState.stopped
     public private(set) var rpcVersion: Int?
     private var mapManager = MapManager()
@@ -38,7 +38,7 @@ class ProxyManager: NSObject {
 
     func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
         proxyState = .searching
-        isOffScreen = streamSettings.streamType == .offScreen ? true : false
+        ProxyManager.isOffScreen = streamSettings.streamType == .offScreen ? true : false
 
         if sdlManager == nil {
             sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP(streamSettings: streamSettings) : ProxyManager.connectTCP(streamSettings: streamSettings), delegate:self)
@@ -49,13 +49,9 @@ class ProxyManager: NSObject {
                 self.proxyState = .connected
                 self.rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion?.majorVersion.intValue
 
-                // If RPC version is 6.0, subscribe buttons and hide them on view controller
+                // If RPC version is 6.0, prepare built-in menu
                 if self.rpcVersion != nil && self.rpcVersion! >= 6 {
-                    self.subscribeButtons()
                     self.menuManager = MenuManager(with: self.sdlManager)
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(Notification(name: .hideSubscribedButtons))
-                    }
                 }
             } else {
                 print("SDL Connection Error: \(error!)")
@@ -71,6 +67,9 @@ class ProxyManager: NSObject {
 
         DispatchQueue.main.async { [weak self] in
             self?.sdlManager.stop()
+
+            // Need to set sdlManager to nil for change in StreamSettings to take effect
+            self?.sdlManager = nil
         }
 
         proxyState = .stopped
@@ -94,6 +93,11 @@ class ProxyManager: NSObject {
         
         lifecycleConfiguration.appType = .navigation
         let lockscreenConfig = SDLLockScreenConfiguration.enabled()
+
+        // Lock screen display mode should be set to .always when mirroring device screen
+        if !ProxyManager.isOffScreen {
+            lockscreenConfig.displayMode = .always
+        }
 
         return SDLConfiguration(lifecycle: lifecycleConfiguration, lockScreen: lockscreenConfig, logging: ProxyManager.logConfiguration(), streamingMedia:ProxyManager.streamingMediaConfiguration(streamSettings: streamSettings), fileManager: .default(), encryption: nil)
     }
@@ -175,7 +179,7 @@ extension ProxyManager: SDLManagerDelegate {
             return
         }
 
-        if isOffScreen {
+        if ProxyManager.isOffScreen {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(Notification(name: .offScreenDisconnected))
             }
@@ -190,13 +194,24 @@ extension ProxyManager: SDLManagerDelegate {
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = true
             }
+
+            firstHMINotNil = false
+
+            // If RPC version is 6.0, subscribe buttons and hide them on view controller
+            if self.rpcVersion != nil && self.rpcVersion! >= 6 {
+                self.subscribeButtons()
+                menuManager.start()
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(Notification(name: .hideSubscribedButtons))
+                }
+            }
         } else {
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = false
             }
         }
 
-        if oldLevel == .none && newLevel == .full && isOffScreen {
+        if oldLevel == .none && newLevel == .full && ProxyManager.isOffScreen {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(Notification(name: .offScreenConnected))
             }

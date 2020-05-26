@@ -20,3 +20,10 @@ struct SDLViewControllers {
     static let map = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MapBoxViewController
     static let menu = UIStoryboard(name: "SDLMenu", bundle: nil).instantiateInitialViewController() as? SDLMenuViewController
 }
+
+struct SDLMenuTitles {
+    static let search = "Search"
+    static let coffeeNearMe = "Coffee Near Me"
+    static let restaurantsNearMe = "Restaurants Near Me"
+    static let gasNearMe = "Gas Stations Near Me"
+}

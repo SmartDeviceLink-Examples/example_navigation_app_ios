@@ -29,7 +29,7 @@ class MenuManager: NSObject {
     func loadMenuCells() {
         var cells: [SDLMenuCell] = []
 
-        let searchCell = SDLMenuCell(title: "Search", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
+        let searchCell = SDLMenuCell(title: SDLMenuTitles.search, icon: nil, voiceCommands: [SDLMenuTitles.search]) { (source: SDLTriggerSource) in
             if self.isDriverDistracted {
                 Alert.presentDriverDistraction()
                 return
@@ -40,7 +40,7 @@ class MenuManager: NSObject {
         }
         cells.append(searchCell)
 
-        let restaurantsCell = SDLMenuCell(title: "Restaurants Near Me", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
+        let restaurantsCell = SDLMenuCell(title: SDLMenuTitles.restaurantsNearMe, icon: nil, voiceCommands: [SDLMenuTitles.restaurantsNearMe]) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: "restaurants") { (mapItems, error) in
@@ -60,7 +60,7 @@ class MenuManager: NSObject {
         }
         cells.append(restaurantsCell)
 
-        let coffeeCell = SDLMenuCell(title: "Coffee Near Me", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
+        let coffeeCell = SDLMenuCell(title: SDLMenuTitles.coffeeNearMe, icon: nil, voiceCommands: [SDLMenuTitles.coffeeNearMe]) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: "coffee shops") { (mapItems, error) in
@@ -80,7 +80,7 @@ class MenuManager: NSObject {
         }
         cells.append(coffeeCell)
 
-        let gasStationsCell = SDLMenuCell(title: "Gas Stations Near Me", icon: nil, voiceCommands: nil) { (source: SDLTriggerSource) in
+        let gasStationsCell = SDLMenuCell(title: SDLMenuTitles.gasNearMe, icon: nil, voiceCommands: [SDLMenuTitles.gasNearMe]) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: "gas stations") { (mapItems, error) in

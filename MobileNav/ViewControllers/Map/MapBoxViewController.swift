@@ -120,6 +120,9 @@ extension MapBoxViewController {
             mapManager.setupMapView(with: mapView, location: location)
             userLocation = location
         }
+
+        // MapBox will take over tracking user location after initial setup
+        NotificationCenter.default.removeObserver(self, name: .locationUpdated, object: nil)
     }
 
     @objc private func presentOffScreen() {
