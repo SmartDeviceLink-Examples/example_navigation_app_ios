@@ -17,7 +17,6 @@
 		1047312624476C4C00819B15 /* SDLMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047312524476C4C00819B15 /* SDLMenuViewController.swift */; };
 		107203FD2476C5E100502835 /* SecretValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107203FC2476C5E100502835 /* SecretValues.swift */; };
 		107203FF2476D81A00502835 /* VoiceSearchInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107203FE2476D81A00502835 /* VoiceSearchInteraction.swift */; };
-		107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */; };
 		107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571C2446466A000BA7C6 /* SDLMenuButton.swift */; };
 		107A571F2446508B000BA7C6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A571E2446508B000BA7C6 /* MapManager.swift */; };
 		108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108BCB95243E400C00F67A97 /* StreamSettings.swift */; };
@@ -54,7 +53,6 @@
 		1047312524476C4C00819B15 /* SDLMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuViewController.swift; sourceTree = "<group>"; };
 		107203FC2476C5E100502835 /* SecretValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretValues.swift; sourceTree = "<group>"; };
 		107203FE2476D81A00502835 /* VoiceSearchInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSearchInteraction.swift; sourceTree = "<group>"; };
-		107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
 		107A571C2446466A000BA7C6 /* SDLMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMenuButton.swift; sourceTree = "<group>"; };
 		107A571E2446508B000BA7C6 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		108BCB95243E400C00F67A97 /* StreamSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSettings.swift; sourceTree = "<group>"; };
@@ -260,7 +258,6 @@
 		10F20F22243BC0DC005C2E8A /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				107A571A2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift */,
 				107A571E2446508B000BA7C6 /* MapManager.swift */,
 			);
 			path = Map;
@@ -408,7 +405,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				10463E5C246DE1A000B19762 /* Extensions.swift in Sources */,
-				107A571B2445EB0C000BA7C6 /* SDLMapViewTouchManager.swift in Sources */,
 				100CC803243CD18A003C9EDE /* MapBoxViewController.swift in Sources */,
 				107203FD2476C5E100502835 /* SecretValues.swift in Sources */,
 				10F4A48B24759D0B00DAB205 /* Alert.swift in Sources */,

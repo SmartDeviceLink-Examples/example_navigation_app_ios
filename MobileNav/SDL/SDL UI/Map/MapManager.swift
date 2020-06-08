@@ -10,6 +10,17 @@ import UIKit
 import Mapbox
 import SmartDeviceLink
 
+enum TouchType {
+    case singleTap
+    case doubleTap
+    case panMoved
+    case pinchStarted
+    case pinchMoved
+    case pinchEnded
+}
+
+typealias TouchHandler = ((_ touchPoint: CGPoint, _ touchScale: CGFloat?, _ touchType: TouchType) -> Void)
+
 class MapManager: NSObject {
     private var mapView: MGLMapView! {
         didSet{
@@ -50,10 +61,12 @@ class MapManager: NSObject {
         
         
         // Set new center
-        let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: self.mapView)
-        self.mapView.setCenter(newMapCenterCoordinate, animated: false)
-        self.newMapCenterPoint = self.mapView.center
-        self.mapView.zoomLevel = self.mapZoomLevel
+        DispatchQueue.main.async { [unowned self] in
+            let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: self.mapView)
+            self.mapView.setCenter(newMapCenterCoordinate, animated: false)
+            self.newMapCenterPoint = self.mapView.center
+            self.mapView.zoomLevel = self.mapZoomLevel
+        }
     }
 
     func zoomIn() {
@@ -81,8 +94,8 @@ extension MapManager {
                 self.panMoved(displacement: touchPoint)
             case .pinchMoved:
                 self.pinchMoved(centerPoint: touchPoint, scale: scale ?? 1.0)
-            case .panStarted, .pinchStarted: break
-            case .panEnded, .pinchEnded: break
+            case .pinchStarted: break
+            case .pinchEnded: break
             }
             self.updateScreen()
         }

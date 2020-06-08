@@ -24,7 +24,6 @@ class MapBoxViewController: SDLCarWindowViewController {
     private var mapZoomLevel: Double = 0.0
     var mapManager = MapManager()
     private var annotation: MGLPointAnnotation?
-    public private(set) var sdlMapViewTouchManager: SDLMapViewTouchManager?
     private var mapTouchHandler: TouchHandler?
     private var menuTouchHandler: TouchHandler?
     private var userLocation: CLLocation?
@@ -227,20 +226,10 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
 
     // MARK: - Pan
 
-    func touchManager(_ manager: SDLTouchManager, panningDidStartIn view: UIView?, at point: CGPoint) {
-        guard let touchHandler = self.mapTouchHandler else { return }
-        touchHandler(point, nil, .panStarted)
-    }
-
     func touchManager(_ manager: SDLTouchManager, didReceivePanningFrom fromPoint: CGPoint, to toPoint: CGPoint) {
         guard let touchHandler = mapTouchHandler else { return }
         let displacementPoint = fromPoint.displacement(toPoint: toPoint)
         touchHandler(displacementPoint, nil, .panMoved)
-    }
-
-    func touchManager(_ manager: SDLTouchManager, panningDidEndIn view: UIView?, at point: CGPoint) {
-        guard let touchHandler = self.mapTouchHandler else { return }
-        touchHandler(point, nil, .panEnded)
     }
 
     // MARK: - Pinch
