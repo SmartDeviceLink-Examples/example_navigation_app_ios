@@ -118,6 +118,10 @@ extension MapBoxViewController {
             mapView.showsUserLocation = true
             mapManager.setupMapView(with: mapView, location: location)
             userLocation = location
+        } else {
+            let detroitLocation = CLLocation(latitude: 42.33, longitude: -83.04)
+            mapManager.setupMapView(with: mapView, location: detroitLocation)
+            userLocation = detroitLocation
         }
 
         // MapBox will take over tracking user location after initial setup
