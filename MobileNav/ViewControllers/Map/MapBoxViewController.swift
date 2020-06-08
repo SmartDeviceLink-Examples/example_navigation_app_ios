@@ -28,6 +28,7 @@ class MapBoxViewController: SDLCarWindowViewController {
     private var menuTouchHandler: TouchHandler?
     private var userLocation: CLLocation?
     private var subscribedButtonsHidden = false
+    private var keyboard: KeyboardSearchInteraction?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,8 +219,8 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
     }
 
     func presentKeyboard() {
-        let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
-        keyboard.present()
+        keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
+        keyboard!.present()
     }
 
     func touchManager(_ manager: SDLTouchManager, didReceiveDoubleTapFor view: UIView?, at point: CGPoint) {
