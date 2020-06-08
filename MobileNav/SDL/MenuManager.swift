@@ -14,6 +14,7 @@ class MenuManager: NSObject {
     private let searchManager = SearchManager()
     private var mapInteraction: MapItemsListInteraction?
     private var isDriverDistracted = false
+    private var keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
 
     init(with sdlManager:SDLManager) {
         self.sdlManager = sdlManager
@@ -29,14 +30,13 @@ class MenuManager: NSObject {
     func loadMenuCells() {
         var cells: [SDLMenuCell] = []
 
-        let searchCell = SDLMenuCell(title: SDLMenuTitles.search, icon: nil, voiceCommands: [SDLMenuTitles.search]) { (source: SDLTriggerSource) in
+        let searchCell = SDLMenuCell(title: SDLMenuTitles.search, icon: nil, voiceCommands: [SDLMenuTitles.search]) { [unowned self] (source: SDLTriggerSource) in
             if self.isDriverDistracted {
                 Alert.presentDriverDistraction()
                 return
             }
 
-            let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
-            keyboard.present()
+            self.keyboard.present()
         }
         cells.append(searchCell)
 

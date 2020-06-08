@@ -67,7 +67,6 @@ class MapManager: NSObject {
     func centerLocation(lat:CLLocationDegrees, long:CLLocationDegrees) {
         self.mapView.setCenter(CLLocationCoordinate2DMake(lat, long), animated: false)
     }
-
 }
 
 extension MapManager {

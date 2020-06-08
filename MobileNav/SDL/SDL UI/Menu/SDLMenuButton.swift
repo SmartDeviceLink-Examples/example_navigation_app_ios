@@ -27,7 +27,7 @@ class SDLMenuButton: UIButton {
     }
 
     private func setupButton() {
-        backgroundColor = .systemPink
+        backgroundColor = .systemBlue
         layer.cornerRadius = 10
         clipsToBounds = true
 

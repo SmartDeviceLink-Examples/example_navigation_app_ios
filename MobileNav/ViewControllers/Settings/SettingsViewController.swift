@@ -56,7 +56,6 @@ class SettingsViewController: UIViewController {
     }
 
     private func startSDL(with renderType:RenderType, streamType:StreamType) {
-
         // Save selected options to user defaults
         AppUserDefaults.shared.renderType = renderType
         AppUserDefaults.shared.streamType = streamType
@@ -124,9 +123,19 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = SettingsOptions(rawValue: indexPath.row)?.description
 
         if SettingsOptions(rawValue: indexPath.row)?.description == "Render Type" {
-            cell.detailTextLabel?.text = self.selectedRenderType?.description
+            if let selectedRenderType = self.selectedRenderType {
+                cell.detailTextLabel?.text = selectedRenderType.description
+            } else {
+                cell.detailTextLabel?.text = AppUserDefaults.shared.renderType?.description
+                self.selectedRenderType = AppUserDefaults.shared.renderType
+            }
         } else if SettingsOptions(rawValue: indexPath.row)?.description == "Stream Type" {
-            cell.detailTextLabel?.text = self.selectedStreamType?.description
+            if let selectedStreamType = self.selectedStreamType {
+                cell.detailTextLabel?.text = selectedStreamType.description
+            } else {
+                cell.detailTextLabel?.text = AppUserDefaults.shared.streamType?.description
+                self.selectedStreamType = AppUserDefaults.shared.streamType
+            }
         }
 
         return cell
