@@ -55,9 +55,7 @@ class MapManager: NSObject {
     }
 
     func updateScreen() {
-        let mapCenterPoint = self.mapViewCenterPoint
         let newMapCenterPoint = self.newMapCenterPoint
-        guard mapCenterPoint != newMapCenterPoint else { return }
         
         // Set new center
         DispatchQueue.main.async { [unowned self] in

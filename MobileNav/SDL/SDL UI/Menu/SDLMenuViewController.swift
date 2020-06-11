@@ -39,8 +39,8 @@ class SDLMenuViewController: SDLCarWindowViewController {
             SDLLog.e("Error loading the SDL map view")
             return
         }
+
         ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapViewController
-        mapViewController.setup()
     }
 }
 
