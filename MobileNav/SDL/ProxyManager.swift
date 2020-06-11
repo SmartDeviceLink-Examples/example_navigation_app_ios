@@ -26,8 +26,6 @@ class ProxyManager: NSObject {
     private static var isOffScreen = false
     public private(set) var proxyState = ProxyState.stopped
     public private(set) var rpcVersion: Int?
-    private var mapManager = MapManager()
-    private var mapBoxViewController: MapBoxViewController?
     public private(set) var menuManager: MenuManager!
     private var firstHMINotNil = true
 
@@ -109,8 +107,14 @@ class ProxyManager: NSObject {
     }
 
     class func streamingMediaConfiguration(streamSettings: StreamSettings) -> SDLStreamingMediaConfiguration {
-        let streamingMediaConfig = SDLStreamingMediaConfiguration.autostreamingInsecureConfiguration(withInitialViewController: SDLViewControllers.map!)
+        let streamingMediaConfig = SDLStreamingMediaConfiguration()
         streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
+
+        if isOffScreen {
+            streamingMediaConfig.rootViewController = SDLViewControllers.map!
+        } else {
+            streamingMediaConfig.rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        }
 
         return streamingMediaConfig
     }
@@ -137,33 +141,23 @@ private extension ProxyManager {
     }
 
     @objc func sdlVideoStreamDidStart() {
-        DispatchQueue.main.async {
-            SDLLog.d("Starting video")
-        }
+        SDLLog.d("Starting video")
     }
 
     @objc func sdlVideoStreamDidStop() {
-        DispatchQueue.main.async {
-            SDLLog.d("Stopping video")
-        }
+        SDLLog.d("Stopping video")
     }
 
     @objc func sdlVideoStreamSuspended() {
-        DispatchQueue.main.async {
-            SDLLog.d("Suspending video")
-        }
+        SDLLog.d("Suspending video")
     }
 
     @objc func sdlAudioStreamDidStart() {
-        DispatchQueue.main.async {
-            SDLLog.d("Starting audio")
-        }
+        SDLLog.d("Starting audio")
     }
 
     @objc func sdlAudioStreamDidStop() {
-        DispatchQueue.main.async {
-             SDLLog.d("Stopping audio")
-        }
+        SDLLog.d("Stopping audio")
     }
 }
 
@@ -199,7 +193,6 @@ extension ProxyManager: SDLManagerDelegate {
 
             // If RPC version is 6.0, subscribe buttons and hide them on view controller
             if self.rpcVersion != nil && self.rpcVersion! >= 6 {
-                self.subscribeButtons()
                 menuManager.start()
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(Notification(name: .hideSubscribedButtons))
@@ -216,33 +209,5 @@ extension ProxyManager: SDLManagerDelegate {
                 NotificationCenter.default.post(Notification(name: .offScreenConnected))
             }
         }
-    }
-}
-
-// MARK: - Subscribe Buttons
-
-private extension ProxyManager {
-    private func subscribeButtons() {
-        let zoomInbutton = SDLSubscribeButton(buttonName: .navZoomIn) { [unowned self] (press, event) in
-            guard press != nil else { return }
-            self.mapManager.zoomIn()
-        }
-
-        let zoomOutButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
-            guard press != nil else { return }
-            self.mapManager.zoomOut()
-        }
-
-        let centerMapButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
-            guard press != nil else { return }
-            if let userLocation = LocationManager.sharedManager.userLocation {
-                self.mapManager.centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
-            } else {
-                Alert.presentUnableToFindLocation()
-                return
-            }
-        }
-
-        sdlManager.send([zoomInbutton, zoomOutButton, centerMapButton], progressHandler: nil, completionHandler: nil)
     }
 }

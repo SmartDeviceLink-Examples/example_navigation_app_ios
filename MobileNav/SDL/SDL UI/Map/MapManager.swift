@@ -59,7 +59,6 @@ class MapManager: NSObject {
         let newMapCenterPoint = self.newMapCenterPoint
         guard mapCenterPoint != newMapCenterPoint else { return }
         
-        
         // Set new center
         DispatchQueue.main.async { [unowned self] in
             let newMapCenterCoordinate = self.mapView.convert(newMapCenterPoint, toCoordinateFrom: self.mapView)

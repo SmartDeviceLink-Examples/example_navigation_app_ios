@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
 
+        let mapBoxStoryboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MapBoxViewController
+        self.window?.rootViewController = mapBoxStoryboard
+        self.window?.makeKeyAndVisible()
+
         // Register MapBox Access Token by looking for keys.plist file
         SecretValues.setAccessToken()
 
@@ -25,10 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppUserDefaults.setDefaults()
         let streamSettings = StreamSettings(renderType: AppUserDefaults.shared.renderType!, streamType:AppUserDefaults.shared.streamType!)
         ProxyManager.sharedManager.connect(with: SDLAppConstants.connectionType, streamSettings: streamSettings)
-
-        let mapBoxStoryboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MapBoxViewController
-        self.window?.rootViewController = mapBoxStoryboard
-        self.window?.makeKeyAndVisible()
 
         return true
     }

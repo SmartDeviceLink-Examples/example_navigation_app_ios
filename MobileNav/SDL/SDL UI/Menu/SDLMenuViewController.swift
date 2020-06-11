@@ -18,6 +18,7 @@ class SDLMenuViewController: SDLCarWindowViewController {
     @IBOutlet weak var gasStationsButton: UIButton!
     private var searchManager = SearchManager()
     private var mapInteraction: MapItemsListInteraction?
+    private var keyboard: KeyboardSearchInteraction?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +54,8 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
                 }
 
                 if searchButton.frame.contains(point) {
-                    let keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
-                    keyboard.present()
+                    keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
+                    keyboard?.present()
                 }
 
                 if restaurantsButton.frame.contains(point) {

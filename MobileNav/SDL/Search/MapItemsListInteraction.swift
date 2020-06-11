@@ -74,13 +74,13 @@ extension MapItemsListInteraction: SDLChoiceSetDelegate {
     func choiceSet(_ choiceSet: SDLChoiceSet, didSelectChoice choice: SDLChoiceCell, withSource source: SDLTriggerSource, atRowIndex rowIndex: UInt) {
         let mapItem = mapItems[Int(rowIndex)]
         let dict: [String : MKMapItem] = ["mapItem": mapItem]
-        NotificationCenter.default.post(name: .centerMapOnPlace, object: dict)
         guard let mapViewController = SDLViewControllers.map else {
             SDLLog.e("Error loading the SDL map view")
             return
         }
         ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapViewController
         mapViewController.setup()
+        NotificationCenter.default.post(name: .centerMapOnPlace, object: dict)
     }
 
     func choiceSet(_ choiceSet: SDLChoiceSet, didReceiveError error: Error) {
