@@ -36,3 +36,9 @@ Given that MapBox uses OpenGL for rendering, `layer` and `viewBeforeScreenUpdate
 On first launch, the app will have a `offScreen` Stream Type and `viewAfterScreenUpdates` Render Type. These values can be changed by accessing the Menu button on the mobile device (note that the SDL implementation of this menu button is used as the [custom SDL menu](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/menus/)).
 
 You cannot change these values while the app is connected to production or test hardware. If the app is currently searching for an SDL connection, you must tap STOP SEARCHING in order to reset the current connection. Once your desired Render and Streaming types are set, press the START button.
+
+##### Off-screen vs. On-screen Streaming
+
+It is recommended that you use an off-screen view controller for your UI. An off-screen view controller will appear on screen in the car, while remaining off-screen on the device. Note that if you are using off-screen rendering, it is recommended that your on-screen view controller not rotate due to potential UI issues. For more information on off-screen streaming, please [refer to our guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming/#mirroring-the-device-screen-vs-off-screen-ui).
+
+On-screen streaming, which can also be referred to as mirroring the device screen, is not recommended. Please be aware of the potential limitations of mirroring the device screen explained [here in our guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming/#mirroring-the-device-screen).
