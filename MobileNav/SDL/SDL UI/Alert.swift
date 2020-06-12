@@ -54,7 +54,6 @@ class Alert {
     }
 
     class func speechRecognizerDisallowedAlert() -> SDLAlert {
-        // TODO: Localize
         let alert = SDLAlert()
         alert.alertText1 = "Voice Search Disallowed"
         alert.alertText2 = "Please go to settings in the app and enable it"
@@ -66,7 +65,6 @@ class Alert {
     }
 
     class func speechRecognizerBadLocaleAlert() -> SDLAlert {
-        // TODO: Localize
         let alert = SDLAlert()
         alert.alertText1 = "Voice search is not available"
         alert.alertText2 = "Due to Apple limitations, voice search is not available while the app is in the background"

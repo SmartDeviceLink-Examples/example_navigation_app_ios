@@ -63,5 +63,4 @@ extension SDLMenuButton {
         }
         ProxyManager.sharedManager.sdlManager.screenManager.openMenu()
     }
-
 }

@@ -25,7 +25,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         searchCompleter.delegate = self
     }
-
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource

@@ -147,7 +147,7 @@ extension MapBoxViewController {
         }
     }
 
-    @objc private func showHiddenButtons() {
+    @objc private func showSubscribeButtons() {
         DispatchQueue.main.async {
             if self.subscribedButtonsHidden {
                 self.centerMapButton.isHidden = false

@@ -28,17 +28,17 @@ class MapItemsListInteraction: NSObject {
         var choiceCell: SDLChoiceCell
 
         for item in mapItems {
-            if item.name != nil {
-                choiceCell = SDLChoiceCell(text: item.name!, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
-                cells.append(choiceCell)
-            }
+            if item.name == nil { continue }
+
+            choiceCell = SDLChoiceCell(text: item.name!, secondaryText: nil, tertiaryText: nil, voiceCommands: nil, artwork: nil, secondaryArtwork: nil)
+            cells.append(choiceCell)
         }
 
         return cells
     }
 
     func present() {
-        if cells.count == 0 {
+        guard cells.count > 0 else {
             Alert.presentEmptySearchResultsAlert(searchTerm: searchText)
             return
         }
@@ -49,7 +49,7 @@ class MapItemsListInteraction: NSObject {
         screenManager.present(choiceSet, mode: .manualOnly)
     }
 
-    func fixDuplicates(cells: [SDLChoiceCell]) -> [SDLChoiceCell] {
+    private func fixDuplicates(cells: [SDLChoiceCell]) -> [SDLChoiceCell] {
         var duplicateCount: [String: Int] = [:]
         var newCells: [SDLChoiceCell] = []
         cells.forEach { (cell: SDLChoiceCell) in

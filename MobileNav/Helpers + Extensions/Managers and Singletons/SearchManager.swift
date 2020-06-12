@@ -14,7 +14,7 @@ class SearchManager: NSObject {
     var choiceCells = [SDLChoiceCell]()
     var results = [MKMapItem]()
 
-    func searchFor(searchTerm: String, handler: @escaping (_ mapItems:[MKMapItem]?, _ error:Error?)-> Void) {
+    func searchFor(searchTerm: String, handler: @escaping (_ mapItems: [MKMapItem]?, _ error: Error?)-> Void) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchTerm
         let search = MKLocalSearch(request: request)

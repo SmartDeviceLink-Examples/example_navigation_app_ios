@@ -32,7 +32,6 @@ class VoiceSearchInteraction: NSObject {
 
     private let searchManager = SearchManager()
 
-    // TODO: If we do localization, this will need to be updated
     private let defaultLocale = Locale(identifier: "en-US")
 
     init(screenManager: SDLScreenManager) {
@@ -115,7 +114,6 @@ class VoiceSearchInteraction: NSObject {
 
 extension VoiceSearchInteraction {
     static func audioPassThruRequest() -> SDLPerformAudioPassThru {
-        // TODO: Localize
         return SDLPerformAudioPassThru(initialPrompt: nil, audioPassThruDisplayText1: "Listening...", audioPassThruDisplayText2: "Search for a destination", samplingRate: .rate16KHZ, bitsPerSample: .sample16Bit, audioType: .PCM, maxDuration: 5000, muteAudio: true)
     }
 }
@@ -196,12 +194,10 @@ extension VoiceSearchInteraction: SFSpeechRecognitionTaskDelegate {
     }
 
     func speechRecognitionTaskWasCancelled(_ task: SFSpeechRecognitionTask) {
-        // print("SDL Search task was cancelled")
         cancelSpeechRecognitionTask()
     }
 
     func speechRecognitionTaskFinishedReadingAudio(_ task: SFSpeechRecognitionTask) {
-        // print("SDL Search task finished reading audio")
     }
 
     fileprivate func cancelSpeechRecognitionTask() {

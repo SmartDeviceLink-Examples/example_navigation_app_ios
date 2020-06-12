@@ -13,7 +13,7 @@ class NotificationQueue {
     var lastNotification: Notification?
 
     init() {
-        // Look for notifcation to be used after user selects option when presented from SDLMenuViewController
+        // Look for notification to be used after user selects option when presented from SDLMenuViewController
         NotificationCenter.default.addObserver(self, selector: #selector(setLastNotificationAsCenterMap), name: .centerMapOnPlace, object: nil)
     }
 
