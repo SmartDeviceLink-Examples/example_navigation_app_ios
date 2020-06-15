@@ -77,12 +77,10 @@ class VoiceSearchInteraction: NSObject {
         case .badRegion:
             ProxyManager.sharedManager.sdlManager.send(request: Alert.speechRecognizerBadLocaleAlert())
             completionHandler(false, nil, nil)
-        case .listening:
-            // TODO: Send an end audio pass thru?
-            break
         case .notListening:
             ProxyManager.sharedManager.sdlManager.send(request: VoiceSearchInteraction.audioPassThruRequest())
             searchCompletion = completionHandler
+        default: break
         }
     }
 

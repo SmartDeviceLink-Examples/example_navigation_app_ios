@@ -60,7 +60,7 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
 
                 if restaurantsButton.frame.contains(point) {
                     searchManager.searchFor(searchTerm: "restaurants") { (mapItems, error) in
-                        if error != nil {
+                        guard error == nil else {
                             Alert.presentSearchErrorAlert()
                             return
                         }
@@ -74,7 +74,7 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
 
                 if coffeeButton.frame.contains(point) {
                     searchManager.searchFor(searchTerm: "coffee shops") { (mapItems, error) in
-                        if error != nil {
+                        guard error == nil else {
                             Alert.presentSearchErrorAlert()
                             return
                         }
@@ -88,7 +88,7 @@ extension SDLMenuViewController: SDLTouchManagerDelegate {
 
                 if gasStationsButton.frame.contains(point) {
                     searchManager.searchFor(searchTerm: "gas stations") { (mapItems, error) in
-                        if error != nil {
+                        guard error == nil else {
                             Alert.presentSearchErrorAlert()
                             return
                         }

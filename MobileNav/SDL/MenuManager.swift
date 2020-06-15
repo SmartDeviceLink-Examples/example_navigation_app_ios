@@ -31,7 +31,7 @@ class MenuManager: NSObject {
         var cells: [SDLMenuCell] = []
 
         let searchCell = SDLMenuCell(title: SDLMenuTitles.search, icon: nil, voiceCommands: [SDLMenuTitles.search]) { [unowned self] (source: SDLTriggerSource) in
-            if self.isDriverDistracted {
+            guard self.isDriverDistracted == false else {
                 Alert.presentDriverDistraction()
                 return
             }
@@ -43,16 +43,19 @@ class MenuManager: NSObject {
         let restaurantsCell = SDLMenuCell(title: SDLMenuTitles.restaurantsNearMe, icon: nil, voiceCommands: [SDLMenuTitles.restaurantsNearMe]) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
-                self.searchManager.searchFor(searchTerm: "restaurants") { (mapItems, error) in
-                    if error != nil {
+                self.searchManager.searchFor(searchTerm: DefaultSearchTerms.restaurants) { (mapItems, error) in
+                    guard error == nil else {
                         Alert.presentSearchErrorAlert()
                         return
                     }
 
-                    if let mapItems = mapItems {
-                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "restaurants", mapItems: mapItems)
-                        self.mapInteraction?.present()
+                    guard let mapItems = mapItems else {
+                        Alert.presentEmptySearchResultsAlert(searchTerm: DefaultSearchTerms.restaurants)
+                        return
                     }
+
+                    self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: DefaultSearchTerms.restaurants, mapItems: mapItems)
+                    self.mapInteraction?.present()
                 }
             default:
                 fatalError()
@@ -63,16 +66,19 @@ class MenuManager: NSObject {
         let coffeeCell = SDLMenuCell(title: SDLMenuTitles.coffeeNearMe, icon: nil, voiceCommands: [SDLMenuTitles.coffeeNearMe]) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
-                self.searchManager.searchFor(searchTerm: "coffee shops") { (mapItems, error) in
-                    if error != nil {
+                self.searchManager.searchFor(searchTerm: DefaultSearchTerms.coffeeShops) { (mapItems, error) in
+                    guard error == nil else {
                         Alert.presentSearchErrorAlert()
                         return
                     }
 
-                    if let mapItems = mapItems {
-                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "coffee shops", mapItems: mapItems)
-                        self.mapInteraction?.present()
+                    guard let mapItems = mapItems else {
+                        Alert.presentEmptySearchResultsAlert(searchTerm: DefaultSearchTerms.coffeeShops)
+                        return
                     }
+
+                    self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: DefaultSearchTerms.coffeeShops, mapItems: mapItems)
+                    self.mapInteraction?.present()
                 }
             default:
                 fatalError()
@@ -83,16 +89,19 @@ class MenuManager: NSObject {
         let gasStationsCell = SDLMenuCell(title: SDLMenuTitles.gasNearMe, icon: nil, voiceCommands: [SDLMenuTitles.gasNearMe]) { (source: SDLTriggerSource) in
             switch source {
             case .menu:
-                self.searchManager.searchFor(searchTerm: "gas stations") { (mapItems, error) in
-                    if error != nil {
+                self.searchManager.searchFor(searchTerm: DefaultSearchTerms.gasStations) { (mapItems, error) in
+                    guard error == nil else {
                         Alert.presentSearchErrorAlert()
                         return
                     }
 
-                    if let mapItems = mapItems {
-                        self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: "gas stations", mapItems: mapItems)
-                        self.mapInteraction?.present()
+                    guard let mapItems = mapItems else {
+                        Alert.presentEmptySearchResultsAlert(searchTerm: DefaultSearchTerms.gasStations)
+                        return
                     }
+
+                    self.mapInteraction = MapItemsListInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager, searchText: DefaultSearchTerms.gasStations, mapItems: mapItems)
+                    self.mapInteraction?.present()
                 }
             default:
                 fatalError()

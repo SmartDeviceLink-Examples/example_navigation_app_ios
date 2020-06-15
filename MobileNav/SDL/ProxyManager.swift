@@ -23,7 +23,7 @@ enum ProxyState {
 class ProxyManager: NSObject {
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
-    private static var isOffScreen = false
+    static var isOffScreen = false
     public private(set) var proxyState = ProxyState.stopped
     public private(set) var rpcVersion: Int?
     public private(set) var menuManager: MenuManager!
@@ -31,7 +31,6 @@ class ProxyManager: NSObject {
 
     private override init() {
         super.init()
-        registerForNotifications()
     }
 
     func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
@@ -110,10 +109,19 @@ class ProxyManager: NSObject {
         let streamingMediaConfig = SDLStreamingMediaConfiguration()
         streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
 
+        guard let mapViewController = SDLViewControllers.map else {
+            SDLLog.e("Error loading the SDL map view")
+            return streamingMediaConfig
+        }
+
         if isOffScreen {
-            streamingMediaConfig.rootViewController = SDLViewControllers.map!
+            streamingMediaConfig.rootViewController = mapViewController
         } else {
             streamingMediaConfig.rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        }
+
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(Notification(name: .setupTouchManager))
         }
 
         return streamingMediaConfig
@@ -125,39 +133,6 @@ class ProxyManager: NSObject {
         case .viewAfterScreenUpdates: return .viewAfterScreenUpdates
         case .viewBeforeScreenUpdates: return .viewBeforeScreenUpdates
         }
-    }
-}
-
-// MARK: - Register for Audio and Video Notifications
-
-private extension ProxyManager {
-    func registerForNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(sdlVideoStreamDidStart), name: .SDLVideoStreamDidStart, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(sdlVideoStreamDidStop), name: .SDLVideoStreamDidStop, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(sdlVideoStreamSuspended), name: .SDLVideoStreamSuspended, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(sdlAudioStreamDidStart), name: .SDLAudioStreamDidStart, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(sdlAudioStreamDidStop), name: .SDLAudioStreamDidStop, object: nil)
-    }
-
-    @objc func sdlVideoStreamDidStart() {
-        SDLLog.d("Starting video")
-    }
-
-    @objc func sdlVideoStreamDidStop() {
-        SDLLog.d("Stopping video")
-    }
-
-    @objc func sdlVideoStreamSuspended() {
-        SDLLog.d("Suspending video")
-    }
-
-    @objc func sdlAudioStreamDidStart() {
-        SDLLog.d("Starting audio")
-    }
-
-    @objc func sdlAudioStreamDidStop() {
-        SDLLog.d("Stopping audio")
     }
 }
 
@@ -179,7 +154,7 @@ extension ProxyManager: SDLManagerDelegate {
             }
         }
 
-        NotificationCenter.default.post(Notification(name: .showHiddenButtons))
+        NotificationCenter.default.post(Notification(name: .showSubscribeButtons))
         firstHMINotNil = true
     }
 

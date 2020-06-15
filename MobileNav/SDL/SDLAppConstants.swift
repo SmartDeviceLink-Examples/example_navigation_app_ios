@@ -27,3 +27,9 @@ struct SDLMenuTitles {
     static let restaurantsNearMe = "Restaurants Near Me"
     static let gasNearMe = "Gas Stations Near Me"
 }
+
+struct DefaultSearchTerms {
+    static let restaurants = "restaurants"
+    static let coffeeShops = "coffee shops"
+    static let gasStations = "gas stations"
+}

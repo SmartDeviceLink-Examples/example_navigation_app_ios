@@ -37,8 +37,11 @@ extension Notification.Name {
     static let hideSubscribedButtons = Notification.Name("hideSubscribedButtons")
 
     /** A notification that informs the receiver to show previously hidden buttons */
-    static let showHiddenButtons = Notification.Name("showHiddenButtons")
+    static let showSubscribeButtons = Notification.Name("showSubscribeButtons")
 
-    /** A notification that informs the receiver center map on place */
+    /** A notification that informs the receiver to center map on selected place */
     static let centerMapOnPlace = Notification.Name("sdl_centerMapOnPlace")
+
+    /** A notification that informs the receiver to setup the touch manager for SDL */
+    static let setupTouchManager = Notification.Name("sdl_setupTouchManager")
 }

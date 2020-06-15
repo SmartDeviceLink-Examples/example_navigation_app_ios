@@ -19,40 +19,37 @@ class SecretValues {
     private static let plistUrl = Bundle.main.url(forResource: "keys", withExtension: "plist")
 
     class func setAccessToken() {
-        if let url = plistUrl {
-            do {
-              let data = try Data(contentsOf:url)
-              let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
-                MGLAccountManager.accessToken = keysDictionary[SecretConstants.accessTokenKey]
-            } catch {
-               print("No value exists for key: \(SecretConstants.accessTokenKey)")
-            }
+        guard let url = plistUrl else { return }
+        do {
+            let data = try Data(contentsOf:url)
+            let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
+            MGLAccountManager.accessToken = keysDictionary[SecretConstants.accessTokenKey]
+        } catch {
+            print("No value exists for key: \(SecretConstants.accessTokenKey)")
         }
     }
 
     class func appID() -> String? {
-        if let url = plistUrl {
-            do {
-              let data = try Data(contentsOf:url)
-              let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
-                return keysDictionary[SecretConstants.appIdKey]
-            } catch {
-               print("No value exists for key: \(SecretConstants.appIdKey)")
-            }
+        guard let url = plistUrl else { return nil }
+        do {
+            let data = try Data(contentsOf:url)
+            let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
+            return keysDictionary[SecretConstants.appIdKey]
+        } catch {
+            print("No value exists for key: \(SecretConstants.appIdKey)")
+            return nil
         }
-        return nil
     }
 
     class func appName() -> String? {
-        if let url = plistUrl {
-            do {
-              let data = try Data(contentsOf:url)
-              let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
-                return keysDictionary[SecretConstants.appNameKey]
-            } catch {
-               print("No value exists for key: \(SecretConstants.appNameKey)")
-            }
+        guard let url = plistUrl else { return nil }
+        do {
+            let data = try Data(contentsOf:url)
+            let keysDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String:String]
+            return keysDictionary[SecretConstants.appNameKey]
+        } catch {
+            print("No value exists for key: \(SecretConstants.appNameKey)")
+            return nil
         }
-        return nil
     }
 }

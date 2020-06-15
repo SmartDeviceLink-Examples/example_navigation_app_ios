@@ -27,7 +27,6 @@ class MapBoxViewController: SDLCarWindowViewController {
     private var mapTouchHandler: TouchHandler?
     private var menuTouchHandler: TouchHandler?
     private var userLocation: CLLocation?
-    private var subscribedButtonsHidden = false
     private var keyboard: KeyboardSearchInteraction?
 
     override func viewDidLoad() {
@@ -66,7 +65,6 @@ extension MapBoxViewController {
     func setup() {
         DispatchQueue.main.async {
             self.setupObservers()
-            self.setupTouchManager()
             self.setupButtons()
             self.setupUserLocation()
         }
@@ -76,11 +74,12 @@ extension MapBoxViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(presentOffScreen), name: .offScreenConnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setupUserLocation), name: .locationUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideSubscribedButtons), name: .hideSubscribedButtons, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showHiddenButtons), name: .showHiddenButtons, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSubscribeButtons), name: .showSubscribeButtons, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .centerMapOnPlace, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setupTouchManager), name: .setupTouchManager, object: nil)
     }
 
-    private func setupTouchManager() {
+    @objc private func setupTouchManager() {
         mapTouchHandler = mapManager.mapManagerTouchHandler
         menuTouchHandler = menuButton.buttonTouchHandler
         ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
@@ -119,15 +118,9 @@ extension MapBoxViewController {
     // MARK: - Notification
 
     @objc func setupUserLocation() {
-        if let location = LocationManager.sharedManager.userLocation {
             mapView.showsUserLocation = true
-            mapManager.setupMapView(with: mapView, location: location)
-            userLocation = location
-        } else {
-            let detroitLocation = CLLocation(latitude: 42.33, longitude: -83.04)
-            mapManager.setupMapView(with: mapView, location: detroitLocation)
-            userLocation = detroitLocation
-        }
+            mapManager.setupMapView(with: mapView, location: LocationManager.sharedManager.userLocation!)
+            userLocation = LocationManager.sharedManager.userLocation
     }
 
     @objc private func presentOffScreen() {
@@ -139,22 +132,27 @@ extension MapBoxViewController {
 
     @objc private func hideSubscribedButtons() {
         DispatchQueue.main.async {
-            self.subscribeButtons()
-            self.centerMapButton.isHidden = true
-            self.zoomInButton.isHidden = true
-            self.zoomOutButton.isHidden = true
-            self.subscribedButtonsHidden = true
+            let buttonsSupported = self.subscribeButtons()
+
+            if buttonsSupported.contains(where: { $0.name == SDLButtonName.navCenterLocation.rawValue.rawValue }) {
+                self.centerMapButton.isHidden = true
+            }
+
+            if buttonsSupported.contains(where: { $0.name == SDLButtonName.navZoomIn.rawValue.rawValue }) {
+                self.zoomInButton.isHidden = true
+            }
+
+            if buttonsSupported.contains(where: { $0.name == SDLButtonName.navZoomOut.rawValue.rawValue }) {
+                self.zoomOutButton.isHidden = true
+            }
         }
     }
 
     @objc private func showSubscribeButtons() {
         DispatchQueue.main.async {
-            if self.subscribedButtonsHidden {
-                self.centerMapButton.isHidden = false
-                self.zoomInButton.isHidden = false
-                self.zoomOutButton.isHidden = false
-                self.subscribedButtonsHidden = false
-            }
+            if self.centerMapButton.isHidden { self.centerMapButton.isHidden = false }
+            if self.zoomOutButton.isHidden { self.zoomOutButton.isHidden = false }
+            if self.zoomInButton.isHidden { self.zoomInButton.isHidden = false }
         }
     }
 }
@@ -260,27 +258,44 @@ extension MapBoxViewController: SDLTouchManagerDelegate {
 // MARK: - Subscribe Buttons
 
 extension MapBoxViewController {
-    private func subscribeButtons() {
-        let zoomInbutton = SDLSubscribeButton(buttonName: .navZoomIn) { [unowned self] (press, event) in
-            guard press != nil else { return }
-            self.mapManager.zoomIn()
-        }
+    private func subscribeButtons() -> [SDLSubscribeButton] {
+        var subscribedButtons = [SDLSubscribeButton]()
 
-        let zoomOutButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
-            guard press != nil else { return }
-            self.mapManager.zoomOut()
-        }
-
-        let centerMapButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
-            guard press != nil else { return }
-            if let userLocation = LocationManager.sharedManager.userLocation {
-                self.mapManager.centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
-            } else {
-                Alert.presentUnableToFindLocation()
-                return
+        if buttonNameSupported(sdlButtonName: .navZoomIn) {
+            let zoomInbutton = SDLSubscribeButton(buttonName: .navZoomIn) { [unowned self] (press, event) in
+                guard press != nil else { return }
+                self.mapManager.zoomIn()
             }
+            subscribedButtons.append(zoomInbutton)
         }
 
-        ProxyManager.sharedManager.sdlManager.send([zoomInbutton, zoomOutButton, centerMapButton], progressHandler: nil, completionHandler: nil)
+        if buttonNameSupported(sdlButtonName: .navZoomOut) {
+            let zoomOutButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
+                guard press != nil else { return }
+                self.mapManager.zoomOut()
+            }
+            subscribedButtons.append(zoomOutButton)
+        }
+
+        if buttonNameSupported(sdlButtonName: .navZoomOut) {
+            let centerMapButton = SDLSubscribeButton(buttonName: .navZoomOut) { [unowned self] (press, event) in
+                guard press != nil else { return }
+                if let userLocation = LocationManager.sharedManager.userLocation {
+                    self.mapManager.centerLocation(lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+                } else {
+                    Alert.presentUnableToFindLocation()
+                    return
+                }
+            }
+            subscribedButtons.append(centerMapButton)
+        }
+
+        ProxyManager.sharedManager.sdlManager.send(subscribedButtons, progressHandler: nil, completionHandler: nil)
+        return subscribedButtons
     }
+
+    func buttonNameSupported(sdlButtonName: SDLButtonName) -> Bool {
+        return ProxyManager.sharedManager.sdlManager.systemCapabilityManager.defaultMainWindowCapability?.buttonCapabilities?.contains(where: { $0.name == sdlButtonName }) ?? false
+    }
+
 }

@@ -13,7 +13,7 @@ class LocationManager: NSObject {
     static let sharedManager = LocationManager()
     private var locationManager = CLLocationManager()
     private var lastLocationUpdate = Date(timeIntervalSince1970: 0)
-    var userLocation: CLLocation?
+    private(set) var userLocation: CLLocation?
 
     override init() {
         super.init()
@@ -22,15 +22,16 @@ class LocationManager: NSObject {
         locationManager.desiredAccuracy = 1000
         locationManager.distanceFilter = 500
         locationManager.requestWhenInUseAuthorization()
+
+        // Set Detroit location by default
+        let detroitLocation = CLLocation(latitude: 42.33, longitude: -83.04)
+        userLocation = detroitLocation
     }
 
     func start() {
         locationManager.startMonitoringSignificantLocationChanges()
     }
 
-    func stop() {
-        locationManager.stopMonitoringSignificantLocationChanges()
-    }
 }
 
 // MARK: - CLLocationManagerDelegate

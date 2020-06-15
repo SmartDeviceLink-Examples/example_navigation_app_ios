@@ -57,7 +57,13 @@ extension SDLMenuButton {
                 SDLLog.e("Error loading the SDL menu view controller")
                 return
             }
-            ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
+
+            if ProxyManager.isOffScreen {
+                UIApplication.shared.keyWindow?.rootViewController = menuViewController
+            } else {
+                ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
+            }
+
             menuViewController.setupTouchManager()
             return
         }

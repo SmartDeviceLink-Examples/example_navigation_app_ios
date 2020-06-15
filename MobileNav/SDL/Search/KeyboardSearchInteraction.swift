@@ -30,15 +30,18 @@ extension KeyboardSearchInteraction: SDLKeyboardDelegate {
         switch source {
         case .submitted:
             searchManager.searchFor(searchTerm: inputText) { (mapItems, error) in
-                if error != nil {
+                guard error == nil else {
                     Alert.presentSearchErrorAlert()
                     return
                 }
 
-                if let mapItems = mapItems {
-                    self.mapInteraction = MapItemsListInteraction(screenManager: self.screenManager, searchText: inputText, mapItems: mapItems)
-                    self.mapInteraction?.present()
+                guard let mapItems = mapItems else {
+                    Alert.presentEmptySearchResultsAlert(searchTerm: inputText)
+                    return
                 }
+
+                self.mapInteraction = MapItemsListInteraction(screenManager: self.screenManager, searchText: inputText, mapItems: mapItems)
+                self.mapInteraction?.present()
             }
         case .voice:
             voiceSearchInteraction = VoiceSearchInteraction(screenManager: self.screenManager)

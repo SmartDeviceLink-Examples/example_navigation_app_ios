@@ -45,10 +45,7 @@ class Alert {
     class func presentDriverDistraction() {
         let alert = SDLAlert()
         alert.duration = defaultDuration
-        alert.alertText1 = "Driver distraction is currently on"
-        alert.alertText2 = "Please try again when it is safe to do so"
-        alert.softButtons = [okSoftButton]
-        alert.ttsChunks = [SDLTTSChunk(text: "Driver Distraction", type: .text)]
+        alert.ttsChunks = [SDLTTSChunk(text: "Feature disallowed while vehicle is in motion", type: .text)]
 
         ProxyManager.sharedManager.sdlManager.send(request: alert)
     }
@@ -88,7 +85,7 @@ class Alert {
     class func presentEmptySearchResultsAlert(searchTerm: String) {
         let alert = SDLAlert()
         alert.duration = defaultDuration
-        alert.alertText1 = "No search results for"
+        alert.alertText1 = "No search results found for"
         alert.alertText2 = "\"\(searchTerm)\""
         alert.softButtons = [okSoftButton]
         alert.ttsChunks = [SDLTTSChunk(text: "No search results for \"\(searchTerm)\"", type: .text)]
