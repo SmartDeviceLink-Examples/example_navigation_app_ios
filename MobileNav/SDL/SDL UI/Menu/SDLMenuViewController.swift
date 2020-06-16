@@ -46,7 +46,6 @@ class SDLMenuViewController: SDLCarWindowViewController {
                 if (!(window.rootViewController?.isKind(of: SDLMenuViewController.self) ?? false)) { continue }
                 window.rootViewController = mapViewController
                 NotificationCenter.default.post(Notification(name: .setMapAsRootViewController))
-                mapViewController.setup()
                 break
             }
         }

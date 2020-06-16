@@ -78,6 +78,7 @@ extension MapItemsListInteraction: SDLChoiceSetDelegate {
         DispatchQueue.main.async {
             if ProxyManager.isOffScreenStreaming {
                 NotificationCenter.default.post(Notification(name: .setMapAsRootViewController))
+                NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
             } else {
                 guard let mapViewController = SDLViewControllers.map else {
                     SDLLog.e("Error loading the SDL menu view controller")

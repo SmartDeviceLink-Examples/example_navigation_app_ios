@@ -66,7 +66,6 @@ extension MapBoxViewController {
             self.setupButtons()
             self.setupObservers()
             self.setupUserLocation()
-            self.setupTouchManager()
         }
     }
 
@@ -113,9 +112,9 @@ extension MapBoxViewController {
     // MARK: - Notification
 
     @objc func setupUserLocation() {
-            mapView.showsUserLocation = true
-            mapManager.setupMapView(with: mapView, location: LocationManager.sharedManager.userLocation!)
-            userLocation = LocationManager.sharedManager.userLocation
+        mapView.showsUserLocation = true
+        mapManager.setupMapView(with: mapView, location: LocationManager.sharedManager.userLocation!)
+        userLocation = LocationManager.sharedManager.userLocation
     }
 
     @objc private func presentOffScreen() {
@@ -153,10 +152,12 @@ extension MapBoxViewController {
 
     @objc private func setAsRootViewController() {
         ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = self
+        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
         setupTouchManager()
     }
 
     @objc func setupTouchManager() {
+        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
         mapTouchHandler = mapManager.mapManagerTouchHandler
         menuTouchHandler = menuButton.buttonTouchHandler
         ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
