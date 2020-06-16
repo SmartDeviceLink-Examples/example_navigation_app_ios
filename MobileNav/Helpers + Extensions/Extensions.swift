@@ -44,4 +44,7 @@ extension Notification.Name {
 
     /** A notification that informs the receiver to setup the touch manager for SDL */
     static let setupTouchManager = Notification.Name("sdl_setupTouchManager")
+
+    /** A notification that informs the MapBoxViewController to become the RootViewController */
+    static let setMapAsRootViewController = Notification.Name("setMapAsRootViewController")
 }

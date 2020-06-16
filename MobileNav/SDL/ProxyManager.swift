@@ -23,7 +23,7 @@ enum ProxyState {
 class ProxyManager: NSObject {
     public private(set) var sdlManager: SDLManager!
     static let sharedManager = ProxyManager()
-    static var isOffScreen = false
+    static var isOffScreenStreaming = false
     public private(set) var proxyState = ProxyState.stopped
     public private(set) var rpcVersion: Int?
     public private(set) var menuManager: MenuManager!
@@ -35,7 +35,7 @@ class ProxyManager: NSObject {
 
     func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
         proxyState = .searching
-        ProxyManager.isOffScreen = streamSettings.streamType == .offScreen ? true : false
+        ProxyManager.isOffScreenStreaming = streamSettings.streamType == .offScreen ? true : false
 
         if sdlManager == nil {
             sdlManager = SDLManager(configuration: connectionType == .iap ? ProxyManager.connectIAP(streamSettings: streamSettings) : ProxyManager.connectTCP(streamSettings: streamSettings), delegate:self)
@@ -45,6 +45,10 @@ class ProxyManager: NSObject {
             if success {
                 self.proxyState = .connected
                 self.rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion?.majorVersion.intValue
+
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(Notification(name: .setupTouchManager))
+                }
 
                 // If RPC version is 6.0, prepare built-in menu
                 if self.rpcVersion != nil && self.rpcVersion! >= 6 {
@@ -92,7 +96,7 @@ class ProxyManager: NSObject {
         let lockscreenConfig = SDLLockScreenConfiguration.enabled()
 
         // Lock screen display mode should be set to .always when mirroring device screen
-        if !ProxyManager.isOffScreen {
+        if !ProxyManager.isOffScreenStreaming {
             lockscreenConfig.displayMode = .always
         }
 
@@ -114,15 +118,13 @@ class ProxyManager: NSObject {
             return streamingMediaConfig
         }
 
-        if isOffScreen {
+        if isOffScreenStreaming {
             streamingMediaConfig.rootViewController = mapViewController
         } else {
             streamingMediaConfig.rootViewController = UIApplication.shared.keyWindow?.rootViewController
         }
 
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(Notification(name: .setupTouchManager))
-        }
+        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
 
         return streamingMediaConfig
     }
@@ -148,7 +150,7 @@ extension ProxyManager: SDLManagerDelegate {
             return
         }
 
-        if ProxyManager.isOffScreen {
+        if ProxyManager.isOffScreenStreaming {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(Notification(name: .offScreenDisconnected))
             }
@@ -179,7 +181,7 @@ extension ProxyManager: SDLManagerDelegate {
             }
         }
 
-        if oldLevel == .none && newLevel == .full && ProxyManager.isOffScreen {
+        if oldLevel == .none && newLevel == .full && ProxyManager.isOffScreenStreaming {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(Notification(name: .offScreenConnected))
             }

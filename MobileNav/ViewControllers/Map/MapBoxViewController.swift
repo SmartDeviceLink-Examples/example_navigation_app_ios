@@ -61,12 +61,12 @@ extension MapBoxViewController {
 // MARK: - Helper Functions
 
 extension MapBoxViewController {
-
     func setup() {
         DispatchQueue.main.async {
-            self.setupObservers()
             self.setupButtons()
+            self.setupObservers()
             self.setupUserLocation()
+            self.setupTouchManager()
         }
     }
 
@@ -76,13 +76,8 @@ extension MapBoxViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(hideSubscribedButtons), name: .hideSubscribedButtons, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showSubscribeButtons), name: .showSubscribeButtons, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .centerMapOnPlace, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setAsRootViewController), name: .setMapAsRootViewController, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setupTouchManager), name: .setupTouchManager, object: nil)
-    }
-
-    @objc private func setupTouchManager() {
-        mapTouchHandler = mapManager.mapManagerTouchHandler
-        menuTouchHandler = menuButton.buttonTouchHandler
-        ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
     }
 
     private func setupButtons() {
@@ -154,6 +149,17 @@ extension MapBoxViewController {
             if self.zoomOutButton.isHidden { self.zoomOutButton.isHidden = false }
             if self.zoomInButton.isHidden { self.zoomInButton.isHidden = false }
         }
+    }
+
+    @objc private func setAsRootViewController() {
+        ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = self
+        setupTouchManager()
+    }
+
+    @objc func setupTouchManager() {
+        mapTouchHandler = mapManager.mapManagerTouchHandler
+        menuTouchHandler = menuButton.buttonTouchHandler
+        ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
     }
 }
 

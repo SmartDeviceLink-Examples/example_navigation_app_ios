@@ -58,12 +58,23 @@ extension SDLMenuButton {
                 return
             }
 
-            if ProxyManager.isOffScreen {
-                UIApplication.shared.keyWindow?.rootViewController = menuViewController
-            } else {
+            if ProxyManager.isOffScreenStreaming {
                 ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
+            } else {
+                guard let menuViewController = SDLViewControllers.menu else {
+                    SDLLog.e("Error loading the SDL menu view controller")
+                    return
+                }
+                menuViewController.setupTouchManager()
+                for window in UIApplication.shared.windows {
+                    if (!(window.rootViewController?.isKind(of: MapBoxViewController.self) ?? false)) { continue }
+                    window.rootViewController = menuViewController
+                    ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = window.rootViewController
+                    break
+                }
             }
 
+            NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
             menuViewController.setupTouchManager()
             return
         }

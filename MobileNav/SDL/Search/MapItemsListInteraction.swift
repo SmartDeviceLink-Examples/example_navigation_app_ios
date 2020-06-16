@@ -74,12 +74,25 @@ extension MapItemsListInteraction: SDLChoiceSetDelegate {
     func choiceSet(_ choiceSet: SDLChoiceSet, didSelectChoice choice: SDLChoiceCell, withSource source: SDLTriggerSource, atRowIndex rowIndex: UInt) {
         let mapItem = mapItems[Int(rowIndex)]
         let dict: [String : MKMapItem] = ["mapItem": mapItem]
-        guard let mapViewController = SDLViewControllers.map else {
-            SDLLog.e("Error loading the SDL map view")
-            return
+
+        DispatchQueue.main.async {
+            if ProxyManager.isOffScreenStreaming {
+                NotificationCenter.default.post(Notification(name: .setMapAsRootViewController))
+            } else {
+                guard let mapViewController = SDLViewControllers.map else {
+                    SDLLog.e("Error loading the SDL menu view controller")
+                    return
+                }
+                for window in UIApplication.shared.windows {
+                    if (!(window.rootViewController?.isKind(of: SDLMenuViewController.self) ?? false)) { continue }
+                    window.rootViewController = mapViewController
+                    NotificationCenter.default.post(Notification(name: .setMapAsRootViewController))
+                    mapViewController.setup()
+                    break
+                }
+            }
         }
-        ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = mapViewController
-        mapViewController.setup()
+
         NotificationCenter.default.post(name: .centerMapOnPlace, object: dict)
     }
 
