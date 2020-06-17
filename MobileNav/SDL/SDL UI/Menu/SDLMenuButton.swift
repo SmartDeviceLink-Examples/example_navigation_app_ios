@@ -60,6 +60,7 @@ extension SDLMenuButton {
 
             if ProxyManager.isOffScreenStreaming {
                 ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = menuViewController
+                menuViewController.setupTouchManager()
             } else {
                 guard let menuViewController = SDLViewControllers.menu else {
                     SDLLog.e("Error loading the SDL menu view controller")
@@ -75,7 +76,6 @@ extension SDLMenuButton {
             }
 
             NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
-            menuViewController.setupTouchManager()
             return
         }
         ProxyManager.sharedManager.sdlManager.screenManager.openMenu()

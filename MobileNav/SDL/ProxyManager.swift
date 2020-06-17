@@ -46,9 +46,8 @@ class ProxyManager: NSObject {
                 self.proxyState = .connected
                 self.rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion?.majorVersion.intValue
 
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(Notification(name: .setupTouchManager))
-                }
+                let streamingVC = self.sdlManager.streamManager?.rootViewController as! MapBoxViewController
+                streamingVC.setupTouchManager()
 
                 // If RPC version is 6.0, prepare built-in menu
                 if self.rpcVersion != nil && self.rpcVersion! >= 6 {
@@ -117,7 +116,7 @@ class ProxyManager: NSObject {
             SDLLog.e("Error loading the SDL map view")
             return streamingMediaConfig
         }
-
+        
         if isOffScreenStreaming {
             streamingMediaConfig.rootViewController = mapViewController
         } else {

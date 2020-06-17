@@ -31,11 +31,13 @@ class MapBoxViewController: SDLCarWindowViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.setNeedsDisplay()
         setup()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        mapView.setNeedsDisplay()
         NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
     }
 }
@@ -69,6 +71,12 @@ extension MapBoxViewController {
         }
     }
 
+    func setupTouchManager() {
+        mapTouchHandler = mapManager.mapManagerTouchHandler
+        menuTouchHandler = menuButton.buttonTouchHandler
+        ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
+    }
+
     private func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(presentOffScreen), name: .offScreenConnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setupUserLocation), name: .locationUpdated, object: nil)
@@ -76,14 +84,13 @@ extension MapBoxViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showSubscribeButtons), name: .showSubscribeButtons, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(centerMapOnLocation), name: .centerMapOnPlace, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setAsRootViewController), name: .setMapAsRootViewController, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(setupTouchManager), name: .setupTouchManager, object: nil)
     }
 
     private func setupButtons() {
-        searchButton.setImage(UIImage(named: "search"), for: .normal)
-        centerMapButton.setImage(UIImage(named: "center"), for: .normal)
-        zoomInButton.setImage(UIImage(named: "zoom_in"), for: .normal)
-        zoomOutButton.setImage(UIImage(named: "zoom_out"), for: .normal)
+        searchButton.setImage(UIImage(named: "search")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        centerMapButton.setImage(UIImage(named: "center")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        zoomInButton.setImage(UIImage(named: "zoom_in")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        zoomOutButton.setImage(UIImage(named: "zoom_out")?.withRenderingMode(.alwaysTemplate), for: .normal)
 
         // Hide buttons if we are going to subscribe them
         if let rpcVersion = ProxyManager.sharedManager.rpcVersion {
@@ -154,13 +161,6 @@ extension MapBoxViewController {
         ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = self
         NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
         setupTouchManager()
-    }
-
-    @objc func setupTouchManager() {
-        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
-        mapTouchHandler = mapManager.mapManagerTouchHandler
-        menuTouchHandler = menuButton.buttonTouchHandler
-        ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
     }
 }
 

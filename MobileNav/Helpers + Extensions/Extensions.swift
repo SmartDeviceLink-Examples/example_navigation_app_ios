@@ -42,9 +42,6 @@ extension Notification.Name {
     /** A notification that informs the receiver to center map on selected place */
     static let centerMapOnPlace = Notification.Name("sdl_centerMapOnPlace")
 
-    /** A notification that informs the receiver to setup the touch manager for SDL */
-    static let setupTouchManager = Notification.Name("sdl_setupTouchManager")
-
     /** A notification that informs the MapBoxViewController to become the RootViewController */
     static let setMapAsRootViewController = Notification.Name("setMapAsRootViewController")
 }

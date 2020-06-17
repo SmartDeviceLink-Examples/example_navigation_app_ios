@@ -45,7 +45,8 @@ class SDLMenuViewController: SDLCarWindowViewController {
             for window in UIApplication.shared.windows {
                 if (!(window.rootViewController?.isKind(of: SDLMenuViewController.self) ?? false)) { continue }
                 window.rootViewController = mapViewController
-                NotificationCenter.default.post(Notification(name: .setMapAsRootViewController))
+                ProxyManager.sharedManager.sdlManager.streamManager?.rootViewController = window.rootViewController
+                mapViewController.setupTouchManager()
                 break
             }
         }

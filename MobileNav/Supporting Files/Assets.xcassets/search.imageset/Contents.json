@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-search-25.png",
+      "filename" : "search.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-search-50.png",
+      "filename" : "search@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-search-75.png",
+      "filename" : "search@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

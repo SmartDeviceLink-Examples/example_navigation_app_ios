@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-marker-25.png",
+      "filename" : "centerlocation.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-marker-50.png",
+      "filename" : "centerlocation@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-marker-75.png",
+      "filename" : "centerlocation@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }
