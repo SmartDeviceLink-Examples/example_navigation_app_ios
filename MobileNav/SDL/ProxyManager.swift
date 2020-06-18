@@ -33,7 +33,7 @@ class ProxyManager: NSObject {
         super.init()
     }
 
-    func connect(with connectionType: ConnectionType, streamSettings: StreamSettings) {
+    func connect(with connectionType: ConnectionType, streamSettings: StreamSettings, locationManager: LocationManager) {
         proxyState = .searching
         ProxyManager.isOffScreenStreaming = streamSettings.streamType == .offScreen ? true : false
 
@@ -46,8 +46,11 @@ class ProxyManager: NSObject {
                 self.proxyState = .connected
                 self.rpcVersion = ProxyManager.sharedManager.sdlManager.registerResponse?.sdlMsgVersion?.majorVersion.intValue
 
-                let streamingVC = self.sdlManager.streamManager?.rootViewController as! MapBoxViewController
-                streamingVC.setupTouchManager()
+
+                if let streamingVC = self.sdlManager.streamManager?.rootViewController as? MapBoxViewController {
+                    streamingVC.setupLocationManager(locationManager)
+                    streamingVC.setupSDLApp()
+                }
 
                 // If RPC version is 6.0, prepare built-in menu
                 if self.rpcVersion != nil && self.rpcVersion! >= 6 {
@@ -94,10 +97,8 @@ class ProxyManager: NSObject {
         lifecycleConfiguration.appType = .navigation
         let lockscreenConfig = SDLLockScreenConfiguration.enabled()
 
-        // Lock screen display mode should be set to .always when mirroring device screen
-        if !ProxyManager.isOffScreenStreaming {
-            lockscreenConfig.displayMode = .always
-        }
+        // Lock screen should always show
+        lockscreenConfig.displayMode = .always
 
         return SDLConfiguration(lifecycle: lifecycleConfiguration, lockScreen: lockscreenConfig, logging: ProxyManager.logConfiguration(), streamingMedia:ProxyManager.streamingMediaConfiguration(streamSettings: streamSettings), fileManager: .default(), encryption: nil)
     }
@@ -116,14 +117,12 @@ class ProxyManager: NSObject {
             SDLLog.e("Error loading the SDL map view")
             return streamingMediaConfig
         }
-        
+
         if isOffScreenStreaming {
             streamingMediaConfig.rootViewController = mapViewController
         } else {
             streamingMediaConfig.rootViewController = UIApplication.shared.keyWindow?.rootViewController
         }
-
-        NotificationCenter.default.post(name: SDLDidUpdateProjectionView, object: nil)
 
         return streamingMediaConfig
     }

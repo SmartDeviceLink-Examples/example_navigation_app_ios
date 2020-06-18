@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
             return ProxyManager.sharedManager.proxyState
         }
     }
+    var locationManager: LocationManager?
 
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var startButton: UIButton!
@@ -60,9 +61,11 @@ class SettingsViewController: UIViewController {
         AppUserDefaults.shared.renderType = renderType
         AppUserDefaults.shared.streamType = streamType
 
+        guard let locationManager = locationManager else { return }
+        
         // Connect SDL with selected settings
         let streamSettings = StreamSettings(renderType: renderType, streamType:streamType)
-        ProxyManager.sharedManager.connect(with: SDLAppConstants.connectionType, streamSettings: streamSettings)
+         ProxyManager.sharedManager.connect(with: SDLAppConstants.connectionType, streamSettings: streamSettings, locationManager: locationManager)
     }
 }
 
@@ -86,10 +89,10 @@ extension SettingsViewController {
         }
 
         if (newColor != nil) || (newTitle != nil) {
-            DispatchQueue.main.async(execute: {[weak self]() -> Void in
+            DispatchQueue.main.async { [weak self] in
                 self?.startButton.backgroundColor = newColor
                 self?.startButton.setTitle(newTitle, for: .normal)
-            })
+            }
         }
     }
 }

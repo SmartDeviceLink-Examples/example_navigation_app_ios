@@ -10,35 +10,36 @@ import CoreLocation
 import Foundation
 
 class LocationManager: NSObject {
-    static let sharedManager = LocationManager()
-    private var locationManager = CLLocationManager()
-    private var lastLocationUpdate = Date(timeIntervalSince1970: 0)
+    private var userLocationManager = CLLocationManager()
     private(set) var userLocation: CLLocation?
+    private var lastLocationUpdate = Date(timeIntervalSince1970: 0)
+    var userLocationUpdatedHandler: ((CLLocation) -> Void)?
 
     override init() {
         super.init()
-        locationManager.delegate = self
-        locationManager.pausesLocationUpdatesAutomatically = true
-        locationManager.desiredAccuracy = 1000
-        locationManager.distanceFilter = 500
-        locationManager.requestWhenInUseAuthorization()
+        userLocationManager.delegate = self
+        userLocationManager.pausesLocationUpdatesAutomatically = true
+        userLocationManager.desiredAccuracy = 1000
+        userLocationManager.distanceFilter = 500
+        userLocationManager.requestWhenInUseAuthorization()
 
-        // Set Detroit location by default
+        // Set Detroit location as the default location
         let detroitLocation = CLLocation(latitude: 42.33, longitude: -83.04)
         userLocation = detroitLocation
     }
 
-    func start() {
-        locationManager.startMonitoringSignificantLocationChanges()
+    convenience init(userLocationUpdatedHandler: ((CLLocation) -> Void)?) {
+        self.init()
+        self.userLocationUpdatedHandler = userLocationUpdatedHandler
+        userLocationManager.startMonitoringSignificantLocationChanges()
     }
-
 }
 
 // MARK: - CLLocationManagerDelegate
 
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
+        userLocationManager.stopUpdatingLocation()
         let date = Date()
         if date.timeIntervalSince(self.lastLocationUpdate) <= 120 {
             return
@@ -46,7 +47,9 @@ extension LocationManager: CLLocationManagerDelegate {
 
         self.lastLocationUpdate = date
         userLocation = locations.last
-        NotificationCenter.default.post(Notification(name: .locationUpdated))
+
+        guard let userLocationUpdatedHandler = userLocationUpdatedHandler, let userLocation = userLocation else { return }
+        userLocationUpdatedHandler(userLocation)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -58,7 +61,7 @@ extension LocationManager: CLLocationManagerDelegate {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .authorizedWhenInUse:
-            locationManager.startUpdatingLocation()
+            userLocationManager.startUpdatingLocation()
         case .denied:
             print("Cannot access user location, permission was denied by user.")
         default:

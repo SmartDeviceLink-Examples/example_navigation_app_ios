@@ -40,6 +40,8 @@
 		10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E42473239F00BDCC88 /* AppUserDefaults.swift */; };
 		10F621ED2474446400BDCC88 /* MapItemsListInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */; };
 		10F621F1247467C700BDCC88 /* KeyboardSearchInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */; };
+		889D7ACD249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D7ACC249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift */; };
+		88B3B0C9249B909D00CF3F3B /* MapButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B3B0C8249B909D00CF3F3B /* MapButtonState.swift */; };
 		DF52484B0BFFA9B38D01FD66 /* Pods_MobileNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735759190470A036D9B4493A /* Pods_MobileNav.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +83,8 @@
 		10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSearchInteraction.swift; sourceTree = "<group>"; };
 		5071711CF91722F4EB66460B /* Pods-MobileNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.release.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.release.xcconfig"; sourceTree = "<group>"; };
 		735759190470A036D9B4493A /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		889D7ACC249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
+		88B3B0C8249B909D00CF3F3B /* MapButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonState.swift; sourceTree = "<group>"; };
 		B5B3861B60DEB606EB7B5E3D /* Pods-MobileNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNav.debug.xcconfig"; path = "Target Support Files/Pods-MobileNav/Pods-MobileNav.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +192,8 @@
 		10A0C21D243780C70010D9F6 /* MobileNav */ = {
 			isa = PBXGroup;
 			children = (
+				88B3B0C8249B909D00CF3F3B /* MapButtonState.swift */,
+				889D7ACC249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift */,
 				10EA2DF1246DC66500A4DB3A /* ViewControllers */,
 				10EA2DF0246DC64500A4DB3A /* Storyboards */,
 				107204012477409000502835 /* Views */,
@@ -432,6 +438,8 @@
 				10A40389245A1CD70040E83D /* SearchManager.swift in Sources */,
 				10F4A48D2475C44300DAB205 /* NotificationQueue.swift in Sources */,
 				10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */,
+				88B3B0C9249B909D00CF3F3B /* MapButtonState.swift in Sources */,
+				889D7ACD249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

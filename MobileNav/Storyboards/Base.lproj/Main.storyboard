@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PcB-Dw-JMF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PcB-Dw-JMF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,9 +26,8 @@
                                     <constraint firstAttribute="width" constant="50" id="1hh-hp-Yw0"/>
                                     <constraint firstAttribute="height" constant="50" id="vn8-Ct-ON6"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="searchButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="fHb-2Z-JXS"/>
+                                    <action selector="searchButtonTapped:" destination="PcB-Dw-JMF" eventType="touchUpInside" id="Lfi-TA-Isu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cg2-P3-ekp" customClass="SDLMenuButton" customModule="MobileNav" customModuleProvider="target">
@@ -101,7 +100,7 @@
                         <outlet property="centerMapButton" destination="Rfd-J5-7Ny" id="ZxV-DH-iOD"/>
                         <outlet property="mapView" destination="jso-2Y-A3j" id="GGr-WR-6FV"/>
                         <outlet property="menuButton" destination="Cg2-P3-ekp" id="nYf-1Y-fuf"/>
-                        <outlet property="searchButton" destination="3Ab-Rl-m5u" id="uxf-ht-5f3"/>
+                        <outlet property="searchButton" destination="3Ab-Rl-m5u" id="aLe-zT-5bV"/>
                         <outlet property="zoomInButton" destination="ZZA-6a-RfH" id="NS9-ho-xYK"/>
                         <outlet property="zoomOutButton" destination="9F8-LW-oxR" id="Rwf-D7-GMD"/>
                     </connections>
@@ -111,4 +110,5 @@
             <point key="canvasLocation" x="804" y="-33"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
