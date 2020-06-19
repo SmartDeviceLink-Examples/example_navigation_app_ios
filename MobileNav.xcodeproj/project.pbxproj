@@ -33,7 +33,6 @@
 		10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */; };
 		10EAA0442499867600E3BC1B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10EAA0432499867600E3BC1B /* Settings.bundle */; };
 		10F4A48B24759D0B00DAB205 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4A48A24759D0B00DAB205 /* Alert.swift */; };
-		10F4A48D2475C44300DAB205 /* NotificationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4A48C2475C44300DAB205 /* NotificationQueue.swift */; };
 		10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621DE246DE67C00BDCC88 /* MapButton.swift */; };
 		10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E42473239F00BDCC88 /* AppUserDefaults.swift */; };
 		10F621ED2474446400BDCC88 /* MapItemsListInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */; };
@@ -72,7 +71,6 @@
 		10EA2DED246CC9A100A4DB3A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		10EAA0432499867600E3BC1B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		10F4A48A24759D0B00DAB205 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		10F4A48C2475C44300DAB205 /* NotificationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQueue.swift; sourceTree = "<group>"; };
 		10F621DE246DE67C00BDCC88 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		10F621E42473239F00BDCC88 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemsListInteraction.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 			children = (
 				10A40388245A1CD70040E83D /* SearchManager.swift */,
 				10E90B2C24749B84003C41ED /* LocationManager.swift */,
-				10F4A48C2475C44300DAB205 /* NotificationQueue.swift */,
 			);
 			path = "Managers and Singletons";
 			sourceTree = "<group>";
@@ -428,7 +425,6 @@
 				101132D72437A40300D15779 /* ProxyManager.swift in Sources */,
 				10463E59246DDB4700B19762 /* MenuManager.swift in Sources */,
 				10A40389245A1CD70040E83D /* SearchManager.swift in Sources */,
-				10F4A48D2475C44300DAB205 /* NotificationQueue.swift in Sources */,
 				10B17673243E556C001EE3C5 /* SettingOptionsViewController.swift in Sources */,
 				88B3B0C9249B909D00CF3F3B /* MapButtonState.swift in Sources */,
 				889D7ACD249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift in Sources */,

@@ -72,10 +72,10 @@ class VoiceSearchInteraction: NSObject {
     private func performSearch(completionHandler: @escaping SearchCompletionHandler) {
         switch listenState {
         case .notAuthorized:
-            ProxyManager.sharedManager.sdlManager.send(request: Alert.speechRecognizerDisallowedAlert())
+            Alert.presentSpeechRecognizerDisallowedAlert()
             completionHandler(false, nil, nil)
         case .badRegion:
-            ProxyManager.sharedManager.sdlManager.send(request: Alert.speechRecognizerBadLocaleAlert())
+            Alert.presentSpeechRecognizerBadLocaleAlert()
             completionHandler(false, nil, nil)
         case .notListening:
             ProxyManager.sharedManager.sdlManager.send(request: VoiceSearchInteraction.audioPassThruRequest())

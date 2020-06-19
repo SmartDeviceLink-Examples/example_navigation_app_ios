@@ -27,9 +27,6 @@ extension Notification.Name {
     /** A notification that informs observing receivers about significant location updates. */
     static let locationUpdated = Notification.Name("locationUpdated")
 
-    /** A notification that informs the receiver to center map on selected place */
-    static let centerMapOnPlace = Notification.Name("sdl_centerMapOnPlace")
-
     /** A notification that informs the MapBoxViewController to become the RootViewController */
     static let setMapAsRootViewController = Notification.Name("setMapAsRootViewController")
 }
