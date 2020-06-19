@@ -152,7 +152,7 @@ extension ProxyManager: SDLManagerDelegate {
     }
 
     func hmiLevel(_ oldLevel: SDLHMILevel, didChangeToLevel newLevel: SDLHMILevel) {
-        if newLevel != .none && firstHMINotNil == true {
+        if newLevel != .none {
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = true
             }

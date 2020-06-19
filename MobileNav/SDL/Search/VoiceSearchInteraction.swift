@@ -173,11 +173,10 @@ extension VoiceSearchInteraction: SFSpeechRecognitionTaskDelegate {
     }
 
     func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishRecognition recognitionResult: SFSpeechRecognitionResult) {
-
         // Search for destination
         let searchString = recognitionResult.bestTranscription.formattedString
         searchManager.searchFor(searchTerm: searchString) { (mapItems, error) in
-            if error != nil {
+            guard error == nil else {
                 Alert.presentSearchErrorAlert()
                 return
             }

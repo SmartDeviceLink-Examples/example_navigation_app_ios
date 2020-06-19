@@ -50,7 +50,7 @@ class Alert {
         ProxyManager.sharedManager.sdlManager.send(request: alert)
     }
 
-    class func speechRecognizerDisallowedAlert() -> SDLAlert {
+    class func presentSpeechRecognizerDisallowedAlert() {
         let alert = SDLAlert()
         alert.alertText1 = "Voice Search Disallowed"
         alert.alertText2 = "Please go to settings in the app and enable it"
@@ -58,10 +58,10 @@ class Alert {
         alert.duration = defaultDuration
         alert.softButtons = [okSoftButton]
 
-        return alert
+        ProxyManager.sharedManager.sdlManager.send(request: alert)
     }
 
-    class func speechRecognizerBadLocaleAlert() -> SDLAlert {
+    class func presentSpeechRecognizerBadLocaleAlert() {
         let alert = SDLAlert()
         alert.alertText1 = "Voice search is not available"
         alert.alertText2 = "Due to Apple limitations, voice search is not available while the app is in the background"
@@ -69,7 +69,7 @@ class Alert {
         alert.duration = defaultDuration
         alert.softButtons = [okSoftButton]
 
-        return alert
+        ProxyManager.sharedManager.sdlManager.send(request: alert)
     }
 
     class func presentSpeechNotDetectedAlert() {

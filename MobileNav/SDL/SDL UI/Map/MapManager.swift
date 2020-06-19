@@ -155,7 +155,7 @@ extension MapManager {
         keyboard = KeyboardSearchInteraction(screenManager: ProxyManager.sharedManager.sdlManager.screenManager)
         keyboard?.present()
     }
-
+    /// Presents a search menu
     private func presentMenu() {
         guard let menuViewController = SDLViewControllers.menu else {
             SDLLog.e("Error loading the SDL menu view controller")
