@@ -35,8 +35,6 @@
 		10F4A48B24759D0B00DAB205 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4A48A24759D0B00DAB205 /* Alert.swift */; };
 		10F4A48D2475C44300DAB205 /* NotificationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4A48C2475C44300DAB205 /* NotificationQueue.swift */; };
 		10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621DE246DE67C00BDCC88 /* MapButton.swift */; };
-		10F621E12472D10900BDCC88 /* OffScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10F621E02472D10900BDCC88 /* OffScreen.storyboard */; };
-		10F621E32472E28700BDCC88 /* OffScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E22472E28700BDCC88 /* OffScreenViewController.swift */; };
 		10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E42473239F00BDCC88 /* AppUserDefaults.swift */; };
 		10F621ED2474446400BDCC88 /* MapItemsListInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */; };
 		10F621F1247467C700BDCC88 /* KeyboardSearchInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */; };
@@ -76,8 +74,6 @@
 		10F4A48A24759D0B00DAB205 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		10F4A48C2475C44300DAB205 /* NotificationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQueue.swift; sourceTree = "<group>"; };
 		10F621DE246DE67C00BDCC88 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
-		10F621E02472D10900BDCC88 /* OffScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OffScreen.storyboard; sourceTree = "<group>"; };
-		10F621E22472E28700BDCC88 /* OffScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffScreenViewController.swift; sourceTree = "<group>"; };
 		10F621E42473239F00BDCC88 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemsListInteraction.swift; sourceTree = "<group>"; };
 		10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSearchInteraction.swift; sourceTree = "<group>"; };
@@ -221,7 +217,6 @@
 				10A0C224243780C70010D9F6 /* Main.storyboard */,
 				10EA2DEB246C956F00A4DB3A /* Search.storyboard */,
 				10EA2DE8246C7E9700A4DB3A /* Settings.storyboard */,
-				10F621E02472D10900BDCC88 /* OffScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -231,7 +226,6 @@
 			children = (
 				10EA2DF3246DC6EE00A4DB3A /* Map */,
 				10EA2DF2246DC6E100A4DB3A /* Settings */,
-				10F621E22472E28700BDCC88 /* OffScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -356,7 +350,6 @@
 				100CC818243D0CCB003C9EDE /* keys.plist in Resources */,
 				1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */,
 				10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */,
-				10F621E12472D10900BDCC88 /* OffScreen.storyboard in Resources */,
 				10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */,
 				10EA2DE9246C7E9700A4DB3A /* Settings.storyboard in Resources */,
 				10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */,
@@ -427,7 +420,6 @@
 				10F621ED2474446400BDCC88 /* MapItemsListInteraction.swift in Sources */,
 				10A0C21F243780C70010D9F6 /* AppDelegate.swift in Sources */,
 				10F621DF246DE67C00BDCC88 /* MapButton.swift in Sources */,
-				10F621E32472E28700BDCC88 /* OffScreenViewController.swift in Sources */,
 				107A571D2446466A000BA7C6 /* SDLMenuButton.swift in Sources */,
 				108BCB96243E400C00F67A97 /* StreamSettings.swift in Sources */,
 				10EA2DEE246CC9A100A4DB3A /* SearchViewController.swift in Sources */,

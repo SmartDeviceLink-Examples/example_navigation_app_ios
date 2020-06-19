@@ -24,20 +24,8 @@ extension CGPoint {
 
 extension Notification.Name {
 
-    /** A notification that informs the receiver to present the OffScreenViewController. */
-    static let offScreenConnected = Notification.Name("offScreenConnected")
-
-    /** A notification that informs the receiver to dismiss the OffScreenViewController */
-    static let offScreenDisconnected = Notification.Name("offScreenDisconnected")
-
     /** A notification that informs observing receivers about significant location updates. */
     static let locationUpdated = Notification.Name("locationUpdated")
-
-    /** A notification that informs the receiver to hide projected buttons subscribed through SDL */
-    static let hideSubscribedButtons = Notification.Name("hideSubscribedButtons")
-
-    /** A notification that informs the receiver to show previously hidden buttons */
-    static let showSubscribeButtons = Notification.Name("showSubscribeButtons")
 
     /** A notification that informs the receiver to center map on selected place */
     static let centerMapOnPlace = Notification.Name("sdl_centerMapOnPlace")

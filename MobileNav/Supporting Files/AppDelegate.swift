@@ -8,6 +8,7 @@
 
 import UIKit
 import Mapbox
+import Speech
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mapBoxStoryboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MapBoxViewController
 
         mapBoxStoryboard.setupLocationManager(locationManager)
+
+        SFSpeechRecognizer.requestAuthorization { _ in }
 
         self.window?.rootViewController = mapBoxStoryboard
         self.window?.makeKeyAndVisible()

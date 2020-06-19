@@ -148,13 +148,6 @@ extension ProxyManager: SDLManagerDelegate {
             return
         }
 
-        if ProxyManager.isOffScreenStreaming {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(Notification(name: .offScreenDisconnected))
-            }
-        }
-
-        NotificationCenter.default.post(Notification(name: .showSubscribeButtons))
         firstHMINotNil = true
     }
 
@@ -165,23 +158,9 @@ extension ProxyManager: SDLManagerDelegate {
             }
 
             firstHMINotNil = false
-
-            // If RPC version is 6.0, subscribe buttons and hide them on view controller
-            if self.rpcVersion != nil && self.rpcVersion! >= 6 {
-                menuManager.start()
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(Notification(name: .hideSubscribedButtons))
-                }
-            }
         } else {
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = false
-            }
-        }
-
-        if oldLevel == .none && newLevel == .full && ProxyManager.isOffScreenStreaming {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(Notification(name: .offScreenConnected))
             }
         }
     }

@@ -39,6 +39,7 @@ class MapBoxViewController: SDLCarWindowViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         setupMapButtons()
         setupMapManager()
     }
@@ -142,5 +143,23 @@ extension MapBoxViewController {
 extension MapBoxViewController: SearchViewControllerDelegate {
     func didSelectPlace(coordinate: CLLocationCoordinate2D) {
         mapManager.setNewAnnotation(at: coordinate)
+    }
+}
+
+extension MapBoxViewController: MGLMapViewDelegate {
+    func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
+        if annotation is MGLUserLocation && mapView.userLocation != nil {
+            let size: CGFloat = 25
+
+            let userAnnotationView = MGLUserLocationAnnotationView()
+            userAnnotationView.frame = CGRect(x: 0, y: 0, width: size, height: size)
+            userAnnotationView.backgroundColor = .systemBlue
+            userAnnotationView.layer.borderColor = UIColor.white.cgColor
+            userAnnotationView.layer.borderWidth = 3
+            userAnnotationView.layer.cornerRadius = size / 2
+
+            return userAnnotationView
+        }
+        return nil
     }
 }
