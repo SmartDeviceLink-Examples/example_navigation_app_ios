@@ -1,0 +1,26 @@
+name: BiSON, nameSpecified: 
+body: Copyright (c) 2017 S…
+version: 1.2.0
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 2.15.1
+
+name: Mapbox-iOS-SDK, nameSpecified: 
+body: mapbox-gl-native-ios…
+version: 5.9.0
+
+name: MapboxMobileEvents, nameSpecified: 
+body: 
+mapbox-events-ios c…
+version: 0.10.2
+
+name: SmartDeviceLink, nameSpecified: 
+body: Copyright (c) 2017 -…
+version: 6.6.0
+
+add-version-numbers: false
+
+LicensePlist Version: 2.15.0
