@@ -63,9 +63,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if !searchText.isEmpty {
-            searchCompleter.queryFragment = searchText
-        }
+        guard !searchText.isEmpty else { return }
+        searchCompleter.queryFragment = searchText
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

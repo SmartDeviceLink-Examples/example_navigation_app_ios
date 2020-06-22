@@ -48,5 +48,4 @@ extension SettingOptionsViewController: UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.popViewController(animated: true)
     }
-
 }
