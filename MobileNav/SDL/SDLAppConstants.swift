@@ -12,7 +12,7 @@ struct SDLAppConstants {
     static let connectionType = ConnectionType.iap
     static let appName = SecretValues.appName() ?? ""
     static let appId = SecretValues.appID() ?? ""
-    static let ipAddress = ""
+    static let ipAddress = "192.168.1.36"
     static let port: UInt16 = 12345
 }
 
