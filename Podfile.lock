@@ -3,9 +3,9 @@ PODS:
   - Mapbox-iOS-SDK (5.9.0):
     - MapboxMobileEvents (= 0.10.2)
   - MapboxMobileEvents (0.10.2)
-  - SmartDeviceLink/Default (6.6.0):
+  - SmartDeviceLink/Default (7.0.0-rc.1):
     - BiSON (~> 1.2.0)
-  - SmartDeviceLink/Swift (6.6.0):
+  - SmartDeviceLink/Swift (7.0.0-rc.1):
     - BiSON (~> 1.2.0)
     - SmartDeviceLink/Default
 
@@ -26,14 +26,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SmartDeviceLink:
-    :commit: 905175db124c1c80a7ae9611b98c48d7f9b2a2bd
+    :commit: 924c510363f406ba3527458e9e13581a4890b6f7
     :git: https://github.com/smartdevicelink/sdl_ios.git
 
 SPEC CHECKSUMS:
   BiSON: 1165a5486ee9755400b096cf374e1f03cb73a980
   Mapbox-iOS-SDK: a5915700ec84bc1a7f8b3e746d474789e35b7956
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
-  SmartDeviceLink: 7971e530adc02d0540c8dba7a049a0edbebf97a1
+  SmartDeviceLink: 5cb83937ad4b39da4ee67a5aee8e698c201270a1
 
 PODFILE CHECKSUM: 4a3c1e64bedec54fa32b89fdc2b57e208cefcd47
 

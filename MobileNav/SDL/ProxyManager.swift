@@ -106,6 +106,7 @@ class ProxyManager: NSObject {
     class func logConfiguration() -> SDLLogConfiguration {
         let logConfig = SDLLogConfiguration.debug()
         logConfig.globalLogLevel = .debug
+        logConfig.areAssertionsDisabled = true
         return logConfig
     }
 
