@@ -313,7 +313,7 @@
 					1,
 				);
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Livio Inc.";
 				TargetAttributes = {
 					10A0C21A243780C70010D9F6 = {
