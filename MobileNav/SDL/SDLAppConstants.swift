@@ -9,7 +9,7 @@
 import UIKit
 
 struct SDLAppConstants {
-    static let connectionType = ConnectionType.tcp
+    static let connectionType = ConnectionType.iap
     static let appName = SecretValues.appName() ?? ""
     static let appId = SecretValues.appID() ?? ""
     static let ipAddress = "10.0.0.139"
