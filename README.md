@@ -8,14 +8,12 @@ This example application is a reference for developers who want to build a [Smar
 After cloning this project, you will need to run a `pod install` from the root directory and open the newly created `.xcworkspace` file.
 
 ### Setting Permissions
-
 If you are using this app with production or test hardware it is very likely that this app will not work due to OEMs restricting permissions for video streaming apps. If this is the case, you will need to set an OEM approved SDL **app name** and SDL **app ID** with the correct permissions. Additionally, you will need set a [MapBox](https://www.mapbox.com/) access token in order to use the map.
 
 To set the MapBox access token, app name, and app ID of this project, please follow the steps below.
 
 ### Setting App Keys
-
-1. Navigate to the `keys.plist` file in the Xcode directory.
+1. Create a the `keys.plist` file in Xcode.
 2. Create three key values named `AppName`, `AppID`, and `MGLMapboxAccessToken` of type `String`
 3. Set the values to the appropriate key. The `AppName` is used to set your SDL `appName` and the `AppID` is used to set your SDL `appID` in the `SDLLifecycleConfiguration`. The `MGLMapboxAccessToken` is used to access the MapBox SDK. 
 
@@ -24,8 +22,7 @@ Note that, at minimum, the `MGLMapboxAccessToken` must be set in order to use th
 
 ### Setting Connection Type
 
-By default, the app will attempt to connect via an `iAP` connection after launch. An `iAP` connection allows you to connect to production or test hardware using a USB cord or Bluetooth. 
-If you would like to test with an emulator you will need to configure a `TCP` (i.e. WiFi) connection. Navigate to the `SDLAppConstants.swift` file and change the `connectionType` to `.tcp`. Additionally, you will need to set the correct `ipAddress` and `port` values as well.
+By default, the app will attempt to connect via an `iAP` connection after launch. An `iAP` connection allows you to connect to production or test hardware using a USB cord or Bluetooth. If you would like to test with an emulator you will need to configure a `TCP` (i.e. WiFi) connection. Navigate to the `SDLAppConstants.swift` file and change the `connectionType` to `.tcp`. Additionally, you will need to set the correct `ipAddress` and `port` values as well.
 
 For more information about connection types, please [refer to our guide](https://smartdevicelink.com/en/guides/iOS/getting-started/connecting-to-an-infotainment-system/).
 
@@ -39,6 +36,6 @@ You cannot change these values while the app is connected to production or test 
 
 ##### Off-screen vs. On-screen Streaming
 
-It is recommended that you use an off-screen view controller for your UI. An off-screen view controller will appear on screen in the car, while remaining off-screen on the device. Note that if you are using off-screen rendering, it is recommended that your on-screen view controller not rotate due to potential UI issues. For more information on off-screen streaming, please [refer to our guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming/#mirroring-the-device-screen-vs-off-screen-ui).
+It is recommended that you use an off-screen view controller for your UI. An off-screen view controller will appear on screen in the car, while remaining off-screen on the device. Note that if you are using off-screen rendering, it is recommended that your on-screen view controller not rotate due to potential UI issues. For more information on off-screen streaming, please [refer to our guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming-ios/#mirroring-the-device-screen-vs-off-screen-ui).
 
-On-screen streaming, which can also be referred to as mirroring the device screen, is not recommended. Please be aware of the potential limitations of mirroring the device screen explained [here in our guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming/#mirroring-the-device-screen).
+On-screen streaming, which can also be referred to as mirroring the device screen, is not recommended. Please be aware of the potential limitations of mirroring the device screen explained [here in our guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming-ios/#mirroring-the-device-screen).
