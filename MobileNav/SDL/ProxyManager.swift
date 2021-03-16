@@ -114,6 +114,11 @@ class ProxyManager: NSObject {
         let streamingMediaConfig = SDLStreamingMediaConfiguration()
         streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
 
+        // The app supports all possible screen sizes
+        streamingMediaConfig.supportedPortraitStreamingRange = nil
+        streamingMediaConfig.supportedLandscapeStreamingRange = nil
+        streamingMediaConfig.delegate = ProxyManager.sharedManager.self
+
         guard let mapViewController = SDLViewControllers.map else {
             SDLLog.e("Error loading the SDL map view")
             return streamingMediaConfig
@@ -137,8 +142,14 @@ class ProxyManager: NSObject {
     }
 }
 
-// MARK: - SDLManagerDelegate
+// MARK: - SDLStreamingVideoDelegate
+extension ProxyManager: SDLStreamingVideoDelegate {
+    func videoStreamingSizeDidUpdate(_ displaySize: CGSize) {
+        print("video stream size updated to width: \(displaySize.width), height: \(displaySize.height)")
+    }
+}
 
+// MARK: - SDLManagerDelegate
 extension ProxyManager: SDLManagerDelegate {
     func managerDidDisconnect() {
         if proxyState != .stopped {
