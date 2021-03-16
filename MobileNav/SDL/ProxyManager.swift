@@ -118,6 +118,9 @@ class ProxyManager: NSObject {
         streamingMediaConfig.supportedLandscapeStreamingRange = SDLVideoStreamingRange(minimumResolution: SDLImageResolution(width: 500, height: 300), maximumResolution: SDLImageResolution(width: UInt16.max, height: UInt16.max))
         streamingMediaConfig.delegate = ProxyManager.sharedManager.self
 
+        // The video encoder is configured to use the module's preferred framerate and bitrate. If desired, you can override the module's preferred settings with custom settings.
+        // streamingMediaConfig.customVideoEncoderSettings = [kVTCompressionPropertyKey_ExpectedFrameRate as String: 15, kVTCompressionPropertyKey_AverageBitRate as String: 600000]
+
         guard let mapViewController = SDLViewControllers.map else {
             SDLLog.e("Error loading the SDL map view")
             return streamingMediaConfig
