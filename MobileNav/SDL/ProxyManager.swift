@@ -114,9 +114,8 @@ class ProxyManager: NSObject {
         let streamingMediaConfig = SDLStreamingMediaConfiguration()
         streamingMediaConfig.carWindowRenderingType = getSDLRenderType(from: streamSettings.renderType)
 
-        // The app supports all possible screen sizes
-        streamingMediaConfig.supportedPortraitStreamingRange = nil
-        streamingMediaConfig.supportedLandscapeStreamingRange = nil
+        streamingMediaConfig.supportedPortraitStreamingRange = SDLVideoStreamingRange(minimumResolution: SDLImageResolution(width: 300, height: 500), maximumResolution: SDLImageResolution(width: UInt16.max, height: UInt16.max))
+        streamingMediaConfig.supportedLandscapeStreamingRange = SDLVideoStreamingRange(minimumResolution: SDLImageResolution(width: 500, height: 300), maximumResolution: SDLImageResolution(width: UInt16.max, height: UInt16.max))
         streamingMediaConfig.delegate = ProxyManager.sharedManager.self
 
         guard let mapViewController = SDLViewControllers.map else {
