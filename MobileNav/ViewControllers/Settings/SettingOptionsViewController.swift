@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SettingOptionsViewControllerDelegate: class {
+protocol SettingOptionsViewControllerDelegate: AnyObject {
     func optionSelected(option: Int)
 }
 
