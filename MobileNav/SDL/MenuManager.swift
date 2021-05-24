@@ -30,7 +30,7 @@ class MenuManager: NSObject {
     func loadMenuCells() {
         var cells: [SDLMenuCell] = []
 
-        let searchCell = SDLMenuCell(title: SDLMenuTitles.search, icon: nil, voiceCommands: [SDLMenuTitles.search]) { [unowned self] (source: SDLTriggerSource) in
+        let searchCell = SDLMenuCell(title: SDLMenuTitles.search, secondaryText: nil, tertiaryText: nil, icon: nil, secondaryArtwork: nil, voiceCommands: [SDLMenuTitles.search]) { [unowned self] source in
             guard self.isDriverDistracted == false else {
                 Alert.presentDriverDistraction()
                 return
@@ -40,7 +40,7 @@ class MenuManager: NSObject {
         }
         cells.append(searchCell)
 
-        let restaurantsCell = SDLMenuCell(title: SDLMenuTitles.restaurantsNearMe, icon: nil, voiceCommands: [SDLMenuTitles.restaurantsNearMe]) { (source: SDLTriggerSource) in
+        let restaurantsCell = SDLMenuCell(title: SDLMenuTitles.restaurantsNearMe, secondaryText: nil, tertiaryText: nil, icon: nil, secondaryArtwork: nil, voiceCommands: [SDLMenuTitles.restaurantsNearMe]) { source in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: DefaultSearchTerms.restaurants) { (mapItems, error) in
@@ -63,7 +63,7 @@ class MenuManager: NSObject {
         }
         cells.append(restaurantsCell)
 
-        let coffeeCell = SDLMenuCell(title: SDLMenuTitles.coffeeNearMe, icon: nil, voiceCommands: [SDLMenuTitles.coffeeNearMe]) { (source: SDLTriggerSource) in
+        let coffeeCell = SDLMenuCell(title: SDLMenuTitles.coffeeNearMe, secondaryText: nil, tertiaryText: nil, icon: nil, secondaryArtwork: nil, voiceCommands: [SDLMenuTitles.coffeeNearMe]) { source in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: DefaultSearchTerms.coffeeShops) { (mapItems, error) in
@@ -86,7 +86,7 @@ class MenuManager: NSObject {
         }
         cells.append(coffeeCell)
 
-        let gasStationsCell = SDLMenuCell(title: SDLMenuTitles.gasNearMe, icon: nil, voiceCommands: [SDLMenuTitles.gasNearMe]) { (source: SDLTriggerSource) in
+        let gasStationsCell = SDLMenuCell(title: SDLMenuTitles.gasNearMe, secondaryText: nil, tertiaryText: nil, icon: nil, secondaryArtwork: nil, voiceCommands: [SDLMenuTitles.gasNearMe]) { source in
             switch source {
             case .menu:
                 self.searchManager.searchFor(searchTerm: DefaultSearchTerms.gasStations) { (mapItems, error) in
@@ -106,7 +106,6 @@ class MenuManager: NSObject {
             default:
                 fatalError()
             }
-            
         }
         cells.append(gasStationsCell)
     }

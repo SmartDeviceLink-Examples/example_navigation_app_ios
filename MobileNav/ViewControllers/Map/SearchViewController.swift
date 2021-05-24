@@ -9,7 +9,7 @@
 import MapKit
 import UIKit
 
-protocol SearchViewControllerDelegate: class {
+protocol SearchViewControllerDelegate: AnyObject {
     func didSelectPlace(coordinate:CLLocationCoordinate2D)
 }
 
