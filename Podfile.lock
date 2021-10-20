@@ -11,7 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Mapbox-iOS-SDK (~> 5.7)
-  - SmartDeviceLink/Swift (~> 7.1)
+  - SmartDeviceLink/Swift (~> 7.2)
 
 SPEC REPOS:
   trunk:
@@ -26,6 +26,6 @@ SPEC CHECKSUMS:
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   SmartDeviceLink: 9fa89b2d7eff9f7abe7e40fe609f57b06f8b73da
 
-PODFILE CHECKSUM: 7117ebb0237711079c4f6e42dab1f334ce80b1d5
+PODFILE CHECKSUM: dd5bf4fa223a0265e32e7e5713739a81f75a062b
 
 COCOAPODS: 1.11.2
