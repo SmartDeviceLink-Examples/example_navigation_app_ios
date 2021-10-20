@@ -36,7 +36,7 @@
 		10F621E52473239F00BDCC88 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621E42473239F00BDCC88 /* AppUserDefaults.swift */; };
 		10F621ED2474446400BDCC88 /* MapItemsListInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */; };
 		10F621F1247467C700BDCC88 /* KeyboardSearchInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */; };
-		4A5CAA5B24C5DEAB00A0C64F /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A5CAA5A24C5DEAB00A0C64F /* keys.plist */; };
+		5D8FD3A126725C4900007A7A /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D8FD3A026725C4900007A7A /* keys.plist */; };
 		889D7ACD249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D7ACC249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift */; };
 		88B3B0C9249B909D00CF3F3B /* MapButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B3B0C8249B909D00CF3F3B /* MapButtonState.swift */; };
 		8EDE980242E684FCEDB2CBCA /* Pods_MobileNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C87AC77D7B99D0482BD41A41 /* Pods_MobileNav.framework */; };
@@ -76,7 +76,7 @@
 		10F621E42473239F00BDCC88 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		10F621EC2474446400BDCC88 /* MapItemsListInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemsListInteraction.swift; sourceTree = "<group>"; };
 		10F621F0247467C700BDCC88 /* KeyboardSearchInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSearchInteraction.swift; sourceTree = "<group>"; };
-		4A5CAA5A24C5DEAB00A0C64F /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		5D8FD3A026725C4900007A7A /* keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		889D7ACC249AC4BC002BB5F4 /* SDLMapViewTouchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLMapViewTouchManager.swift; sourceTree = "<group>"; };
 		88B3B0C8249B909D00CF3F3B /* MapButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonState.swift; sourceTree = "<group>"; };
 		C87AC77D7B99D0482BD41A41 /* Pods_MobileNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,7 +196,7 @@
 				107A57242446611F000BA7C6 /* Supporting Files */,
 				101132D52437991500D15779 /* SDL */,
 				10A0C22C243780C80010D9F6 /* Info.plist */,
-				4A5CAA5A24C5DEAB00A0C64F /* keys.plist */,
+				5D8FD3A026725C4900007A7A /* keys.plist */,
 			);
 			path = MobileNav;
 			sourceTree = "<group>";
@@ -344,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D8FD3A126725C4900007A7A /* keys.plist in Resources */,
 				1047312424476BB800819B15 /* SDLMenu.storyboard in Resources */,
 				10A0C22B243780C80010D9F6 /* LaunchScreen.storyboard in Resources */,
 				10A0C228243780C80010D9F6 /* Assets.xcassets in Resources */,
@@ -351,7 +352,6 @@
 				10EA2DEC246C956F00A4DB3A /* Search.storyboard in Resources */,
 				10EAA0442499867600E3BC1B /* Settings.bundle in Resources */,
 				10A0C226243780C70010D9F6 /* Main.storyboard in Resources */,
-				4A5CAA5B24C5DEAB00A0C64F /* keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
