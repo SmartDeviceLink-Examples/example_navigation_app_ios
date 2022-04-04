@@ -11,14 +11,23 @@ PODS:
 
 DEPENDENCIES:
   - Mapbox-iOS-SDK (~> 5.7)
-  - SmartDeviceLink/Swift (~> 7.3)
+  - SmartDeviceLink/Swift (from `https://github.com/smartdevicelink/sdl_ios`, branch `develop`)
 
 SPEC REPOS:
   trunk:
     - BiSON
     - Mapbox-iOS-SDK
     - MapboxMobileEvents
-    - SmartDeviceLink
+
+EXTERNAL SOURCES:
+  SmartDeviceLink:
+    :branch: develop
+    :git: https://github.com/smartdevicelink/sdl_ios
+
+CHECKOUT OPTIONS:
+  SmartDeviceLink:
+    :commit: faab4b4cec01fbcbccbb53bdb0d4bf02ad6ec9c7
+    :git: https://github.com/smartdevicelink/sdl_ios
 
 SPEC CHECKSUMS:
   BiSON: 232dc4fdbe825301742963f27a78f10f13bca68b
@@ -26,6 +35,6 @@ SPEC CHECKSUMS:
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   SmartDeviceLink: a3486b871633378c65a5be08ea5e73ec8f5a8057
 
-PODFILE CHECKSUM: b64edc435fe0c951b39888a904334408edd15125
+PODFILE CHECKSUM: 0a322e51799af1e9f89b794fdc52814f8b752c9b
 
 COCOAPODS: 1.11.2
