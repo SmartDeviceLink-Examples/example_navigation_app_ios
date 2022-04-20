@@ -27,6 +27,7 @@ class SDLMenuViewController: SDLCarWindowViewController {
 
     func setupTouchManager() {
         ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
+        ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.enableSyncedPanning = true
     }
 
     func returnToMap() {
@@ -36,7 +37,13 @@ class SDLMenuViewController: SDLCarWindowViewController {
     }
 }
 
+// MARK: SDLTouchManagerDelegate callbacks
 extension SDLMenuViewController: SDLTouchManagerDelegate {
+    func touchManager(_ manager: SDLTouchManager, didReceivePanningFrom fromPoint: CGPoint, to toPoint: CGPoint) {
+        let displacementPoint = fromPoint.displacement(toPoint: toPoint)
+        self.view.frame.origin.y += displacementPoint.y
+    }
+
     func touchManager(_ manager: SDLTouchManager, didReceiveSingleTapFor view: UIView?, at point: CGPoint) {
         if let view = view {
             switch view {
