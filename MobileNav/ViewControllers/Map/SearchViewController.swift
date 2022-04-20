@@ -45,7 +45,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let place = searchResults[indexPath.row]
         let request = MKLocalSearch.Request()
-        let query: String = place.subtitle != "" ? place.subtitle : place.title
+        let query: String = place.subtitle != "" ? place.title + ", " + place.subtitle : place.title
         request.naturalLanguageQuery = query
         let search = MKLocalSearch(request: request)
 
