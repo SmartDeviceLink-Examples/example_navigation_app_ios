@@ -43,7 +43,7 @@ class MenuManager: NSObject {
         let restaurantsCell = SDLMenuCell(title: SDLMenuTitles.restaurantsNearMe, secondaryText: nil, tertiaryText: nil, icon: nil, secondaryArtwork: nil, voiceCommands: [SDLMenuTitles.restaurantsNearMe]) { source in
             switch source {
             case .menu:
-                self.searchManager.searchFor(searchTerm: DefaultSearchTerms.restaurants) { (mapItems, error) in
+                self.searchManager.searchFor(searchTerm: SDLMenuTitles.restaurantsNearMe) { (mapItems, error) in
                     guard error == nil else {
                         Alert.presentSearchErrorAlert()
                         return
@@ -66,7 +66,7 @@ class MenuManager: NSObject {
         let coffeeCell = SDLMenuCell(title: SDLMenuTitles.coffeeNearMe, secondaryText: nil, tertiaryText: nil, icon: nil, secondaryArtwork: nil, voiceCommands: [SDLMenuTitles.coffeeNearMe]) { source in
             switch source {
             case .menu:
-                self.searchManager.searchFor(searchTerm: DefaultSearchTerms.coffeeShops) { (mapItems, error) in
+                self.searchManager.searchFor(searchTerm: SDLMenuTitles.coffeeNearMe) { (mapItems, error) in
                     guard error == nil else {
                         Alert.presentSearchErrorAlert()
                         return
@@ -89,7 +89,7 @@ class MenuManager: NSObject {
         let gasStationsCell = SDLMenuCell(title: SDLMenuTitles.gasNearMe, secondaryText: nil, tertiaryText: nil, icon: nil, secondaryArtwork: nil, voiceCommands: [SDLMenuTitles.gasNearMe]) { source in
             switch source {
             case .menu:
-                self.searchManager.searchFor(searchTerm: DefaultSearchTerms.gasStations) { (mapItems, error) in
+                self.searchManager.searchFor(searchTerm: SDLMenuTitles.gasNearMe) { (mapItems, error) in
                     guard error == nil else {
                         Alert.presentSearchErrorAlert()
                         return
