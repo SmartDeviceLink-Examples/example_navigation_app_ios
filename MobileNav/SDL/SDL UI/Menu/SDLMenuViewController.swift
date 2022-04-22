@@ -27,7 +27,6 @@ class SDLMenuViewController: SDLCarWindowViewController {
 
     func setupTouchManager() {
         ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.touchEventDelegate = self
-        ProxyManager.sharedManager.sdlManager.streamManager?.touchManager.enableSyncedPanning = true
     }
 
     func returnToMap() {
@@ -37,8 +36,10 @@ class SDLMenuViewController: SDLCarWindowViewController {
     }
 }
 
-// MARK: SDLTouchManagerDelegate callbacks
+// MARK: - SDLTouchManagerDelegate callbacks
 extension SDLMenuViewController: SDLTouchManagerDelegate {
+    /// Detect the user pan/scroll movement on the HMI screen in order to update the `SDLCarWindowViewController`'s view
+    /// so it can update the screen position of the HMI menu
     func touchManager(_ manager: SDLTouchManager, didReceivePanningFrom fromPoint: CGPoint, to toPoint: CGPoint) {
         let displacementPoint = fromPoint.displacement(toPoint: toPoint)
         self.view.frame.origin.y += displacementPoint.y
