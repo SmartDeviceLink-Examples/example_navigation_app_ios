@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '11.0'
+ platform :ios, '15.0'
 
 target 'MobileNav' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -7,6 +7,6 @@ target 'MobileNav' do
 
   # Pods for MobileNav
 #  pod 'SmartDeviceLink/Swift', :git => 'https://github.com/smartdevicelink/sdl_ios.git', :branch => 'bugfix/issue-2011-fix-sdlvideostreamingrange'
-  pod 'SmartDeviceLink/Swift', '~> 7.3'
+  pod 'SmartDeviceLink/Swift', '~> 7.5'
   pod 'Mapbox-iOS-SDK', '~> 5.7'
 end
