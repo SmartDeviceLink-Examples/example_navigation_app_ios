@@ -10,3 +10,14 @@ target 'MobileNav' do
   pod 'SmartDeviceLink/Swift', '~> 7.6'
   pod 'Mapbox-iOS-SDK', '~> 5.7'
 end
+
+# Set pods min deployment target
+post_install do |installer|
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+      end
+    end
+  end
+end
