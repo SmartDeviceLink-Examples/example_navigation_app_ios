@@ -7,7 +7,7 @@ target 'MobileNav' do
 
   # Pods for MobileNav
 #  pod 'SmartDeviceLink/Swift', :git => 'https://github.com/smartdevicelink/sdl_ios.git', :branch => 'bugfix/issue-2011-fix-sdlvideostreamingrange'
-  pod 'SmartDeviceLink/Swift', '~> 7.6'
+  pod 'SmartDeviceLink/Swift', '~> 7.6.1'
   pod 'Mapbox-iOS-SDK', '~> 5.7'
 end
 
